@@ -2,7 +2,7 @@
 
 ## Hosted Link
 
-[Click here to view the project](https://flurnpokedexreact.netlify.app/)
+[Click here to view the project](https://intership-project-pekt.vercel.app)
 
 ## Home Page
 
