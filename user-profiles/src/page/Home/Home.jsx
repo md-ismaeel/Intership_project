@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { user_data } from "../../Constant";
+import { user_data } from "../../constants";
 import { NavLink } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { stylesCss_homePage } from "../../Components/StyleCss";

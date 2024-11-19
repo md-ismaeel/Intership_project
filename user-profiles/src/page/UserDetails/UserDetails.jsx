@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { user_data } from "../../Constant";
+import { user_data } from "../../constants";
 import bg_image from "../../assets/bg-image.jpg";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaFacebookF, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
