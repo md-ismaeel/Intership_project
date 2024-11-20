@@ -2,7 +2,7 @@
 
 ## Hosted Link
 
-[Click here to view the project](https://intership-project-pekt.vercel.app)
+[Click here to view the project](https://intership-project-3tfx.vercel.app/)
 
 ## SignIn Page
 
