@@ -1,16 +1,20 @@
-# Sign-in and Sign-up
+# SignUp & SignIn
 
 ## Hosted Link
 
-[Click here to view the project](https://intership-project-3tfx.vercel.app)
+[Click here to view the project](https://intership-project-pekt.vercel.app)
 
-## Sign-in Page
+## SignIn Page
 
-![Sign-in Page](./public/Screenshot%202024-11-19%20210838.png)
+![SignIn Page](./public/Screenshot%202024-11-20%20211024.png)
 
-## Sign-up Page
+## SignUp Page
 
-![Sign-up Page](./public/Screenshot%202024-11-19%20210823.png)
+![SignUp Page](./public/Screenshot%202024-11-20%20211127.png)
+
+## Forget Password Page
+
+![SignUp Page](./public//Screenshot%202024-11-20%20211147.png)
 
 ## Tech Stack
 

@@ -3,16 +3,17 @@ import { useNavigate } from "react-router-dom";
 import horizonLogo from "../../assets/horizon-logo.png";
 import googleLogo from "../../assets/google-logo.png";
 import { styleCss } from "../../Components/Style";
+import FloatingLabelInput from "../../Components/FloatingInputLabel";
+
 
 export default function SignIn() {
-  const [userData, setUserData] = useState({ email: "", password: "" });
+  const [userData, setUserData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
 
   const navigator = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((pre) => ({ ...pre, [name]: value }));
-  };
 
   function clearForm() {
     setUserData({ email: "", password: "" });
@@ -20,22 +21,27 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValidEmail = userData.email.includes("@");
-    const isValidPassword = userData.password.length < 8;
+    const { email, password } = userData;
 
-    if (!isValidEmail) {
-      alert("Email is not valid!");
+    if (!email || !password) {
+      alert("All fields are required!");
       return;
     }
 
-    if (isValidPassword) {
-      alert("Password length should be minimum 8 character");
+    if (!email.includes("@")) {
+      alert("Invalid email address!");
       return;
     }
 
-    if (isValidEmail) {
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters long!");
+      return;
+    }
+
+    if (password.length >= 8) {
+      alert("User sign in successfully!");
+      navigator("/dashboard");
       clearForm();
-      setTimeout(() => alert("user login successfully!!"), 1000);
     }
   };
 
@@ -54,48 +60,56 @@ export default function SignIn() {
               <img src={googleLogo} alt="logo" height={"25px"} width={"25px"} />
               <span>Sign In with Google</span>
             </div>
-            <div className="flex justify-between items-center">
+            <div className={styleCss.underlineOrCss}>
               <p className="w-[45%] bg-gray-500 h-[1px]"></p>
               <p className="px-2 py-1">or</p>
               <p className="w-[45%] bg-gray-500 h-[1px]"></p>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <label>Email*</label>
-              <input
-                type="text"
+            <div className={styleCss.container}>
+              <FloatingLabelInput
+                type="email"
                 name="email"
                 value={userData.email}
-                onChange={handleChange}
-                placeholder="mail@simple.com"
+                setUserData={(value) =>
+                  setUserData((prev) => ({ ...prev, email: value }))
+                }
                 required
-                className={styleCss.input}
+                placeholder="Email Address!"
+                label="Email Address!"
               />
-            </div>
-
-            <div className="flex flex-col gap-2 mt-3">
-              <label>Password*</label>
-              <input
-                type="text"
+              <FloatingLabelInput
+                type="password"
                 name="password"
                 value={userData.password}
-                onChange={handleChange}
+                setUserData={(value) =>
+                  setUserData((prev) => ({ ...prev, password: value }))
+                }
                 required
-                placeholder="min. 8 characters"
-                className={styleCss.input}
+                placeholder="Password!"
+                label="Password!"
               />
             </div>
-            <button type="submit" className={styleCss.button}>
-              Sign In
-            </button>
 
-            <p className="mt-2 text-gray-300">
+            <div className="relative">
+              <button type="submit" className={styleCss.button}>
+                Sign In
+              </button>
+
+              <p
+                className={styleCss.forget_password}
+                onClick={() => navigator("/forget-password")}
+              >
+                Forget password!
+              </p>
+            </div>
+            <p className="mt-5 text-gray-300">
               Not registered yet?
               <span
                 onClick={() => navigator("/sign-up")}
-                className="text-blue-500 cursor-pointer ml-4 hover:underline"
+                className="text-blue-500 cursor-pointer ml-1 hover:underline"
               >
-                create an account
+                Create An Account!
               </span>
             </p>
           </form>
