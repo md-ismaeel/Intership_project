@@ -4,52 +4,68 @@ import horizonLogo from "../../assets/horizon-logo.png";
 import googleLogo from "../../assets/google-logo.png";
 import { styleCss } from "../../Components/Style";
 import FloatingLabelInput from "../../Components/FloatingInputLabel";
-
+import { toast } from "material-react-toastify";
+import Axios from "axios";
+import { LOCALHOST_DOMAIN, requestOptions } from "../../Utils/utils";
+import { Loader } from "../../Components/Loader";
 
 export default function SignIn() {
+  const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState({
     userName: "",
-    email: "",
     password: "",
   });
 
   const navigator = useNavigate();
 
-  function clearForm() {
-    setUserData({ email: "", password: "" });
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
   }
 
-  const handleSubmit = (e) => {
+  function clearForm() {
+    setUserData({ userName: "", password: "" });
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password } = userData;
 
-    if (!email || !password) {
-      alert("All fields are required!");
-      return;
-    }
+    const { userName, password } = userData;
+    const identifier = userData.userName.includes("@")
+      ? { email: userName }
+      : { userName: userName };
 
-    if (!email.includes("@")) {
-      alert("Invalid email address!");
-      return;
-    }
-
-    if (password.length < 8) {
-      alert("Password must be at least 8 characters long!");
-      return;
-    }
-
-    if (password.length >= 8) {
-      alert("User sign in successfully!");
-      navigator("/dashboard");
-      clearForm();
+    const userObj = { ...identifier, password };
+    try {
+      setLoading(true);
+      const response = await Axios.post(
+        `${LOCALHOST_DOMAIN}/sign-in`,
+        userObj,
+        requestOptions
+      );
+      if (response?.data?.success) {
+        toast.success(response?.data?.message);
+        clearForm();
+        navigator("/dashboard");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error(
+        err.response?.data?.message,
+        "Sign-up failed! Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
       <section className={styleCss.section}>
-        <div className={`w-[40%] h-full flex justify-center items-center`}>
-          <form onSubmit={handleSubmit} className={`w-[80%] text-white`}>
+        <div
+          className={`wrapper w-[40%] h-full flex justify-center items-center`}
+        >
+          <form onSubmit={handleSubmit} className={`form w-[80%] text-white`}>
             <div className="mb-8">
               <h1 className="text-3xl font-bold">Sign In</h1>
               <p className="text-gray-300 mt-3">
@@ -60,7 +76,7 @@ export default function SignIn() {
               <img src={googleLogo} alt="logo" height={"25px"} width={"25px"} />
               <span>Sign In with Google</span>
             </div>
-            <div className={styleCss.underlineOrCss}>
+            <div className={`${styleCss.underlineOrCss} mb-4`}>
               <p className="w-[45%] bg-gray-500 h-[1px]"></p>
               <p className="px-2 py-1">or</p>
               <p className="w-[45%] bg-gray-500 h-[1px]"></p>
@@ -68,34 +84,34 @@ export default function SignIn() {
 
             <div className={styleCss.container}>
               <FloatingLabelInput
-                type="email"
-                name="email"
-                value={userData.email}
-                setUserData={(value) =>
-                  setUserData((prev) => ({ ...prev, email: value }))
-                }
-                required
-                placeholder="Email Address!"
-                label="Email Address!"
+                type="text"
+                name="userName"
+                value={userData.userName}
+                onChange={handleChange}
+                require
+                label="Email Address & userName!"
               />
               <FloatingLabelInput
                 type="password"
                 name="password"
                 value={userData.password}
-                setUserData={(value) =>
-                  setUserData((prev) => ({ ...prev, password: value }))
-                }
+                onChange={handleChange}
                 required
-                placeholder="Password!"
                 label="Password!"
               />
             </div>
 
             <div className="relative">
-              <button type="submit" className={styleCss.button}>
-                Sign In
+              <button
+                type="submit"
+                className={`${styleCss.button} ${
+                  loading ? "cursor-not-allowed opacity-50" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading ? "Loading" : "Sign In"}
               </button>
-
+              <div className={styleCss.loader}>{loading && <Loader />}</div>
               <p
                 className={styleCss.forget_password}
                 onClick={() => navigator("/forget-password")}
@@ -115,7 +131,7 @@ export default function SignIn() {
           </form>
         </div>
 
-        <div className={`w-[45%]`}>
+        <div className={`horizon-logo w-[45%]`}>
           <img
             src={horizonLogo}
             alt="logo"

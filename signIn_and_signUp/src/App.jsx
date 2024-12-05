@@ -6,13 +6,18 @@ import SignUp from "./page/Sign-up/SignUp";
 import Footer from "./Components/Footer";
 import Dashboard from "./page/Dashboard/Dashboard";
 import ForgetPassword from "./page/ForgetPassword/ForgetPassword";
+import NotFound from "./page/NotFound/NotFound";
 
 function App() {
   const routes = createBrowserRouter([
-    { path: "/", element: <SignIn /> },
-    { path: "/sign-up", element: <SignUp /> },
-    { path: "/dashboard", element: <Dashboard /> },
-    { path: "/forget-password", element: <ForgetPassword /> }
+    { path: "/", element: <SignIn />, errorElement: <NotFound /> },
+    { path: "/sign-up", element: <SignUp />, errorElement: <NotFound /> },
+    { path: "/dashboard", element: <Dashboard />, errorElement: <NotFound /> },
+    {
+      path: "/forget-password",
+      element: <ForgetPassword />,
+      errorElement: <NotFound />,
+    },
   ]);
 
   return (

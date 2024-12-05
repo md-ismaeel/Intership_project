@@ -2,34 +2,59 @@ import React, { useState } from "react";
 import horizonLogo from "../../assets/horizon-logo.png";
 import FloatingLabelInput from "../../Components/FloatingInputLabel";
 import { styleCss } from "../../Components/Style";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useNavigation } from "react-router-dom";
 
 export default function ForgetPassword() {
-  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState({
+    email: "",
+    newPassword: "",
+  });
+
   const navigator = useNavigate();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (password.length < 8) {
-      alert("Password must be at least 8 characters long!");
-      return;
-    }
-
-    if (password.length >= 8) {
-      alert("Password reset successfully!");
-      navigator("/");
-      setPassword("");
-    }
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
   }
+
+  function clearForm() {
+    setUserData({ email: "", newPassword: "" });
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, newPassword } = userData;
+    const userObj = { email, password: newPassword };
+    try {
+      setLoading(true);
+      const response = await Axios.post(
+        `${LOCALHOST_DOMAIN}/forget-password`,
+        userObj,
+        requestOptions
+      );
+      if (response?.data?.success) {
+        toast.success(response?.data?.message);
+        clearForm();
+        navigator("/");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.message, "Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
       <section className={styleCss.section}>
-        <div className={`w-[40%] h-full flex justify-center items-start`}>
+        <div
+          className={`wrapper w-[40%] h-full flex justify-center items-start`}
+        >
           <form
             onSubmit={handleSubmit}
-            className={`w-[80%] h-full text-white flex flex-col justify-start items-start`}
+            className={`form w-[80%] h-full text-white flex flex-col justify-start items-start`}
           >
             <div className="mb-8">
               <h1 className="text-3xl font-bold">Forget Password</h1>
@@ -37,13 +62,22 @@ export default function ForgetPassword() {
                 Enter new password to reset your password!
               </p>
             </div>
+
+            <FloatingLabelInput
+              type="email"
+              name="password"
+              value={email}
+              onChange={handleChange}
+              required
+              label="Email Address!"
+            />
+
             <FloatingLabelInput
               type="password"
               name="password"
               value={password}
-              setUserData={setPassword}
+              onChange={handleChange}
               required
-              placeholder="New Password!"
               label="New Password!"
             />
             <button type="submit" className={styleCss.button}>
@@ -51,6 +85,7 @@ export default function ForgetPassword() {
             </button>
           </form>
         </div>
+
         <div className="w-[45%]">
           <img
             src={horizonLogo}

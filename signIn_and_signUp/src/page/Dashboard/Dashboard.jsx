@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
+import { Loader } from "../../Components/Loader";
+import SignOut from "../../Components/SignOut";
 
 export default function Dashboard() {
-    return (
-        <div className='w-full h-screen text-4xl text-teal-700 flex justify-center items-center'>Dashboard</div>
-    )
+  return <SignOut />;
 }

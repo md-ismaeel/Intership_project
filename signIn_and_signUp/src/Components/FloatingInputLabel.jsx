@@ -6,8 +6,8 @@ const FloatingLabelInput = ({
   type = "text",
   name,
   value,
-  setUserData,
-  placeholder,
+  onChange,
+  placeholder = "",
   label,
   required = false,
   disabled = false,
@@ -28,7 +28,7 @@ const FloatingLabelInput = ({
         name={name}
         id={name}
         value={value}
-        onChange={(e) => setUserData(e.target.value)}
+        onChange={onChange}
         placeholder={placeholder}
         required={required}
         disabled={disabled}

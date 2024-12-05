@@ -1,0 +1,30 @@
+/* Extra Small Devices (Phones, Portrait View) */
+@media screen and (max-width: 575.98px) {
+  .horizon-logo {
+    display: none;
+  }
+  .wrapper {
+    width: 100%;
+    min-height: 100vh !important;
+  }
+  .form {
+    margin: 2rem 0rem;
+    width: 90% !important;
+  }
+}
+
+/* Small Devices (Phones, Landscape View) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+}
+
+/* Medium Devices (Tablets) */
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+}
+
+/* Large Devices (Laptops, Desktops) */
+@media screen and (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/* Extra Large Devices (Large Desktops) */
+@media screen and (min-width: 1200px) {
+}
