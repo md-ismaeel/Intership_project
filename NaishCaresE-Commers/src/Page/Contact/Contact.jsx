@@ -23,7 +23,7 @@ export default function Contact() {
             />
             <button
               type="submit"
-              className="bg-green-500 text-white px-4 py-2 rounded"
+              className="bg-secondary text-white px-4 py-2 rounded"
             >
               Send Message
             </button>

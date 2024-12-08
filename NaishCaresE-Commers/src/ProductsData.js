@@ -1,3 +1,5 @@
+import img from "./assets/Product-images/organic.png"
+
 export const PRODUCTS = [
     // Dairy Products
     {
@@ -6,7 +8,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 50,
         description: 'Pure, farm-fresh cow milk delivered daily',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 2,
@@ -14,7 +16,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 300,
         description: 'Traditional handmade ghee from grass-fed cows',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 3,
@@ -22,7 +24,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 150,
         description: 'Soft, fresh paneer made from pure milk',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 4,
@@ -30,7 +32,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 40,
         description: 'Creamy, probiotic-rich traditional curd',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 5,
@@ -38,7 +40,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 30,
         description: 'Refreshing, naturally churned buttermilk',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Vegetables
@@ -48,7 +50,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 40,
         description: 'Farm-fresh, naturally grown tomatoes',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 7,
@@ -56,7 +58,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 25,
         description: 'Nutrient-rich, locally grown spinach',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 8,
@@ -64,7 +66,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 30,
         description: 'Fresh, crisp cucumbers from our farm',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 9,
@@ -72,7 +74,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 35,
         description: 'Sweet and crunchy organic carrots',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 10,
@@ -80,7 +82,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 40,
         description: 'Crisp and flavorful capsicum',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Fruits
@@ -90,7 +92,7 @@ export const PRODUCTS = [
         category: 'Fruits',
         price: 50,
         description: 'Ripe, sweet bananas from our organic farm',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 12,
@@ -98,7 +100,7 @@ export const PRODUCTS = [
         category: 'Fruits',
         price: 100,
         description: 'Juicy, sun-ripened mangoes',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 13,
@@ -106,7 +108,7 @@ export const PRODUCTS = [
         category: 'Fruits',
         price: 80,
         description: 'Crisp and sweet organic apples',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 14,
@@ -114,7 +116,7 @@ export const PRODUCTS = [
         category: 'Fruits',
         price: 60,
         description: 'Fresh, ripe papayas full of nutrition',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 15,
@@ -122,7 +124,7 @@ export const PRODUCTS = [
         category: 'Fruits',
         price: 120,
         description: 'Nutrient-rich, freshly harvested pomegranates',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Grains and Pulses
@@ -132,7 +134,7 @@ export const PRODUCTS = [
         category: 'Grains',
         price: 80,
         description: 'Locally grown, pesticide-free rice',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 17,
@@ -140,7 +142,7 @@ export const PRODUCTS = [
         category: 'Grains',
         price: 50,
         description: 'Stone-ground, nutritious wheat flour',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 18,
@@ -148,7 +150,7 @@ export const PRODUCTS = [
         category: 'Pulses',
         price: 120,
         description: 'Premium quality toor dal, farm-fresh',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 19,
@@ -156,7 +158,7 @@ export const PRODUCTS = [
         category: 'Pulses',
         price: 100,
         description: 'Protein-rich, organic moong dal',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 20,
@@ -164,7 +166,7 @@ export const PRODUCTS = [
         category: 'Pulses',
         price: 90,
         description: 'Nutrient-dense, organic red lentils',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Spices and Condiments
@@ -174,7 +176,7 @@ export const PRODUCTS = [
         category: 'Spices',
         price: 60,
         description: 'Pure, hand-ground turmeric powder',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 22,
@@ -182,7 +184,7 @@ export const PRODUCTS = [
         category: 'Spices',
         price: 70,
         description: 'Freshly ground, aromatic red chili powder',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 23,
@@ -190,7 +192,7 @@ export const PRODUCTS = [
         category: 'Spices',
         price: 80,
         description: 'Traditional blend of aromatic spices',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 24,
@@ -198,7 +200,7 @@ export const PRODUCTS = [
         category: 'Cooking Oils',
         price: 150,
         description: 'Pure, unrefined mustard oil',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 25,
@@ -206,7 +208,7 @@ export const PRODUCTS = [
         category: 'Cooking Oils',
         price: 200,
         description: 'Virgin, cold-pressed coconut oil',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Farm Products
@@ -216,7 +218,7 @@ export const PRODUCTS = [
         category: 'Farm Products',
         price: 250,
         description: 'Pure, raw honey from our beehives',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 27,
@@ -224,7 +226,7 @@ export const PRODUCTS = [
         category: 'Farm Products',
         price: 60,
         description: 'Free-range, organic chicken eggs',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 28,
@@ -232,7 +234,7 @@ export const PRODUCTS = [
         category: 'Farm Products',
         price: 100,
         description: 'Traditional, unrefined cane jaggery',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 29,
@@ -240,7 +242,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 20,
         description: 'Spicy, farm-fresh green chilies',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 30,
@@ -248,7 +250,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 40,
         description: 'Fresh, locally grown organic onions',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Herbs and Garnishes
@@ -258,7 +260,7 @@ export const PRODUCTS = [
         category: 'Herbs',
         price: 15,
         description: 'Aromatic, fresh coriander bunch',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 32,
@@ -266,7 +268,7 @@ export const PRODUCTS = [
         category: 'Herbs',
         price: 20,
         description: 'Fresh, fragrant mint leaves',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 33,
@@ -274,7 +276,7 @@ export const PRODUCTS = [
         category: 'Herbs',
         price: 15,
         description: 'Freshly picked curry leaves',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 34,
@@ -282,7 +284,7 @@ export const PRODUCTS = [
         category: 'Herbs',
         price: 40,
         description: 'Fresh, organic ginger root',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 35,
@@ -290,7 +292,7 @@ export const PRODUCTS = [
         category: 'Herbs',
         price: 50,
         description: 'Fresh, organic garlic bulbs',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Specialty Products
@@ -300,7 +302,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 70,
         description: 'Pure A2 milk from indigenous cow breeds',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 37,
@@ -308,7 +310,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 100,
         description: 'Traditional hand-churned butter',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 38,
@@ -316,7 +318,7 @@ export const PRODUCTS = [
         category: 'Dairy',
         price: 180,
         description: 'Fresh, soft cottage cheese',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 39,
@@ -324,7 +326,7 @@ export const PRODUCTS = [
         category: 'Grains',
         price: 60,
         description: 'Organic bajra (pearl millet) flour',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 40,
@@ -332,7 +334,7 @@ export const PRODUCTS = [
         category: 'Grains',
         price: 70,
         description: 'Nutritious ragi (finger millet) flour',
-        image: '/api/placeholder/300/300'
+        image: img
     },
 
     // Additional Variety
@@ -342,7 +344,7 @@ export const PRODUCTS = [
         category: 'Pulses',
         price: 50,
         description: 'Fresh, organic sprouted moong',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 42,
@@ -350,7 +352,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 40,
         description: 'Farm-fresh, sweet green peas',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 43,
@@ -358,7 +360,7 @@ export const PRODUCTS = [
         category: 'Vegetables',
         price: 80,
         description: 'Assorted fresh vegetables of the season',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 44,
@@ -366,7 +368,7 @@ export const PRODUCTS = [
         category: 'Spices',
         price: 90,
         description: 'Homemade, aromatic curry powder blend',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 45,
@@ -374,7 +376,7 @@ export const PRODUCTS = [
         category: 'Spices',
         price: 100,
         description: 'Freshly ground, premium black pepper',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 46,
@@ -382,7 +384,7 @@ export const PRODUCTS = [
         category: 'Cooking Oils',
         price: 180,
         description: 'Cold-pressed, pure groundnut oil',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 47,
@@ -390,7 +392,7 @@ export const PRODUCTS = [
         category: 'Cooking Oils',
         price: 160,
         description: 'Refined, healthy sunflower oil',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 48,
@@ -398,7 +400,7 @@ export const PRODUCTS = [
         category: 'Fruits',
         price: 200,
         description: 'Premium, organic dried dates',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 49,
@@ -406,7 +408,7 @@ export const PRODUCTS = [
         category: 'Farm Products',
         price: 80,
         description: 'Organic eggs from country chicken',
-        image: '/api/placeholder/300/300'
+        image: img
     },
     {
         id: 50,
@@ -414,6 +416,6 @@ export const PRODUCTS = [
         category: 'Farm Products',
         price: 90,
         description: 'Unrefined, organic raw sugar',
-        image: '/api/placeholder/300/300'
+        image: img
     }
 ];

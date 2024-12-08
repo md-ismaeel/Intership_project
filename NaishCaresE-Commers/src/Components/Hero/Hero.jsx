@@ -27,7 +27,7 @@ export default function Hero({ deviceType }) {
     };
 
     return (
-        <div className="w-[65%] mx-auto z-10">
+        <div className="w-[80%] mx-auto z-10 border">
             <Carousel
                 swipeable={true}
                 draggable={true}

@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa";
 
-const FloatingLabelInput = ({
-  type = "text",
-  name,
-  value,
-  onChange,
-  placeholder = "",
-  required = false,
-  disabled = false,
-}) => {
+const IngLabelInput = ({ type = "text", name, value, onChange, placeholder = "", required = false, disabled = false }) => {
   const [isHidden, setHidden] = useState(true);
   const inputTypes = type === "password" ? (isHidden ? "password" : "text") : type;
 
@@ -19,8 +11,15 @@ const FloatingLabelInput = ({
     setHidden(!isHidden);
   };
 
+  const styleCss = {
+    container: `relative w-full`,
+    inputField: `block w-full px-4 h-[45px] text-bas text-gray-800 border rounded-lg appearance-none transition-colors duration-200 focus:outline-none focus:ring-2  ${disabled ? "opacity-50 cursor-not-allowed" : ""} peer placeholder:text-gray-400`,
+    eyeBtn: `absolute top-[9px] right-5 cursor-pointer z-10 px-2 py-1`,
+    eyeIcon: `text-xl text-gray-500`
+  }
+
   return (
-    <div className="relative w-full">
+    <div className={styleCss.container}>
       <input
         type={inputTypes}
         name={name}
@@ -30,20 +29,18 @@ const FloatingLabelInput = ({
         placeholder={placeholder}
         required={required}
         disabled={disabled}
-        className={`block w-full px-4 h-[45px] text-bas text-white border rounded-lg appearance-none transition-colors duration-200 focus:outline-none focus:ring-2  ${disabled ? "opacity-50 cursor-not-allowed" : ""
-          } peer placeholder:text-gray-800 `}
+        className={styleCss.inputField}
       />
-      {required && <span className="text-red-500 ml-1">*</span>}
       {type === "password" && (
         <button
           type="button"
-          className={`absolute top-[9px] right-5 cursor-pointer z-10 px-2 py-1`}
+          className={styleCss.eyeBtn}
           onClick={handleVisibility}
         >
           {isHidden ? (
-            <FaEyeSlash className="text-xl text-gray-500" />
+            <FaEyeSlash className={styleCss.eyeIcon} />
           ) : (
-            <IoEyeSharp className="text-xl text-gray-500" />
+            <IoEyeSharp className={styleCss.eyeIcon} />
           )}
         </button>
       )}
@@ -51,4 +48,4 @@ const FloatingLabelInput = ({
   );
 };
 
-export default FloatingLabelInput;
+export default IngLabelInput;

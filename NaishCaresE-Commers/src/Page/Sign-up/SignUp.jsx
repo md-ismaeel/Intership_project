@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import horizonLogo from "../../assets/horizon-logo.png";
 import googleLogo from "../../assets/google-logo.png";
-import { styleCss } from "../../Components/Style";
-import FloatingLabelInput from "../../Components/InputLabel/FloatingInputLabel";
+import IngLabelInput from "../../Components/InputLabel/InputLabel";
 import Axios from "axios";
 import { LOCALHOST_DOMAIN, requestOptions } from "../../Utils/utils";
 import { toast } from "material-react-toastify";
@@ -52,7 +50,6 @@ export default function SignUp() {
                 userObj,
                 requestOptions
             );
-            // console.log("sign-up", response?.data);
             if (response?.data?.success) {
                 toast.success(response.data.message);
                 clearForm();
@@ -60,124 +57,121 @@ export default function SignUp() {
             }
         } catch (err) {
             console.error(err);
-            toast.error(
-                err.response?.data?.message,
-                "Sign-up failed! Please try again."
-            );
+            toast.error("Sign-up failed! Please try again.");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <section className={styleCss.section}>
-
-            <div className="horizon-logo w-[45%]">
-                <img
-                    src={horizonLogo}
-                    alt="Horizon Logo"
-                    className="w-full rounded-bl-[12rem]"
-                />
-            </div>
-
-            <div className="wrapper w-[40%] min-h-screen flex justify-center items-center">
-                <form onSubmit={handleSubmit} className="form w-[80%] text-white">
-                    <div className="mb-1">
-                        <h1 className="text-3xl font-bold">Sign Up</h1>
-                        <p className="text-gray-300 mt-1">Enter your details to sign up!</p>
-                    </div>
-
-                    <div className={styleCss.signInWidthGoogle}>
-                        <img src={googleLogo} alt="logo" height="25px" width="25px" />
-                        <span>Sign Up with Google</span>
-                    </div>
-
-                    <div className={styleCss.underlineOrCss}>
-                        <span className="w-[45%] bg-gray-500 h-[1px]"></span>
-                        <span className="px-2 py-1">or</span>
-                        <span className="w-[45%] bg-gray-500 h-[1px]"></span>
-                    </div>
-
-                    <div className={styleCss.container}>
-                        <FloatingLabelInput
-                            type="text"
-                            name="firstName"
-                            value={userData.firstName}
-                            onChange={handleChange}
-                            required
-                            placeholder="First Name!"
-                        />
-                        <FloatingLabelInput
-                            type="text"
-                            name="lastName"
-                            value={userData.lastName}
-                            onChange={handleChange}
-                            required
-                            placeholder="Last Name!"
-                        />
-                        <FloatingLabelInput
-                            type="text"
-                            name="userName"
-                            value={userData.userName}
-                            onChange={handleChange}
-                            required
-                            placeholder="Username!"
-                        />
-                        <FloatingLabelInput
-                            type="text"
-                            name="gender"
-                            value={userData.gender}
-                            onChange={handleChange}
-                            required
-                            placeholder="Gender!"
-                        />
-                        <FloatingLabelInput
-                            type="email"
-                            name="email"
-                            value={userData.email}
-                            onChange={handleChange}
-                            required
-                            placeholder="Email Address!"
-                        />
-                        <FloatingLabelInput
-                            type="password"
-                            name="password"
-                            value={userData.password}
-                            onChange={handleChange}
-                            required
-                            placeholder="Password!"
-                        />
-                        <FloatingLabelInput
-                            type="password"
-                            name="confirmPassword"
-                            value={userData.confirmPassword}
-                            onChange={handleChange}
-                            required
-                            placeholder="Confirm Password!"
-                        />
-                    </div>
-
-                    <div className="relative">
+        <section className="w-full h-auto overflow-y-auto bg-gray-100">
+            <div className="w-[90%] sm:w-[90%] md:max-w-4xl mx-auto min-h-screen flex flex-col md:flex-row items-center justify-center mt-10 mb-10">
+                {/* Left Section */}
+                <div className="w-full md:w-1/2 h-auto md:h-screen bg-green-500 text-white flex flex-col items-center justify-center p-8 rounded-md md:rounded-l-xl lg:rounded-l-xl ">
+                    <h1 className="text-2xl md:text-3xl font-bold mb-4">Come join us!</h1>
+                    <p className="text-sm md:text-md leading-5 md:leading-6 mb-6">
+                        We are excited to have you here. Create an account to get access to exclusive offers, rewards, and discounts.
+                    </p>
+                    <p className="bg-green-400 text-white rounded-full px-3 py-1 md:px-4 md:py-2">
+                        Already have an account?{" "}
                         <button
-                            type="submit"
-                            className={`${styleCss.button} ${loading ? "cursor-not-allowed opacity-50" : ""}`}
-                            disabled={loading}
+                            onClick={() => navigate("/")}
+                            className="text-blue-800 hover:underline"
                         >
-                            {loading ? "Loading" : "Sign Up"}
+                            Login Now!
                         </button>
-                        <div className={styleCss.loader}>{loading && <Loader />}</div>
-                        <p className="mt-2 text-gray-300 mb-2">
-                            Already have an account?{" "}
-                            <span
-                                onClick={() => navigate("/")}
-                                className="text-blue-500 cursor-pointer ml-1 hover:underline"
+                    </p>
+                </div>
+
+                {/* Right Section */}
+                <div className="w-full md:w-1/2 h-auto md:h-screen bg-white flex items-center justify-center p-6 md:p-8 rounded-md md:rounded-r-xl lg:rounded-r-xl shadow-xl">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="w-full max-w-md flex flex-col gap-4 sm:gap-6"
+                    >
+                        <div>
+                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Sign Up</h1>
+                            <p className="text-sm md:text-gray-500 mt-1">Enter your details to sign up!</p>
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <IngLabelInput
+                                type="text"
+                                name="firstName"
+                                value={userData.firstName}
+                                onChange={handleChange}
+                                required
+                                placeholder="First Name"
+                            />
+                            <IngLabelInput
+                                type="text"
+                                name="lastName"
+                                value={userData.lastName}
+                                onChange={handleChange}
+                                required
+                                placeholder="Last Name"
+                            />
+                            <IngLabelInput
+                                type="text"
+                                name="userName"
+                                value={userData.userName}
+                                onChange={handleChange}
+                                required
+                                placeholder="Username"
+                            />
+                            <IngLabelInput
+                                type="text"
+                                name="gender"
+                                value={userData.gender}
+                                onChange={handleChange}
+                                required
+                                placeholder="Gender"
+                            />
+                            <IngLabelInput
+                                type="email"
+                                name="email"
+                                value={userData.email}
+                                onChange={handleChange}
+                                required
+                                placeholder="Email Address"
+                            />
+                            <IngLabelInput
+                                type="password"
+                                name="password"
+                                value={userData.password}
+                                onChange={handleChange}
+                                required
+                                placeholder="Password"
+                            />
+                            <IngLabelInput
+                                type="password"
+                                name="confirmPassword"
+                                value={userData.confirmPassword}
+                                onChange={handleChange}
+                                required
+                                placeholder="Confirm Password"
+                            />
+                        </div>
+
+                        <div className="relative">
+                            <button
+                                type="submit"
+                                className={`w-full h-12 py-2 md:py-3 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition ${loading && "cursor-not-allowed"
+                                    }`}
+                                disabled={loading}
                             >
-                                Login Now!
-                            </span>
-                        </p>
-                    </div>
-                </form>
+                                {loading ? "Loading..." : "Sign Up"}
+                            </button>
+                            {loading && (
+                                <div className="absolute right-4 top-[50%] translate-y-[-50%]">
+                                    <Loader />
+                                </div>
+                            )}
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
+
     );
 }
