@@ -10,33 +10,33 @@ export default function Hero({ deviceType }) {
     const responsive = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
-            items: 1, // Show 1 item on super large desktop
+            items: 1,
         },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 1, // Show 1 item on desktop
+            items: 1,
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 1, // Show 1 item on tablets
+            items: 1,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 1, // Show 1 item on mobile
+            items: 1,
         },
     };
 
     return (
-        <div className="w-[80%] mx-auto z-10 border">
+        <div className="w-[90%] md:w-[80%] mx-auto z-10">
             <Carousel
                 swipeable={true}
                 draggable={true}
                 showDots={true}
                 responsive={responsive}
-                ssr={true} // Server-side rendering
+                ssr={true}
                 infinite={true}
                 autoPlay={deviceType !== "mobile"}
-                autoPlaySpeed={3000}
+                autoPlaySpeed={2000}
                 keyBoardControl={true}
                 customTransition="all .5"
                 transitionDuration={500}
@@ -45,32 +45,32 @@ export default function Hero({ deviceType }) {
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
-                <div>
+                <div className="h-[200px] md:h-[370px]">
                     <img
                         src={Banner1}
                         alt="Banner 1"
-                        className="w-full h-auto rounded-md"
+                        className="w-full h-full object-cover rounded-md"
                     />
                 </div>
-                <div>
+                <div className="h-[200px] md:h-[370px]">
                     <img
                         src={Banner2}
                         alt="Banner 2"
-                        className="w-full h-auto rounded-md"
+                        className="w-full h-full object-cover rounded-md"
                     />
                 </div>
-                <div>
+                <div className="h-[200px] md:h-[370px]">
                     <img
                         src={Banner3}
                         alt="Banner 3"
-                        className="w-full h-auto rounded-md"
+                        className="w-full h-full object-cover rounded-md"
                     />
                 </div>
-                <div>
+                <div className="h-[200px] md:h-[370px]">
                     <img
                         src={Banner4}
-                        alt="Banner 3"
-                        className="w-full h-auto rounded-md"
+                        alt="Banner 4"
+                        className="w-full h-full object-cover rounded-md"
                     />
                 </div>
             </Carousel>

@@ -24,7 +24,8 @@ body,
 #root {
   width: 100%;
   height: auto;
-  display: flex;
+  /* display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }

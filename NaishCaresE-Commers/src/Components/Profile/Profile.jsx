@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Profile() {
   return (
-    <div className='w-[35px] h-[35px] rounded-full bg-white'></div>
+    <div className='rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-white'></div>
   )
 }

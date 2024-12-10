@@ -70,7 +70,8 @@ export default function SignUp() {
                 <div className="w-full md:w-1/2 h-auto md:h-screen bg-green-500 text-white flex flex-col items-center justify-center p-8 rounded-md md:rounded-l-xl lg:rounded-l-xl ">
                     <h1 className="text-2xl md:text-3xl font-bold mb-4">Come join us!</h1>
                     <p className="text-sm md:text-md leading-5 md:leading-6 mb-6">
-                        We are excited to have you here. Create an account to get access to exclusive offers, rewards, and discounts.
+                        We are excited to have you here. Create an account to get access to
+                        exclusive offers, rewards, and discounts.
                     </p>
                     <p className="bg-green-400 text-white rounded-full px-3 py-1 md:px-4 md:py-2">
                         Already have an account?{" "}
@@ -90,8 +91,12 @@ export default function SignUp() {
                         className="w-full max-w-md flex flex-col gap-4 sm:gap-6"
                     >
                         <div>
-                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Sign Up</h1>
-                            <p className="text-sm md:text-gray-500 mt-1">Enter your details to sign up!</p>
+                            <h1 className="text-xl md:text-2xl font-bold text-gray-800">
+                                Create An Account
+                            </h1>
+                            <p className="text-sm md:text-gray-500 mt-1">
+                                Enter your details to sign up!
+                            </p>
                         </div>
 
                         <div className="flex flex-col gap-3">
@@ -163,7 +168,7 @@ export default function SignUp() {
                                 {loading ? "Loading..." : "Sign Up"}
                             </button>
                             {loading && (
-                                <div className="absolute right-4 top-[50%] translate-y-[-50%]">
+                                <div className="absolute left-28 z-10 top-1/2 -translate-y-1/2">
                                     <Loader />
                                 </div>
                             )}
@@ -172,6 +177,5 @@ export default function SignUp() {
                 </div>
             </div>
         </section>
-
     );
 }
