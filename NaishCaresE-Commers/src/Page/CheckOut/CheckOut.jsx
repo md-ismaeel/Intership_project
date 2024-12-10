@@ -88,7 +88,6 @@ export default function Checkout() {
             </button>
 
             {/* Go back to shopping */}
-
             <button onClick={() => navigator("/products")} className="w-full mt-2 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">
                 Continue Shopping
             </button>

@@ -5,12 +5,12 @@ const initialState = {
   isAuthenticated: true,
   data: PRODUCTS,
   productDetails: null,
-  cartItem: [],  // Cart items array
-  wishList: [],  // Wishlist items array
+  cartItem: [],
+  wishList: [],
 };
 
 export const userSlice = createSlice({
-  name: "Ecommers", // This should match the store slice name
+  name: "Ecommers",
   initialState,
   reducers: {
     setAuthenticated: (state, action) => {
@@ -24,11 +24,9 @@ export const userSlice = createSlice({
     },
     addToCart: (state, action) => {
       const product = action.payload;
-      const existingItem = state.cartItem.find(
-        (item) => item.id === product.id
-      );
+      const existingItem = state.cartItem.find((item) => item.id === product.id);
       if (existingItem) {
-        existingItem.quantity += 1; // Increment quantity if product already exists
+        existingItem.quantity += 1;
       } else {
         state.cartItem.push({ ...product, quantity: 1 });
       }
@@ -43,7 +41,7 @@ export const userSlice = createSlice({
       if (item) item.quantity = quantity;
     },
     clearCart: (state) => {
-      state.cartItem = []; // Clear the cart
+      state.cartItem = [];
     },
     setWishList: (state, action) => {
       state.wishList = action.payload;
@@ -72,5 +70,5 @@ export const {
   toggleWishlist,
 } = userSlice.actions;
 
-export default userSlice.reducer;  // Exporting the reducer
+export default userSlice.reducer; 
 
