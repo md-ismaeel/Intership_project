@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
-import ScrollOnTop from "../Components/ScrollonTop/ScrollOnTop";
+import ScrollOnTop from "../Components/ScrollOnTop/ScrollOnTop";
 
 
 export default function Layout() {
