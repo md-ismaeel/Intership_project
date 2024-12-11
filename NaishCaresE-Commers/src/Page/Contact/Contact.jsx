@@ -3,7 +3,6 @@ import { toast } from 'material-react-toastify';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-
   const [errors, setErrors] = useState({ name: '', email: '', message: '' });
 
   const handleChange = (e) => {
@@ -54,7 +53,7 @@ export default function Contact() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Email"
+              placeholder="Email!"
               className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 ease-in-out transform"
               required
             />
