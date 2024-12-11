@@ -1,7 +1,6 @@
 import React from "react";
 import Hero from "../../Components/Hero/Hero";
 import Category from "../Category/Category";
-import Products from "../Products/Products";
 import TrendingProducts from "../../Components/TrendingProducts/TrendingProducts";
 import BestSeller from "../../Components/BestSeller/BestSeller";
 

@@ -11,10 +11,10 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cart = useSelector((state) => state?.Ecommers?.cartItem || []);
-  const wishList = useSelector((state) => state?.Ecommers?.wishList || [])
+  const wishList = useSelector((state) => state?.Ecommers?.wishList || []);
 
-  const activeClass = ({ isActive }) => `${isActive ? "text-orange-400" : "hover:text-gray-300"} font-medium`;
-
+  const activeClass = ({ isActive }) =>
+    `${isActive ? "text-orange-400" : "hover:text-gray-300"} font-medium`;
 
   const handleNavigate = (path) => {
     setIsMenuOpen(false);
@@ -93,17 +93,7 @@ export default function Navbar() {
             </span>
           )}
         </div>
-
-        {/* <button
-          onClick={() => handleNavigate("/wishList")}
-          aria-label="View wishlist"
-          className="text-[20px] sm:text-[25px] text-white bg-green-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center"
-        >
-          <AiOutlineHeart />
-        </button> */}
-
         <Profile />
-
         <button
           className="md:hidden text-white text-[25px]"
           onClick={() => setIsMenuOpen((prev) => !prev)}

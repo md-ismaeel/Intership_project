@@ -80,9 +80,10 @@ export default function Footer() {
             Quick Links
           </h2>
           <ul className="space-y-2">
-            {navLinks.map((link) => (
-              <li key={link}>
+            {navLinks.map((link, i) => (
+              <li key={i}>
                 <NavLink to={link.path}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="text-gray-300 hover:text-green-300 transition-colors duration-300"
                 >
                   {link.label}
