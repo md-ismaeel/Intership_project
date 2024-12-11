@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import ScrollOnTop from "../Components/ScrollonTop/ScrollOnTop";
 
+
 export default function Layout() {
   return (
     <>
