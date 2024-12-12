@@ -21,6 +21,9 @@ export default {
         "slide-in": "slide-in 0.5s ease-out",
         "slide-out": "slide-out 0.5s ease-in",
       },
+      fontFamily: {
+        sans: ["Poppins", "ui-sans-serif", "system-ui"],
+      },
     },
 
     screens: {

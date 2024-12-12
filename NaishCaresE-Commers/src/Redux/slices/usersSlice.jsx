@@ -58,17 +58,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const {
-  setAuthenticated,
-  setData,
-  setProductDetails,
-  addToCart,
-  removeFromCart,
-  updateCartItem,
-  clearCart,
-  setWishList,
-  toggleWishlist,
-} = userSlice.actions;
+export const { setAuthenticated, setData, setProductDetails, addToCart, removeFromCart, updateCartItem, clearCart, setWishList, toggleWishlist } = userSlice.actions;
 
 export default userSlice.reducer;
 

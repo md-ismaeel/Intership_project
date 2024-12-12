@@ -13,8 +13,8 @@ export default function Navbar() {
   const cart = useSelector((state) => state?.Ecommers?.cartItem || []);
   const wishList = useSelector((state) => state?.Ecommers?.wishList || []);
 
-  const activeClass = ({ isActive }) =>
-    `${isActive ? "text-orange-400 underline" : "hover:text-gray-300"
+  const activeClass = ({ isActive }) =>`${isActive? "text-orange-400 relative after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-white"
+      : "hover:text-gray-300"
     } font-semibold transition-all duration-300 ease-in-out transform hover:scale-105`;
 
   const handleNavigate = (path) => {

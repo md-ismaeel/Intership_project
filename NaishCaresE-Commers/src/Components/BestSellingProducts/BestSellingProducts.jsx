@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { BESTSELLER } from '../../ProductsData'
 import { NavLink } from 'react-router-dom'
-import ProductCard from '../../Components/ProductCard/ProductCard'
+import ProductCard from '../ProductCard/ProductCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export default function BestSeller() {
+export default function BestSellingProducts() {
     const [bestSeller, setBestSeller] = useState(BESTSELLER);
 
     const responsive = {
@@ -48,7 +48,7 @@ export default function BestSeller() {
                     customTransition="all .5s ease"
                     transitionDuration={500}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    removeArrowOnDeviceType={[]}
                     dotListClass="custom-dot-list-style"
                     itemClass="px-2"
                     className="w-full"

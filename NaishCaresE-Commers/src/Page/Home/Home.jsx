@@ -2,7 +2,8 @@ import React from "react";
 import Hero from "../../Components/Hero/Hero";
 import Category from "../Category/Category";
 import TrendingProducts from "../../Components/TrendingProducts/TrendingProducts";
-import BestSeller from "../../Components/BestSeller/BestSeller";
+import BestSellingProducts from "../../Components/BestSellingProducts/BestSellingProducts";
+import FlashSellingProducts from "../../Components/FlashSellingProducts/FlashSellingProducts";
 
 export default function Home() {
   return (
@@ -11,8 +12,9 @@ export default function Home() {
         <Category />
         <Hero />
       </div>
+      <FlashSellingProducts />
       <TrendingProducts />
-      <BestSeller />
+      <BestSellingProducts />
     </main>
 
   )

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import ProductCard from '../../Components/ProductCard/ProductCard'
-import { TRENDING } from '../../ProductsData'
+import { FLASHSELLER } from '../../ProductsData'
 import { NavLink } from 'react-router-dom'
+import ProductCard from '../ProductCard/ProductCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export default function TrendingProducts() {
-    const [trending, setTrending] = useState(TRENDING)
+export default function FlashSellingProducts() {
+    const [flash, setFlash] = useState(FLASHSELLER);
 
     const responsive = {
         superLargeDesktop: {
@@ -26,17 +26,14 @@ export default function TrendingProducts() {
             items: 1,
         },
     };
-
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8 mt-10">
-            {/* Section Title */}
             <div className={`w-full text-lg font-semibold flex justify-start items-center mb-2`}>
                 <div className="ml-[1.3rem] md:ml-5 flex justify-end items-center gap-1">
                     <p className="bg-primary w-3 h-7"></p>
-                    <h1 className="mt-4">Trending Products</h1>
+                    <h1 className="mt-4">Flash Sales Products</h1>
                 </div>
             </div>
-
             {/* Products Carousel Container */}
             <div className="relative w-full z-20">
                 <Carousel
@@ -56,8 +53,8 @@ export default function TrendingProducts() {
                     itemClass="px-2"
                     className="w-full"
                 >
-                    {trending && trending.length > 0 ? (
-                        trending.map((prod) => (
+                    {flash && flash.length > 0 ? (
+                        flash.map((prod) => (
                             <div key={prod.id} className="p-2">
                                 <NavLink to={`/products-details/${prod.id}`}>
                                     <ProductCard item={prod} />

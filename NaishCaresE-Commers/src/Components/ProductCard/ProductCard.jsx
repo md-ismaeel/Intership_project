@@ -6,7 +6,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { toast } from "material-react-toastify";
 
 export default function ProductCard({ item }) {
-    const { id, name, category, price, image, weight, discount } = item;
+    const { id, name, category, price, image, weight, discount, flash } = item;
     const dispatch = useDispatch();
     const wishList = useSelector((state) => state.Ecommers.wishList);
 
@@ -71,7 +71,8 @@ export default function ProductCard({ item }) {
                     <AiOutlineHeart className="text-gray-500" />
                 )}
             </button>
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-25 transition-opacity duration-300 ease-in-out"></div>
+            {flash && <button className="absolute top-2 left-2 rounded-md text-sm bg-orange-500 text-white px-2 py-1">{flash}</button>}
+            <div className="absolute inset-0 bg-black  opacity-0 group-hover:opacity-25 transition-opacity duration-300 ease-in-out"></div>
         </div>
     );
 }
