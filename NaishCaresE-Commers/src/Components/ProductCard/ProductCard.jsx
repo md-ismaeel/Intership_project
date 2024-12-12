@@ -13,12 +13,7 @@ export default function ProductCard({ item }) {
     const handleWishlistToggle = () => {
         const product = { id, name, category, price, image };
         dispatch(toggleWishlist(product));
-
-        toast.info(
-            wishList.some((fav) => fav.id === id)
-                ? `Removed ${product.name} from wishlist`
-                : `Added ${product.name} to wishlist`
-        );
+        toast.info(wishList.some((fav) => fav.id === id) ? `Removed ${product.name} from wishlist` : `Added ${product.name} to wishlist`);
     };
 
     const handleAddToCart = () => {
@@ -30,8 +25,8 @@ export default function ProductCard({ item }) {
     const isWishlisted = wishList.some((fav) => fav.id === id);
 
     return (
-        <div className="w-56 h-80 bg-white border rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
-            <div className="w-full h-[60%] flex justify-center items-center relative">
+        <div className="w-64 md:w-56 h-70 bg-white border rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
+            <div className="w-full h-[50%] flex justify-center items-center relative">
                 <img
                     src={image}
                     alt={name}
@@ -44,13 +39,13 @@ export default function ProductCard({ item }) {
 
                 {/* Hover Details */}
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3 text-white flex flex-col justify-center items-center space-y-2">
-                    <p className="text-sm">Weight: {weight}</p>
+                    <p className="text-sm z-20">Weight: {weight}</p>
                     {discount > 0 && (
-                        <p className="text-green-300 font-semibold">{discount}% OFF</p>
+                        <p className="text-green-300 font-semibold z-20">{discount}% OFF</p>
                     )}
                     <button
                         onClick={handleAddToCart}
-                        className="bg-primary text-white py-1 px-4 rounded-full hover:bg-orange-700 transition duration-300 flex items-center space-x-2"
+                        className="bg-primary z-20 text-white py-1 px-4 rounded-full hover:bg-orange-700 transition duration-300 flex items-center space-x-2"
                     >
                         <IoCartOutline />
                         <span>Add to Cart</span>
@@ -59,8 +54,8 @@ export default function ProductCard({ item }) {
             </div>
             <div className="p-3 flex flex-col justify-center items-start h-[40%]">
                 <p className="text-gray-500 text-sm">{category}</p>
-                <div className="flex items-center space-x-2">
-                    <p className="text-xl font-semibold text-primary mt-2">${price}</p>
+                <div className="w-full flex justify-start items-center mt-2 gap-3">
+                    <p className="text-xl font-semibold text-primary space-x-3">${price}</p>
                     {discount > 0 && (
                         <p className="text-xs text-red-500 line-through">${(price * (1 + discount / 100)).toFixed(2)}</p>
                     )}
@@ -68,7 +63,7 @@ export default function ProductCard({ item }) {
             </div>
             <button
                 onClick={handleWishlistToggle}
-                className="absolute top-2 right-2 bg-gray-100 rounded-full h-8 w-8 flex justify-center items-center text-lg z-30 hover:bg-gray-200 transition"
+                className="absolute top-2 right-2 bg-gray-100 rounded-full h-8 w-8 flex justify-center items-center text-lg z-30 hover:bg-gray-200 transition border border-pink-300"
             >
                 {isWishlisted ? (
                     <AiFillHeart className="text-red-500" />

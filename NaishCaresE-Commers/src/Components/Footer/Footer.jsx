@@ -11,31 +11,31 @@ export default function Footer() {
       name: "facebook",
       link: `https://www.facebook.com/`,
       icon: <FaFacebookF />,
-      hoverClass: "text-blue-600 bg-blue-100",
+      hoverClass: "text-blue-600",
     },
     {
       name: "twitter",
       link: `https://x.com/impossible_br03`,
       icon: <FaTwitter />,
-      hoverClass: "text-blue-400 bg-blue-50",
+      hoverClass: "text-blue-400",
     },
     {
       name: "insta",
       link: `https://www.instagram.com/ismail_15_/`,
       icon: <FaInstagram />,
-      hoverClass: "text-pink-600 bg-pink-100",
+      hoverClass: "text-pink-600",
     },
     {
       name: "linkedin",
       link: `https://www.linkedin.com/`,
       icon: <FaLinkedin />,
-      hoverClass: "text-blue-700 bg-blue-100",
+      hoverClass: "text-blue-700",
     },
     {
       name: "github",
       link: `https://github.com/md-ismaeel`,
       icon: <FaGithub />,
-      hoverClass: "text-black bg-gray-100",
+      hoverClass: "text-gray-200",
     },
   ];
 
@@ -124,7 +124,7 @@ export default function Footer() {
           <h2 className="text-xl font-semibold mb-4 text-green-300">
             Connect With Us
           </h2>
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center space-x-2">
             {socialHandle.map((data) => (
               <a
                 key={data.name}

@@ -74,9 +74,8 @@ export default function SignIn() {
     span2: `text-sm text-gray-800`,
     span3: `flex-grow h-px bg-gray-300`,
     inputBoxContainer: `flex flex-col gap-4`,
-    formBtn: `w-full py-3 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all ${
-      loading && "cursor-not-allowed"
-    }`,
+    formBtn: `w-full py-3 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all ${loading && "cursor-not-allowed"
+      }`,
     loader: `absolute left-28 z-10 top-1/2 -translate-y-1/2`,
     forgetBtn: `absolute top-[3rem] right-0 text-sm text-blue-600 cursor-pointer hover:underline`,
   };
@@ -97,7 +96,7 @@ export default function SignIn() {
             New to our platform?{" "}
             <button
               onClick={() => navigate("/sign-up")}
-              className="text-blue-800 hover:underline"
+              className="text-white font-semibold hover:text-blue-600 hover:underline"
             >
               Create an Account!
             </button>
@@ -153,9 +152,8 @@ export default function SignIn() {
             <div className="relative">
               <button
                 type="submit"
-                className={`w-full py-3 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all ${
-                  loading && "cursor-not-allowed"
-                }`}
+                className={`w-full py-3 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all ${loading && "cursor-not-allowed"
+                  }`}
                 disabled={loading}
               >
                 {loading ? "Loading..." : "Sign In"}
@@ -166,7 +164,7 @@ export default function SignIn() {
                 </div>
               )}
               <button
-                className="absolute top-[3rem] right-0 text-sm text-blue-600 cursor-pointer hover:underline"
+                className="absolute top-[-1.2rem] right-0 text-sm text-blue-600 cursor-pointer hover:underline"
                 onClick={() => navigate("/forget-password")}
               >
                 Forgot Password?

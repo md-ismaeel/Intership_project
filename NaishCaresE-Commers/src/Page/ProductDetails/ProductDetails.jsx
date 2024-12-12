@@ -6,6 +6,7 @@ import { IoCartOutline, IoShareSocialOutline } from "react-icons/io5";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { toast } from "material-react-toastify";
+import { FaArrowLeft } from "react-icons/fa6";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -63,8 +64,8 @@ export default function ProductDetails() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-primary"></div>
+      <div className="flex justify-center items-center min-h-screen bg-gray-50">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary border-opacity-50"></div>
       </div>
     );
   }
@@ -72,20 +73,32 @@ export default function ProductDetails() {
   if (!product) return null;
 
   return (
-    <div className="container mx-auto px-4 py-10 md:flex md:space-x-10">
-      {/* Product Image Section */}
-      <div className="md:w-1/2 relative group">
-        <div className="sticky top-20">
-          <div className="relative">
+    <div className="container mx-auto px-4 py-10 max-w-6xl">
+      <div className="grid md:grid-cols-2 gap-8 bg-white shadow-lg rounded-2xl overflow-hidden">
+        {/* Product Image Section */}
+        <div className="relative group p-6 bg-gray-50 flex items-center justify-center">
+          <div
+            onClick={() => navigate("/products")}
+            className="absolute left-4 md:left-10 top-4 md:top-7 z-10">
+            <button
+              className="text-3xl md:text-4xl text-gray-400 hover:text-primary p-2 
+               rounded-full transition-all duration-300 
+               hover:bg-gray-100 hover:scale-105 focus:outline-none 
+               active:bg-gray-200 active:scale-95"
+            >
+              <FaArrowLeft />
+            </button>
+          </div>
+          <div className="relative max-w-md w-full">
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-96 object-contain rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-[500px] object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute top-4 right-4 flex space-x-2">
               <button
                 onClick={handleWishlistToggle}
-                className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
+                className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
               >
                 {wishList.some((fav) => fav.id === product.id) ? (
                   <AiFillHeart className="text-red-500 text-2xl" />
@@ -95,76 +108,78 @@ export default function ProductDetails() {
               </button>
               <button
                 onClick={handleShare}
-                className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
+                className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
               >
                 <IoShareSocialOutline className="text-gray-500 text-2xl" />
               </button>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Product Details Section */}
-      <div className="md:w-1/2 mt-6 md:mt-0">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
-        <p className="text-gray-600 mb-4">{product.category}</p>
-
-        <div className="flex items-center space-x-4 mb-6">
-          <span className="text-3xl font-bold text-primary">
-            ${product.price}
-          </span>
-          {product.discount > 0 && (
-            <span className="text-green-600 bg-green-100 px-2 py-1 rounded-full">
-              {product.discount}% OFF
-            </span>
-          )}
-        </div>
-
-        <p className="text-gray-700 mb-6">{product.description}</p>
-
-        {/* Quantity Selector */}
-        <div className="flex items-center space-x-4 mb-6">
-          <span className="text-gray-700">Quantity:</span>
-          <div className="flex items-center border rounded-full">
-            <button
-              onClick={handleDecrease}
-              className="p-2 hover:bg-gray-100 rounded-l-full"
-            >
-              <FaMinus className="text-gray-600" />
-            </button>
-            <span className="px-4 text-lg font-semibold">{quantity}</span>
-            <button
-              onClick={handleIncrease}
-              className="p-2 hover:bg-gray-100 rounded-r-full"
-            >
-              <FaPlus className="text-gray-600" />
-            </button>
+        {/* Product Details Section */}
+        <div className="p-8 space-y-6">
+          <div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">{product.name}</h1>
+            <p className="text-gray-600 text-lg mb-4">{product.category}</p>
           </div>
-        </div>
 
-        {/* Add to Cart Button */}
-        <button
-          onClick={handleAddToCart}
-          className="w-full bg-primary text-white py-3 rounded-full flex items-center justify-center space-x-2 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform mb-4"
-        >
-          <IoCartOutline className="text-2xl" />
-          <span>Add to Cart</span>
-        </button>
+          <div className="flex items-center space-x-4 mb-6">
+            <span className="text-4xl font-bold text-primary">
+              ${product.price.toFixed(2)}
+            </span>
+            {product.discount > 0 && (
+              <span className="text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm font-semibold">
+                {product.discount}% OFF
+              </span>
+            )}
+          </div>
 
-        {/* Product Details */}
-        <div className="border-t pt-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-gray-600">Brand</p>
-              <p className="font-semibold">{product.brand}</p>
+          <p className="text-gray-700 text-base mb-6 leading-relaxed">{product.description}</p>
+
+          {/* Quantity Selector */}
+          <div className="flex items-center space-x-4 mb-6">
+            <span className="text-gray-700 font-medium">Quantity:</span>
+            <div className="flex items-center border-2 border-gray-200 rounded-full overflow-hidden">
+              <button
+                onClick={handleDecrease}
+                className="p-2 hover:bg-gray-100 transition-colors"
+              >
+                <FaMinus className="text-gray-600" />
+              </button>
+              <span className="px-4 text-lg font-semibold">{quantity}</span>
+              <button
+                onClick={handleIncrease}
+                className="p-2 hover:bg-gray-100 transition-colors"
+              >
+                <FaPlus className="text-gray-600" />
+              </button>
             </div>
-            <div>
-              <p className="text-gray-600">Type</p>
-              <p className="font-semibold">{product.type}</p>
-            </div>
-            <div>
-              <p className="text-gray-600">Weight</p>
-              <p className="font-semibold">{product.weight}</p>
+          </div>
+
+          {/* Add to Cart Button */}
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-primary text-white py-4 rounded-full flex items-center justify-center space-x-3 
+            hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary-light 
+            transition-all duration-300 ease-in-out transform active:scale-95 shadow-md"
+          >
+            <IoCartOutline className="text-2xl" />
+            <span className="text-lg font-semibold">Add to Cart</span>
+          </button>
+
+          {/* Product Details */}
+          <div className="border-t-2 border-gray-200 pt-6">
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: "Brand", value: product.brand },
+                { label: "Type", value: product.type },
+                { label: "Weight", value: product.weight }
+              ].map(({ label, value }) => (
+                <div key={label}>
+                  <p className="text-gray-500 text-sm">{label}</p>
+                  <p className="font-semibold text-gray-800">{value}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

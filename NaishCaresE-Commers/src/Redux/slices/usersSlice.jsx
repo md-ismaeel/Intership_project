@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PRODUCTS } from "../../ProductsData";
 
 const initialState = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   data: PRODUCTS,
   productDetails: null,
   cartItem: [],

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart, removeFromCart, clearCart, updateCartItem } from "../../Redux/slices/usersSlice";
+import { addToCart, removeFromCart, clearCart, updateCartItem, } from "../../Redux/slices/usersSlice";
 import { toast } from "material-react-toastify";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
@@ -12,13 +12,11 @@ export default function Cart() {
 
     const handleIncrease = (item) => {
         dispatch(addToCart(item));
-        toast.success(`${item.name} quantity increased!`);
     };
 
     const handleDecrease = (item) => {
         if (item.quantity > 1) {
             dispatch(updateCartItem({ id: item.id, quantity: item.quantity - 1 }));
-            toast.info(`${item.name} quantity decreased.`);
         } else {
             dispatch(removeFromCart(item));
             toast.warning(`${item.name} removed from cart.`);
@@ -75,7 +73,9 @@ export default function Cart() {
                                 <div className="text-gray-600 space-y-1">
                                     <p>
                                         Price:{" "}
-                                        <span className="font-semibold text-green-600">${item.price}</span>
+                                        <span className="font-semibold text-green-600">
+                                            ${item.price}
+                                        </span>
                                     </p>
                                     <p>
                                         Quantity:{" "}
@@ -132,8 +132,8 @@ export default function Cart() {
                             </button>
 
                             <button
-                            onClick={()=> navigator("/checkout")}
-                            className="px-6 py-3 bg-primary text-white rounded-lg 
+                                onClick={() => navigator("/checkout")}
+                                className="px-6 py-3 bg-primary text-white rounded-lg 
                             hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 ease-in-out transform 
                             shadow-md hover:shadow-lg"
                             >
