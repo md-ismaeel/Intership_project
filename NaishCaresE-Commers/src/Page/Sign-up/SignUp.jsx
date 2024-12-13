@@ -43,24 +43,29 @@ export default function SignUp() {
 
         const userObj = { ...userData };
 
-        try {
-            setLoading(true);
-            const response = await Axios.post(
-                `${LOCALHOST_DOMAIN}/sign-up`,
-                userObj,
-                requestOptions
-            );
-            if (response?.data?.success) {
-                toast.success(response.data.message);
-                clearForm();
-                navigate("/");
-            }
-        } catch (err) {
-            console.error(err);
-            toast.error("Sign-up failed! Please try again.");
-        } finally {
-            setLoading(false);
-        }
+        // try {
+        //     setLoading(true);
+        //     const response = await Axios.post(
+        //         `${LOCALHOST_DOMAIN}/sign-up`,
+        //         userObj,
+        //         requestOptions
+        //     );
+        //     if (response?.data?.success) {
+        //         toast.success(response.data.message);
+        //         clearForm();
+        //         navigate("/");
+        //     }
+        // } catch (err) {
+        //     console.error(err);
+        //     toast.error("Sign-up failed! Please try again.");
+        // } finally {
+        //     setLoading(false);
+        // }
+
+        toast.success("signup successfully");
+        clearForm();
+        navigate("/");
+        setLoading(false)
     };
 
     return (

@@ -6,15 +6,15 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
     key: "root", // The key used to store the Redux state in localStorage
     storage, // Using localStorage
-    whitelist: ["cartItem", "wishList"], // Only persist cart and wishlist data
-    debug: false, 
+    whitelist: ["isAuthenticated", "cartItem", "wishList"], // Only persist cart and wishlist data
+    debug: false,
 };
 
 const persistedReducer = persistReducer(persistConfig, userReducer);
 
 export const store = configureStore({
     reducer: {
-        Ecommers: persistedReducer, 
+        Ecommers: persistedReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

@@ -6,6 +6,8 @@ import Axios from "axios";
 import { LOCALHOST_DOMAIN, requestOptions } from "../../Utils/utils";
 import { toast } from "material-react-toastify";
 import { Loader } from "../../Components/Loader";
+import { useDispatch } from "react-redux";
+import { setAuthenticated } from "../../Redux/slices/usersSlice";
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -14,6 +16,7 @@ export default function SignIn() {
     password: "",
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleChange(e) {
@@ -34,26 +37,30 @@ export default function SignIn() {
       : { userName };
 
     const userObj = { ...identifier, password };
-    try {
-      setLoading(true);
-      const response = await Axios.post(
-        `${LOCALHOST_DOMAIN}/sign-in`,
-        userObj,
-        requestOptions
-      );
-      if (response?.data?.success) {
-        toast.success(response?.data?.message);
-        clearForm();
-        navigate("/dashboard");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error(
-        err.response?.data?.message || "Sign-in failed! Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
+    // try {
+    //   setLoading(true);
+    //   const response = await Axios.post(
+    //     `${LOCALHOST_DOMAIN}/sign-in`,
+    //     userObj,
+    //     requestOptions
+    //   );
+    //   if (response?.data?.success) {
+    //     toast.success(response?.data?.message);
+    //     clearForm();
+    //     navigate("/dashboard");
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    //   toast.error(
+    //     err.response?.data?.message || "Sign-in failed! Please try again."
+    //   );
+    // } finally {
+    //   setLoading(false);
+    // }
+    dispatch(setAuthenticated(true))
+    toast.success("signin Successfully!");
+    clearForm();
+    navigate("/");
   };
 
   const styleCss = {

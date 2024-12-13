@@ -18,11 +18,11 @@ import { useEffect } from "react";
 import CheckOut from "./Page/CheckOut/CheckOut";
 
 function App() {
-  const isAuthenticated = useSelector((state) => state?.Ecommers?.isAuthenticated);
 
+  const isAuthenticated = useSelector((state) => state?.Ecommers?.isAuthenticated);
   useEffect(() => {
     document.title = isAuthenticated ? "Naisha Naturals - Home" : "Naisha Naturals - Sign In";
-  }, [isAuthenticated]);
+  }, []);
 
   const routes = isAuthenticated ? [
     {
