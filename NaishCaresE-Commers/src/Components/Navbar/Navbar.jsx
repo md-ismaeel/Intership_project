@@ -40,7 +40,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="w-full h-16 fixed z-50 flex justify-between items-center bg-primary px-4 sm:px-10 py-1">
+    <nav className="w-full h-16 fixed z-50 flex justify-between items-center bg-primary px-4 sm:px-6 py-1">
       {/* Logo */}
       <div
         onClick={() => navigate("/")}
@@ -49,7 +49,7 @@ export default function Navbar() {
         <img
           src={logo}
           alt="Naisha Naturals logo"
-          className="w-[40px] sm:w-[45px] h-[40px] sm:h-[45px] rounded-full"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full"
         />
       </div>
 
