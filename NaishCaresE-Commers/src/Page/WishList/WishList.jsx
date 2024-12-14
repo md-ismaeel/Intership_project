@@ -5,7 +5,7 @@ import ProductCard from "../../Components/ProductCard/ProductCard";
 
 export default function WishList() {
     const wishList = useSelector((state) => state?.Ecommers?.wishList || []);
-    console.log("wishList", wishList);
+    // console.log("wishList", wishList);
 
     return (
         <section className="w-full min-h-screen flex flex-col justify-start items-center mt-10 mb-10">

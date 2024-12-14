@@ -22,7 +22,7 @@ function App() {
   const isAuthenticated = useSelector((state) => state?.Ecommers?.isAuthenticated);
   useEffect(() => {
     document.title = isAuthenticated ? "Naisha Naturals - Home" : "Naisha Naturals - Sign In";
-  }, []);
+  }, [isAuthenticated]);
 
   const routes = isAuthenticated ? [
     {
