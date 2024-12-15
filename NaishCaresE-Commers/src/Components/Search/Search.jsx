@@ -31,7 +31,6 @@ export default function Search() {
     const suggestedItems = generateSuggestions(inputVal);
     setSuggestions(suggestedItems);
 
-    // Real-time filtering
     if (inputVal.trim()) {
       const filtered = originalData.filter((item) =>
         item.name.toLowerCase().includes(inputVal.toLowerCase()) ||
@@ -39,7 +38,6 @@ export default function Search() {
       );
       dispatch(setData(filtered));
     } else {
-      // Explicitly restore original data when input is empty
       dispatch(setData(originalData));
     }
   };
