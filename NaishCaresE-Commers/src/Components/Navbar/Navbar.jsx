@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import logo from "../../assets/natural-logo.png";
@@ -17,11 +17,7 @@ export default function Navbar() {
   const wishList = useSelector((state) => state?.Ecommers?.wishList || []);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const activeClass = ({ isActive }) =>
-    `${isActive
-      ? "text-orange-400 relative after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-white"
-      : "hover:text-gray-300"
-    } font-semibold transition-all duration-300 ease-in-out transform hover:scale-105`;
+  const activeClass = ({ isActive }) => `${isActive ? "text-orange-400 relative after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-white" : "hover:text-gray-300"} font-semibold transition-all duration-300 ease-in-out transform hover:scale-105`;
 
   const handleNavigate = (path) => {
     setIsMenuOpen(false);
@@ -127,7 +123,6 @@ export default function Navbar() {
         </div>
 
         {/* profile icon */}
-
         <div className="relative" onClick={handleOpenProfile}>
           <button className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-green-600 cursor-pointer flex justify-center items-center text-white text-[22px]">
             {isAuthenticated ? (

@@ -7,6 +7,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { toast } from "material-react-toastify";
 import { FaArrowLeft } from "react-icons/fa6";
+import defaultImage from "../../assets/Product-images/organic.png";
 
 export default function ProductDetails() {
   const { id } = useParams();

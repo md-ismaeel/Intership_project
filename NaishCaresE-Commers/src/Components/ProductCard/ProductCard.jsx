@@ -4,9 +4,10 @@ import { toggleWishlist, addToCart } from "../../Redux/slices/usersSlice";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { toast } from "material-react-toastify";
+import defaultImage from "../../assets/Product-images/organic.png";
 
 export default function ProductCard({ item }) {
-    const { id, name, category, price, image, weight, discount, flash } = item;
+    const { id, name, category, price, brand, image, weight, discount, flash } = item;
     const dispatch = useDispatch();
     const wishList = useSelector((state) => state.Ecommers.wishList);
 
@@ -25,7 +26,7 @@ export default function ProductCard({ item }) {
     const isWishlisted = wishList.some((fav) => fav.id === id);
 
     return (
-        <div className="w-70 md:w-56 h-70 bg-white border rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
+        <div className="w-70 md:w-56 h-70 bg-white border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
             <div className="w-full h-[50%] flex justify-center items-center relative">
                 <img
                     src={image}
@@ -53,7 +54,10 @@ export default function ProductCard({ item }) {
                 </div>
             </div>
             <div className="p-3 flex flex-col justify-center items-start h-[40%]">
-                <p className="text-gray-500 text-sm">{category}</p>
+                <div className="w-full flex justify-between items-center">
+                    <p className="text-gray-500 text-sm">{category}</p>
+                    <p className="text-gray-500 text-sm">{brand}</p>
+                </div>
                 <div className="w-full flex justify-start items-center mt-2 gap-3">
                     <p className="text-xl font-semibold text-primary space-x-3">${price}</p>
                     {discount > 0 && (
