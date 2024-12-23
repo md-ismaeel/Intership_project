@@ -44,13 +44,6 @@ export default function Hero({ deviceType }) {
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
-                {/* <div className="h-[200px] md:h-[490px]">
-                    <img
-                        src={"https://img.pikbest.com/origin/10/04/21/28ApIkbEsTjdK.jpg!w700wp"}
-                        alt="Banner 1"
-                        className="w-full h-full bg-center rounded-md"
-                    />
-                </div> */}
                 <div className="h-[200px] md:h-[455px]">
                     <img
                         src={Banner2}

@@ -34,6 +34,7 @@ export default function FlashSellingProducts() {
                     <h1 className="mt-4">Flash Sales Products</h1>
                 </div>
             </div>
+            
             {/* Products Carousel Container */}
             <div className="relative w-full z-20">
                 <Carousel
