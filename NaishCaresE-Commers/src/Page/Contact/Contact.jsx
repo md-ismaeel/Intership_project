@@ -171,7 +171,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your Name"
                       className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 
-                        ${errors.name ? "border-red-500 focus:ring-red-200" : "border-gray-300 focus:ring-blue-200"}`}
+                        ${errors.name ? "border-red-500 focus:ring-red-300" : "border-gray-300 focus:ring-green-300"}`}
                     />
                   </div>
                   {errors.name && (
@@ -189,7 +189,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Your Email"
                       className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 
-                        ${errors.email ? "border-red-500 focus:ring-red-200" : "border-gray-300 focus:ring-blue-200"}`}
+                        ${errors.email ? "border-red-500 focus:ring-red-300" : "border-gray-300 focus:ring-green-300"}`}
                     />
                   </div>
                   {errors.email && (
@@ -206,8 +206,8 @@ export default function Contact() {
                     rows={5}
                     className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 
                       ${errors.message
-                        ? "border-red-500 focus:ring-red-200"
-                        : "border-gray-300 focus:ring-blue-200"
+                        ? "border-red-500 focus:ring-red-300"
+                        : "border-gray-300 focus:ring-green-300"
                       }`}
                   />
                   {errors.message && (
@@ -220,8 +220,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 
-                    text-white rounded-lg font-semibold transition-all duration-300 flex items-center justify-center"
+                  className="w-full py-3 px-4 bg-primary hover:bg-green-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />

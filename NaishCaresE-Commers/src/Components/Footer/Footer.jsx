@@ -155,7 +155,7 @@ export default function Footer() {
           Crafted with <span className="text-red-500">❤</span> by{" "}
           <a
             target="_blank"
-            href="https://yourwebsite.com"
+            href="https://www.youtube.com/"
             className="text-green-300 hover:underline"
           >
             Your Creative Studio

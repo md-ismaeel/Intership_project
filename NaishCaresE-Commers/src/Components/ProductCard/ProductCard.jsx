@@ -7,14 +7,19 @@ import { toast } from "material-react-toastify";
 import defaultImage from "../../assets/Product-images/organic.png";
 
 export default function ProductCard({ item }) {
-    const { id, name, category, price, brand, image, weight, discount, flash } = item;
+    const { id, name, category, price, brand, image, weight, discount, flash } =
+        item;
     const dispatch = useDispatch();
     const wishList = useSelector((state) => state.Ecommers.wishList);
 
     const handleWishlistToggle = () => {
         const product = { id, name, category, price, image };
         dispatch(toggleWishlist(product));
-        toast.info(wishList.some((fav) => fav.id === id) ? `Removed ${product.name} from wishlist` : `Added ${product.name} to wishlist`);
+        toast.info(
+            wishList.some((fav) => fav.id === id)
+                ? `Removed ${product.name} from wishlist`
+                : `Added ${product.name} to wishlist`
+        );
     };
 
     const handleAddToCart = () => {
@@ -26,7 +31,7 @@ export default function ProductCard({ item }) {
     const isWishlisted = wishList.some((fav) => fav.id === id);
 
     return (
-        <div className="w-70 md:w-56 h-70 bg-white border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
+        <div className="w-60 md:w-56 h-70 bg-white border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
             <div className="w-full h-[50%] flex justify-center items-center relative">
                 <img
                     src={image}
@@ -59,9 +64,13 @@ export default function ProductCard({ item }) {
                     <p className="text-gray-500 text-sm">{brand}</p>
                 </div>
                 <div className="w-full flex justify-start items-center mt-2 gap-3">
-                    <p className="text-xl font-semibold text-primary space-x-3">${price}</p>
+                    <p className="text-xl font-semibold text-primary space-x-3">
+                        ${price}
+                    </p>
                     {discount > 0 && (
-                        <p className="text-xs text-red-500 line-through">${(price * (1 + discount / 100)).toFixed(2)}</p>
+                        <p className="text-xs text-red-500 line-through">
+                            ${(price * (1 + discount / 100)).toFixed(2)}
+                        </p>
                     )}
                 </div>
             </div>
@@ -75,7 +84,11 @@ export default function ProductCard({ item }) {
                     <AiOutlineHeart className="text-gray-500" />
                 )}
             </button>
-            {flash && <button className="absolute top-2 left-2 rounded-md text-sm bg-orange-500 text-white px-2 py-1">{flash}</button>}
+            {flash && (
+                <button className="absolute top-0 left-0 text-sm bg-primary text-white px-2 py-1">
+                    {flash}
+                </button>
+            )}
             <div className="absolute inset-0 bg-black  opacity-0 group-hover:opacity-25 transition-opacity duration-300 ease-in-out"></div>
         </div>
     );

@@ -1,7 +1,6 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Banner1 from "../../assets/Banners/banner-1.jpg";
 import Banner2 from "../../assets/Banners/banner-2.jpg";
 import Banner3 from "../../assets/Banners/banner-3.webp";
 import Banner4 from "../../assets/Banners/banner-4.jpg";
@@ -27,7 +26,7 @@ export default function Hero({ deviceType }) {
     };
 
     return (
-        <div className="w-[90%] md:w-[80%] mx-auto z-10">
+        <div className="w-[100%] md:w-[80%] mx-auto z-10">
             <Carousel
                 swipeable={true}
                 draggable={true}
@@ -45,32 +44,32 @@ export default function Hero({ deviceType }) {
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
-                <div className="h-[200px] md:h-[370px]">
+                {/* <div className="h-[200px] md:h-[490px]">
                     <img
-                        src={Banner1}
+                        src={"https://img.pikbest.com/origin/10/04/21/28ApIkbEsTjdK.jpg!w700wp"}
                         alt="Banner 1"
-                        className="w-full h-full object-cover rounded-md"
+                        className="w-full h-full bg-center rounded-md"
                     />
-                </div>
-                <div className="h-[200px] md:h-[370px]">
+                </div> */}
+                <div className="h-[200px] md:h-[455px]">
                     <img
                         src={Banner2}
                         alt="Banner 2"
-                        className="w-full h-full object-cover rounded-md"
+                        className="w-full h-full bg-center rounded-md"
                     />
                 </div>
-                <div className="h-[200px] md:h-[370px]">
+                <div className="h-[200px] md:h-[455px]">
                     <img
                         src={Banner3}
                         alt="Banner 3"
-                        className="w-full h-full object-cover rounded-md"
+                        className="w-full h-full bg-center rounded-md"
                     />
                 </div>
-                <div className="h-[200px] md:h-[370px]">
+                <div className="h-[200px] md:h-[455px]">
                     <img
-                        src={Banner4}
+                        src={"https://vediko.in/cdn/shop/collections/ghee_banner.jpg?v=1656064214"}
                         alt="Banner 4"
-                        className="w-full h-full object-cover rounded-md"
+                        className="w-full h-full bg-center rounded-md"
                     />
                 </div>
             </Carousel>

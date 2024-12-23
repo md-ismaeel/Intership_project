@@ -8,7 +8,7 @@ import FlashSellingProducts from "../../Components/FlashSellingProducts/FlashSel
 export default function Home() {
   return (
     <main className="w-full min-h-screen flex flex-col justify-start items-center mt-5 mb-10 overflow-x-hidden">
-      <div className="w-full h-full flex flex-col-reverse md:flex-row justify-between items-start">
+      <div className="w-full h-full flex flex-col-reverse md:flex-row justify-between items-start px-3">
         <Category />
         <Hero />
       </div>

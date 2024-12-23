@@ -13,7 +13,7 @@ const IngLabelInput = ({ type = "text", name, value, onChange, placeholder = "",
 
   const styleCss = {
     container: `relative w-full`,
-    inputField: `block w-full px-4 h-[45px] text-bas text-gray-800 border rounded-lg appearance-none transition-colors duration-200 focus:outline-none focus:ring-2  ${disabled ? "opacity-50 cursor-not-allowed" : ""} peer placeholder:text-gray-400`,
+    inputField: `block w-full px-4 h-[45px] text-bas text-gray-800 border rounded-lg appearance-none transition-colors duration-200 focus:outline-none focus-within:ring-2 focus-within:ring-green-300  ${disabled ? "opacity-50 cursor-not-allowed" : ""} peer placeholder:text-gray-400`,
     eyeBtn: `absolute top-[9px] right-5 cursor-pointer z-10 px-2 py-1`,
     eyeIcon: `text-xl text-gray-500`
   }

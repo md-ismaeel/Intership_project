@@ -160,9 +160,7 @@ export default function ProductDetails() {
           {/* Add to Cart Button */}
           <button
             onClick={handleAddToCart}
-            className="w-full bg-primary text-white py-4 rounded-full flex items-center justify-center space-x-3 
-            hover:bg-primary-dark focus:outline-none focus:ring-4 focus:ring-primary-light 
-            transition-all duration-300 ease-in-out transform active:scale-95 shadow-md"
+            className="w-full bg-primary text-white py-4 rounded-full flex items-center justify-center space-x-3 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out transform active:scale-95 shadow-md"
           >
             <IoCartOutline className="text-2xl" />
             <span className="text-lg font-semibold">Add to Cart</span>
