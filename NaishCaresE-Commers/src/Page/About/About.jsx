@@ -85,11 +85,11 @@ export default function About() {
         </div>
 
         {/* out story */}
-        <div className="w-full h-auto flex mb-10">
-          <div className="w-1/2 bg-white shadow-lg px-10 rounded-lg py-2">
+        <div className="w-full h-auto flex flex-col-reverse md:flex-row mb-10 mx-auto">
+          <div className="w-full md:w-1/2 bg-white shadow-lg px-10 rounded-lg py-2">
             <img src={leftSide} alt="about" />
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <img src={content} alt="about" />
           </div>
         </div>

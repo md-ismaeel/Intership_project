@@ -28,13 +28,13 @@ export default function FlashSellingProducts() {
     };
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8 mt-10">
-            <div className={`w-full text-lg font-semibold flex justify-start items-center mb-2`}>
-                <div className="ml-[1.3rem] md:ml-5 flex justify-end items-center gap-1">
+            <div className={`text-lg font-semibold flex justify-center md:justify-start md:ml-3 items-center mb-2`}>
+                <div className="flex justify-center items-center gap-1">
                     <p className="bg-primary w-3 h-7"></p>
                     <h1 className="mt-4">Flash Sales Products</h1>
                 </div>
             </div>
-            
+
             {/* Products Carousel Container */}
             <div className="relative w-full z-20">
                 <Carousel
@@ -49,9 +49,9 @@ export default function FlashSellingProducts() {
                     customTransition="all .5s ease"
                     transitionDuration={500}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={[]}
+                    removeArrowOnDeviceType={["mobile"]}
                     dotListClass="custom-dot-list-style"
-                    itemClass="px-2"
+                    itemClass="px-2 flex justify-center"
                     className="w-full"
                 >
                     {flash && flash.length > 0 ? (

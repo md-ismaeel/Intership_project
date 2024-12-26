@@ -16,6 +16,7 @@ import ForgetPassword from "./Page/ForgetPassword/ForgetPassword";
 import Products from "./Page/Products/Products";
 import { useEffect } from "react";
 import CheckOut from "./Page/CheckOut/CheckOut";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
         { path: "/products-details/:id", element: <ProductDetails /> },
         { path: "/cart", element: <Cart /> },
         { path: "/wishList", element: <WishList /> },
-        { path: "checkout", element: <CheckOut /> }
+        { path: "/checkout", element: <CheckOut /> },
+        { path: "/profile", element: <Profile /> }
       ],
     },
   ] : [

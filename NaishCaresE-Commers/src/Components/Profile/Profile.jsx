@@ -1,92 +1,82 @@
-import React, { useState } from "react";
-import { FaRegUser } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { setAuthenticated } from "../../Redux/slices/usersSlice";
-import { toast } from "material-react-toastify";
-import { Loader } from "../Loader";
+import { FaInstagram, FaTwitter } from "react-icons/fa";
+import johnImage from "../../assets/ismail-profile.jpg";
 
-export default function Profile() {
-  const navigator = useNavigate();
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
+const Profile = () => {
+  const userData = {
+    name: "ismail",
+    email: "ismail@example.com",
+    phone: "9949722501",
+    address: "Hyderabad Telangana",
+    dateOfBirth: "march 3, 2000",
+    occupation: "Software Engineer",
+    socialMedia: {
+      linkedin: "https://www.linkedin.com",
+      twitter: "https://x.com/impossible_br03",
+    },
+    profilePicture: johnImage,
+  };
 
-  function handleLogOut() {
-    setLoading(true);
-    setTimeout(() => {
-      dispatch(setAuthenticated(false));
-      navigator("/");
-      toast.success("Logged Out Successfully");
-      setLoading(false);
-    }, 1500);
-  }
 
-  function handleImageChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setProfileImage(imageUrl);
-    }
-  }
 
   return (
-    <div className="absolute top-14 right-[-2rem] md:right-4 z-50 w-72 bg-white shadow-lg rounded-lg border border-gray-200 p-4 transition-transform transform scale-100">
-      <div className="flex items-center mb-4">
-        {profileImage ? (
+    <div className="min-h-screen flex items-center justify-center py-10">
+      <div className="bg-white-400 border border-gray-300 rounded-lg w-full lg:max-w-4xl sm:max-w-xl p-8">
+        {/* Profile Header */}
+        <div className="flex flex-col items-center">
           <img
-            src={profileImage}
+            src={userData.profilePicture}
             alt="Profile"
-            className="w-12 h-12 rounded-full object-cover mr-3"
+            className="w-36 h-36 rounded-full border-4 border-green-400 object-cover shadow-lg"
           />
-        ) : (
-          <FaRegUser className="text-gray-500 mr-3 text-2xl" />
-        )}
-        <h2 className="text-xl font-semibold text-gray-800">Profile</h2>
-      </div>
-      <div className="space-y-2 mb-4">
-        <div className="flex items-center">
-          <span className="font-medium text-gray-600 mr-2">Name:</span>
-          <span className="text-gray-800">Ismail</span>
+          <h2 className="text-3xl font-bold text-green-600 mt-4">
+            {userData.name}
+          </h2>
         </div>
-        <div className="flex items-center">
-          <span className="font-medium text-gray-600 mr-2">Email:</span>
-          <span className="text-gray-800 truncate">ismail@example.com</span>
-        </div>
-      </div>
 
-      <div className="mb-4">
-        <label
-          htmlFor="profileImage"
-          className="block text-gray-700 font-medium mb-2"
-        >
-          Upload Profile Image:
-        </label>
-        <input
-          type="file"
-          id="profileImage"
-          accept="image/*"
-          onChange={handleImageChange}
-          className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
-        />
-      </div>
-
-      <div className="relative">
-        <button
-          onClick={handleLogOut}
-          className={`w-full py-3 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all ${loading && "cursor-not-allowed"
-            }`}
-          disabled={loading}
-        >
-          {loading ? "Loading..." : "Logout"}
-        </button>
-        {loading && (
-          <div className="absolute left-14 z-10 top-1/2 -translate-y-1/2">
-            <Loader />
+        {/* User Details */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+          {/* Email */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">Email</h3>
+            <p className="text-gray-700 mt-2">{userData.email}</p>
           </div>
-        )}
+          {/* Phone */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">Phone</h3>
+            <p className="text-gray-700 mt-2">{userData.phone}</p>
+          </div>
+          {/* Address */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">Address</h3>
+            <p className="text-gray-700 mt-2">{userData.address}</p>
+          </div>
+          {/* Date of Birth */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">
+              Date of Birth
+            </h3>
+            <p className="text-gray-700 mt-2">{userData.dateOfBirth}</p>
+          </div>
+        </div>
+
+        {/* Social Media Links */}
+        <div className="bg-gray-100 rounded-lg p-6 shadow-md mt-6">
+          <h3 className="text-lg font-medium text-green-600">Social Media</h3>
+          <div className="flex items-center gap-4 mt-3">
+            <a href={userData.socialMedia.linkedin} target="_blank" className="text-xl cursor-pointer text-grayForPageHeading" ><FaInstagram /></a>
+            <a href={userData.socialMedia.twitter} target="_blank" className="text-xl cursor-pointer text-grayForPageHeading" ><FaTwitter /></a>
+          </div>
+        </div>
+
+        {/* Edit Profile Button */}
+        <div className="flex justify-center mt-8">
+          <button className="bg-green-400 hover:bg-green-600 text-white-400 px-8 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
+            Edit Profile
+          </button>
+        </div>
       </div>
     </div>
   );
-}
+};
 
+export default Profile;

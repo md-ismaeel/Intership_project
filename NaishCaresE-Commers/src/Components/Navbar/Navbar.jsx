@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import logo from "../../assets/natural-logo.png";
-import Profile from "../Profile/Profile";
 import { AiOutlineHeart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { IoSearchOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaRegUser } from "react-icons/fa";
+import johnImage from "../../assets/ismail-profile.jpg";
+import { setAuthenticated } from "../../Redux/slices/usersSlice";
+import { Loader } from "../Loader";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -15,6 +17,8 @@ export default function Navbar() {
   const isAuthenticated = useSelector((state) => state?.Ecommers?.isAuthenticated);
   const wishList = useSelector((state) => state?.Ecommers?.wishList || []);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch()
 
   const activeClass = ({ isActive }) => `${isActive ? "text-orange-400 relative after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-orange-500" : "hover:text-gray-300"} font-semibold transition-all duration-300 ease-in-out transform hover:scale-105`;
 
@@ -32,6 +36,16 @@ export default function Navbar() {
 
   function handleOpenProfile() {
     setIsProfileOpen((prev) => !prev);
+  }
+
+  function handleLogOut() {
+    setLoading(true);
+    setTimeout(() => {
+      dispatch(setAuthenticated(false));
+      navigate("/");
+      toast.success("Logged Out Successfully");
+      setLoading(false);
+    }, 1500);
   }
 
   return (
@@ -122,16 +136,45 @@ export default function Navbar() {
         </div>
 
         {/* Profile Icon */}
+
+
         <div
-          className="relative focus-within:ring-2 focus-within:ring-green-500 rounded-full"
-          onClick={handleOpenProfile}
-        >
-          <button
-            className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-green-600 cursor-pointer flex justify-center items-center text-white text-[22px] focus:outline-none"
-          >
-            <FaRegUser />
-          </button>
-          {isProfileOpen && <Profile />}
+
+          className="relative rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-green-600 cursor-pointer hover:bg-green-700 transition-colors group focus-within:ring-2 focus-within:ring-green-500">
+          <img
+            src={johnImage}
+            alt=""
+            onClick={handleOpenProfile}
+            className="w-full h-full border border-gray-400 cursor-pointer rounded-full "
+          />
+          {isProfileOpen && (
+            <ul className="absolute z-20 right-5 mt-2 w-56 bg-white-400 border border-gray-300 rounded-lg shadow-lg p-3 text-grayForPageHeading bg-white">
+              <li
+                className="px-4 py-2 hover:bg-green-100 cursor-pointer"
+                onClick={() => {
+                  navigate("/profile");
+                  handleOpenProfile(!isProfileOpen);
+                }}
+              >
+                Profile
+              </li>
+              <li className="relative">
+
+                <button
+                  className={`w-full flex justify-start space-y-2 px-4 py-2 rounded-lg hover:bg-green-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all ${loading && "bg-green-200 cursor-not-allowed"}`}
+                  disabled={loading}
+                  onClick={handleLogOut}
+                >
+                  {loading ? "Logout..." : "Logout"}
+                </button>
+                {loading && (
+                  <div className="absolute right-8 z-10 top-1/2 -translate-y-1/2">
+                    <Loader />
+                  </div>
+                )}
+              </li>
+            </ul>
+          )}
         </div>
 
         <button

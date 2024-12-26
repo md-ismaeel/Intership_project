@@ -31,7 +31,7 @@ export default function ProductCard({ item }) {
     const isWishlisted = wishList.some((fav) => fav.id === id);
 
     return (
-        <div className="w-60 md:w-56 h-70 bg-white border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
+        <div className="w-[16rem] md:w-56 h-70 bg-white border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 relative group">
             <div className="w-full h-[50%] flex justify-center items-center relative">
                 <img
                     src={image}
