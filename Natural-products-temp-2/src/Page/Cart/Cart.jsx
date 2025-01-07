@@ -6,7 +6,7 @@ import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-    const { isOpenCart, cart } = useSelector((state) => state?.N4N)
+    const { isOpenCart, cart, userAuthenticated } = useSelector((state) => state?.N4N)
     // console.log(cart);
 
     const dispatch = useDispatch();
@@ -42,6 +42,11 @@ export default function Cart() {
     };
 
     const handleNavigateToCheckout = () => {
+        if (!userAuthenticated) {
+            navigator("/signin")
+            dispatch(setIsOpenCart(false));
+            return
+        }
         dispatch(setIsOpenCart(false));
         navigator("/checkout")
     };

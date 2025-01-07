@@ -7,7 +7,7 @@ import { ShoppingCart } from "lucide-react";
 import { HeartIcon } from "../../Components/ProductRating/ProductRating";
 
 const ProductCard = ({ item }) => {
-    const { wishList } = useSelector((state) => state?.N4N);
+    const { wishList, userAuthenticated } = useSelector((state) => state?.N4N);
     const dispatch = useDispatch();
     const [isFavorite, setIsFavorite] = useState(false);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -37,8 +37,13 @@ const ProductCard = ({ item }) => {
 
     const handleFavorite = (e) => {
         e.preventDefault();
-        dispatch(toggleWishList(item));
 
+        // if (!userAuthenticated) {
+        //     navigator("/signin")
+        //     return;
+        // }
+
+        dispatch(toggleWishList(item));
 
         if (isFavorite) {
             toast.info(`Removed ${title} from your wishlist`);

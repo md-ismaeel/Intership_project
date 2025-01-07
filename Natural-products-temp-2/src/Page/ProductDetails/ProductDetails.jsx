@@ -10,7 +10,7 @@ import { toast } from "material-react-toastify";
 import { IoShareSocialOutline } from "react-icons/io5"
 
 const ProductDetails = () => {
-    const { data, productDetails, wishList } = useSelector((state) => state?.N4N);
+    const { data, productDetails, wishList,userAuthenticated } = useSelector((state) => state?.N4N);
     const dispatch = useDispatch()
     const [selectedImage, setSelectedImage] = useState(0);
     const [quantity, setQuantity] = useState(Number(1))

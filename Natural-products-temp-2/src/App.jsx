@@ -14,6 +14,7 @@ import DiscoverIngredients from "./Components/DiscoverIngredients/DiscoverIngred
 import WishList from "./Page/WishList/WishList";
 import Profile from "./Components/Profile/Profile"
 import Checkout from "./Page/CheckOut/CheckOut";
+import Search from "./Page/Search/Search";
 
 export default function App() {
   const userAuthenticated = useSelector((state) => state?.N4N?.userAuthenticated);
@@ -39,6 +40,7 @@ export default function App() {
         { path: "/discoverIngredients", element: <DiscoverIngredients /> },
         { path: "/wishList", element: <WishList /> },
         { path: "/checkout", element: <Checkout /> },
+        { path: "/search", element: <Search /> },
 
       ],
     },
