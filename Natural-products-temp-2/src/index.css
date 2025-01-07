@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+@layer base {
+  html {
+    font-family: "Poppins", sans-serif !important;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* @apply bg-gradient-to-br from-green-50 to-green-100; */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    min-height: 100vh;
+    width: 100%;
+  }
+}
