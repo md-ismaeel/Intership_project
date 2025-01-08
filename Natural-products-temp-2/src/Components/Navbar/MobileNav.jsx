@@ -4,17 +4,22 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FaUserCheck, FaUserTimes } from "react-icons/fa";
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsOpenCart, setUserAuthenticated } from "../../Redux/Slice/N4NSlice";
+import {
+  setIsOpenCart,
+  setUserAuthenticated,
+} from "../../Redux/Slice/N4NSlice";
 import { IoCloseOutline } from "react-icons/io5";
 
 export default function MobileNav({ isMenuOpen, toggleMenu }) {
-  const { userAuthenticated, cart, isOpenCart } = useSelector((state) => state?.N4N);
+  const { userAuthenticated, cart, isOpenCart } = useSelector(
+    (state) => state?.N4N
+  );
   const navigator = useNavigate();
   const [navBg, setNavBg] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function handleOpenCart() {
-    dispatch(setIsOpenCart(!isOpenCart))
+    dispatch(setIsOpenCart(!isOpenCart));
   }
 
   return (
@@ -59,16 +64,32 @@ export default function MobileNav({ isMenuOpen, toggleMenu }) {
             <div className="absolute left-0 z-[100000] mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               {userAuthenticated && userAuthenticated ? (
                 <div className="py-2">
-                  <button className={navStyles.authBtn}>
+                  <button
+                    onClick={() => {
+                      navigator("/profile");
+                      toggleMenu();
+                    }}
+                    className={navStyles.authBtn}
+                  >
                     Profile
                   </button>
-                  <button onClick={() => navigator("/wishList")} className={navStyles.authBtn}>
+                  <button
+                    onClick={() => {
+                      navigator("/wishList");
+                      toggleMenu();
+                    }}
+                    className={navStyles.authBtn}
+                  >
                     wishList
                   </button>
-                  <button className={navStyles.authBtn}>
-                    Settings
-                  </button>
-                  <button onClick={() => dispatch(setUserAuthenticated(false))} className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">
+                  <button className={navStyles.authBtn}>Settings</button>
+                  <button
+                    onClick={() => {
+                      dispatch(setUserAuthenticated(false));
+                      toggleMenu();
+                    }}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600"
+                  >
                     Logout
                   </button>
                 </div>
@@ -98,10 +119,11 @@ export default function MobileNav({ isMenuOpen, toggleMenu }) {
           </div>
         </div>
 
-
         {/* close button */}
-        <button onClick={toggleMenu}
-          className={`absolute right-3 top-6 text-gray-700 transition all duration-1000 hover:rotate-180`}>
+        <button
+          onClick={toggleMenu}
+          className={`absolute right-3 top-6 text-gray-700 transition all duration-1000 hover:rotate-180`}
+        >
           <IoCloseOutline className="h-6 w-6" />
         </button>
 
@@ -120,17 +142,20 @@ export default function MobileNav({ isMenuOpen, toggleMenu }) {
           {/* left container */}
           <div className="flex flex-col justify-center items-center gap-0">
             {/* search icon */}
-            <div className="relative">
+            <div className="absolute top-5 left-[7.5rem]">
               <button
                 className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
-                onClick={() => navigator("/cart")}
+                onClick={() => {
+                  navigator("/search");
+                  toggleMenu();
+                }}
               >
                 <IoSearchOutline className="text-2xl text-gray-700" />
               </button>
             </div>
 
             {/* Cart Icon */}
-            <div className="absolute top-5 left-20">
+            <div className="absolute top-5 left-16">
               <div className="relative">
                 <button
                   className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"

@@ -1,6 +1,6 @@
 export const navLinks = [
     { id: 1, path: "/", Label: "HOME" },
-    { id: 2, path: "/collections", Label: "SHOP" },
+    { id: 2, path: "/products", Label: "SHOP" },
     { id: 3, path: "/about", Label: "ABOUT" },
 ];
 
@@ -22,12 +22,12 @@ export const isActiveClass = ({
 export const collectionsStyle = {
     collectionContainer: `w-[95%] flex flex-col justify-center items-center gap-5`,
     mainDiv: `w-full flex flex-col lg:flex-row justify-between gap-4`,
-    childDiv: `relative w-full h-[300px] md:h-[400px] lg:h-[500px] lg:w-1/2 cursor-pointer overflow-hidden group`,
-    images: `w-full h-full bg-center transition-transform duration-1000 ease-in-out group-hover:scale-105`,
+    childDiv: `relative w-full h-[250px] md:h-[430px] lg:h-[400px] rounded-lg lg:w-1/2 cursor-pointer overflow-hidden group`,
+    images: `w-full h-full bg-center transition-transform duration-1000 ease-in-out group-hover:scale-105 rounded-lg`,
     categoryType: `absolute top-1/2 left-[40%] text-xl font-medium text-white z-10 uppercase`,
 };
 
 
 export const navStyles = {
     authBtn: `block w-full text-left px-4 py-2 hover:bg-gray-100 uppercase text-[12px] tracking-widest`
-  }
+}

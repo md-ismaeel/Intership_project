@@ -1,8 +1,10 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import banner1 from "../../assets/Banners/N4N-banner-1.webp";
-import banner2 from "../../assets/Banners/N4N-banner-2.webp";
+
+import banner1 from "../../assets/Banners/banner-2.jpg";
+// import banner3 from "../../assets/Banners/banner-3.jpg"
+import banner2 from "../../assets/Banners/image.png";
 
 export default function Hero({ deviceType }) {
     const responsive = {
@@ -43,20 +45,27 @@ export default function Hero({ deviceType }) {
                 dotListClass="absolute bottom-5 right-5 flex justify-end items-center space-x-2"
                 itemClass="carousel-item-padding-40-px"
             >
-                <div className="h-[250px] md:h-[460px]">
+                <div className="h-[250px] md:h-[550px]">
                     <img
                         src={banner1}
                         alt="Banner 2"
                         className="w-full h-full bg-center rounded-md"
                     />
                 </div>
-                <div className="h-[250px] md:h-[460px]">
+                <div className="h-[250px] md:h-[550px]">
                     <img
                         src={banner2}
-                        alt="Banner 3"
+                        alt="Banner 2"
                         className="w-full h-full bg-center rounded-md"
                     />
                 </div>
+                {/* <div className="h-[250px] md:h-[550px]">
+                    <img
+                        src={banner3}
+                        alt="Banner 3"
+                        className="w-full h-full bg-center rounded-md"
+                    />
+                </div> */}
 
             </Carousel>
         </header>

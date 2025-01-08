@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaFacebookF, FaTwitter, FaLinkedin, FaGithub, FaInstagram, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedin, FaGithub, FaInstagram, FaEnvelope, FaPhoneAlt,FaYoutube } from "react-icons/fa";
 import logoImage from "../../../public/N4N-logo.avif";
 import { NavLink } from "react-router-dom";
 
@@ -14,10 +14,10 @@ export default function Footer() {
       hoverClass: "text-blue-600",
     },
     {
-      name: "twitter",
-      link: `https://x.com/impossible_br03`,
-      icon: <FaTwitter />,
-      hoverClass: "text-blue-400",
+      name: "youtube",
+      link: `https://www.youtube.com/`,
+      icon: <FaYoutube />,
+      hoverClass: "text-red-600",
     },
     {
       name: "insta",
@@ -25,18 +25,18 @@ export default function Footer() {
       icon: <FaInstagram />,
       hoverClass: "text-pink-600",
     },
-    {
-      name: "linkedin",
-      link: `https://www.linkedin.com/`,
-      icon: <FaLinkedin />,
-      hoverClass: "text-blue-700",
-    },
-    {
-      name: "github",
-      link: `https://github.com/md-ismaeel`,
-      icon: <FaGithub />,
-      hoverClass: "text-gray-200",
-    },
+    // {
+    //   name: "linkedin",
+    //   link: `https://www.linkedin.com/`,
+    //   icon: <FaLinkedin />,
+    //   hoverClass: "text-blue-700",
+    // },
+    // {
+    //   name: "github",
+    //   link: `https://github.com/md-ismaeel`,
+    //   icon: <FaGithub />,
+    //   hoverClass: "text-gray-200",
+    // },
   ];
 
   const navLinks = [

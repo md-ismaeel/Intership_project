@@ -5,14 +5,18 @@ import Deals from '../../Components/Deals/Deals'
 import Products from '../Products/Products'
 import EcoDrive from '../../Components/EcoDrive/EcoDrive'
 import Discover from '../../Components/DiscoverIngredients/Discover'
+import FanFavorites from '../../Components/Deals/FanFavorite'
+import SweetDeals from '../../Components/Deals/SweetDeals'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Deals/>
-      <EcoDrive/>
-      <Discover/>
+      {/* <Deals/> */}
+      <FanFavorites />
+      <SweetDeals />
+      <EcoDrive />
+      <Discover />
     </>
   )
 }

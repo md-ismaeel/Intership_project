@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { toast } from "material-react-toastify";
 import { NavLink } from "react-router-dom";
 import { createUrlSlug } from "../../Constant/Constant";
+import ProductCard from "../../Components/ProductCard/ProductCard";
 
 export default function Search() {
     const { data } = useSelector((state) => state?.N4N);
@@ -13,7 +14,6 @@ export default function Search() {
 
     const handleChange = (e) => {
         const inputVal = e.target.value.toLowerCase();
-        setValue(inputVal);
 
         if (inputVal.trim() === "") {
             setFilteredProducts([]);
@@ -38,15 +38,15 @@ export default function Search() {
         <>
             <ExtraSpace />
             <ProductListBorder title={`result for ${value}`} />
-            <section className="w-full min-h-screen px-4 py-6">
+            <section className="w-full min-h-screen flex justify-start items-center flex-col py-6">
                 {/* Search Input */}
-                <div className="mb-6">
+                <div className="mb-6 w-full flex justify-center items-center">
                     <input
                         type="text"
                         value={value}
                         onChange={handleChange}
                         placeholder="Search by title, category, or price..."
-                        className="w-full h-14 px-10 py-2 border rounded shadow focus:outline-none focus:ring-2 focus:ring-orange-200 text-lg"
+                        className="w-[95%] px-5 h-[3.5rem] py-2 border rounded shadow focus:outline-none focus:ring-2 focus:ring-orange-200 text-sm lg:text-lg"
                     />
                 </div>
 
@@ -55,13 +55,8 @@ export default function Search() {
                     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         {filteredProducts.map((item) => (
                             <NavLink to={`/product/${createUrlSlug(item.title)}`}
-                                key={item.id}
-                                className="border p-4 rounded shadow hover:bg-gray-100 transition"
-                            >
-                                <img src={item.thumbnail} className="bg-center w-[200px] h-[100px]" /><br />
-                                <h3 className="text-lg font-semibold">{item.title}</h3>
-                                <p className="text-gray-600">Category: {item.category}</p>
-                                <p className="text-gray-800">Price: ${item.price}</p>
+                                key={item.id}>
+                                <ProductCard item={item} />
                             </NavLink>
                         ))}
                     </ul>

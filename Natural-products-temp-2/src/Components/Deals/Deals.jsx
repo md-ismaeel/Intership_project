@@ -8,6 +8,7 @@ export default function Deals() {
     const [toggleFabSweet, setFabSweet] = useState(false);
 
     const DEALS_DATA = toggleFabSweet ? SWEETS : FAVORITES;
+
     return (
         <>
             <div

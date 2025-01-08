@@ -6,185 +6,210 @@ import { setData, resetData, setSelectedCategory } from "../../Redux/Slice/N4NSl
 export default function AllCollections() {
     const { data, originalData, selectedCategory = "" } = useSelector((state) => state?.N4N);
     const dispatch = useDispatch();
-    const [isFilterOpen, setIsFilterOpen] = useState(true);
-    const [isAvailabilityOpen, setIsAvailabilityOpen] = useState(true);
-    const [inStock, setInStock] = useState(false);
-    const [outOfStock, setOutOfStock] = useState(false);
+    const [isAvailabilityOpen, setIsAvailabilityOpen] = useState(false);
+    const [availability, setAvailability] = useState("");
+    const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
     const categories = [...new Set(data?.map((item) => item?.category).filter(Boolean) ?? [])];
+
+    const handleCategorySelect = (category) => {
+        dispatch(setSelectedCategory(category));
+        setIsCategoryOpen(false);
+    };
+
+    const handleAvailabilitySelect = (value) => {
+        setAvailability(value);
+        setIsAvailabilityOpen(false);
+    };
 
     useEffect(() => {
         let filteredProducts = originalData;
 
-        // Filter by category
         if (selectedCategory) {
             filteredProducts = filteredProducts.filter(
                 (item) => item.category === selectedCategory
             );
         }
 
-        // Filter by availability
-        if (inStock && outOfStock) {
-            // Show all products regardless of stock status
-        } else if (inStock) {
+        if (availability === "inStock") {
             filteredProducts = filteredProducts.filter((item) => item.stock > 0);
-        } else if (outOfStock) {
+        } else if (availability === "outOfStock") {
             filteredProducts = filteredProducts.filter((item) => item.stock === 0);
         }
 
-        // Dispatch filtered data
         dispatch(setData(filteredProducts));
-    }, [selectedCategory, inStock, outOfStock, dispatch, originalData]);
-
-    const handleCategoryChange = (category) => {
-        dispatch(setSelectedCategory(category === selectedCategory ? "" : category))
-    };
+    }, [selectedCategory, availability, dispatch, originalData]);
 
     const handleClearFilters = () => {
         dispatch(setSelectedCategory(""));
-        setInStock(false);
-        setOutOfStock(false);
+        setAvailability("");
         dispatch(resetData());
     };
 
+    // Click outside handlers
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const categoryDropdown = document.getElementById("category-dropdown");
+            const availabilityDropdown = document.getElementById("availability-dropdown");
+
+            if (categoryDropdown && !categoryDropdown.contains(event.target)) {
+                setIsCategoryOpen(false);
+            }
+            if (availabilityDropdown && !availabilityDropdown.contains(event.target)) {
+                setIsAvailabilityOpen(false);
+            }
+        };
+
+        if (isCategoryOpen || isAvailabilityOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isCategoryOpen, isAvailabilityOpen]);
+
     return (
-        <div className="container mb-10 px-4 flex justify-center items-center">
-            <div className="flex flex-col lg:flex-row gap-8">
-                {/* Filter Sidebar */}
-                <div className="w-72 flex-shrink-0">
-                    {/* Collections Filter */}
-                    <div className="bg-white rounded-lg shadow-sm border p-4">
+        <div className="container mt-5 z-20 flex justify-center items-center">
+            <div className="w-[95%] grid grid-cols-1 lg:grid-cols-3 justify-center items-center">
+                {/* Category Filter */}
+                <div className="bg-white w-72 rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow duration-200">
+                    <h2 className="uppercase text-sm font-medium mb-4 text-gray-700">
+                        All Collections
+                    </h2>
+
+                    <div className="relative" id="category-dropdown">
                         <button
-                            onClick={() => setIsFilterOpen(!isFilterOpen)}
-                            className="w-full flex justify-between items-center mb-4 font-medium px-1.5"
+                            onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                            className="w-full px-3 py-2 border rounded text-left text-[12px] uppercase bg-white
+                                hover:border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200
+                                transition-all duration-200 outline-none flex justify-between items-center"
                         >
-                            <h2 className="uppercase text-sm">All Collections</h2>
-                            <span className="hover:bg-gray-100 rounded-full">
-                                {isFilterOpen ? (
-                                    <ChevronUp size={20} />
-                                ) : (
-                                    <ChevronDown size={20} />
-                                )}
+                            <span className={selectedCategory ? "text-gray-800" : "text-gray-500"}>
+                                {selectedCategory || "Select Category"}
                             </span>
+                            <ChevronDown
+                                size={16}
+                                className={`transition-transform duration-200 ${isCategoryOpen ? "rotate-180" : ""}`}
+                            />
                         </button>
 
-                        <div
-                            className={`space-y-3 overflow-hidden transition-all duration-500 ease-in-out ${isFilterOpen ? "max-h-screen" : "max-h-0"
-                                }`}
-                        >
-                            {isFilterOpen &&
-                                categories.length > 0 &&
-                                categories.map((category) => (
-                                    <label
+                        {isCategoryOpen && (
+                            <div className="absolute z-10 w-full mt-1 bg-white border rounded shadow-lg max-h-60 overflow-auto">
+                                <div
+                                    onClick={() => handleCategorySelect("")}
+                                    className="text-[12px] uppercase px-3 py-2 cursor-pointer hover:bg-black hover:text-white
+                                        transition-colors duration-150"
+                                >
+                                    All Categories
+                                </div>
+                                {categories.map((category) => (
+                                    <div
                                         key={category}
-                                        className="flex items-center justify-between hover:bg-gray-50 p-2 rounded cursor-pointer transition-all duration-200 ease-in-out"
+                                        onClick={() => handleCategorySelect(category)}
+                                        className="text-[12px] uppercase px-3 py-2 cursor-pointer hover:bg-black hover:text-white
+                                            transition-colors duration-150 z-30"
                                     >
-                                        <span className="text-sm uppercase">{category}</span>
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedCategory === category}
-                                            onChange={() => handleCategoryChange(category)}
-                                            className="w-4 h-4 accent-black cursor-pointer"
-                                        />
-                                    </label>
+                                        {category}
+                                    </div>
                                 ))}
-                        </div>
+                            </div>
+                        )}
                     </div>
+                </div>
 
-                    {/* Stock Availability */}
-                    <div className="bg-white rounded-lg shadow-sm border p-4 mt-5">
+                {/* Stock Availability */}
+                <div className="bg-white w-72 rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow duration-200">
+                    <h2 className="uppercase text-sm font-medium mb-4 text-gray-700">
+                        Availability
+                    </h2>
+
+                    <div className="relative" id="availability-dropdown">
                         <button
                             onClick={() => setIsAvailabilityOpen(!isAvailabilityOpen)}
-                            className="w-full flex justify-between items-center mb-4 font-medium px-1.5"
+                            className="w-full px-3 py-2 border rounded text-left text-[12px] uppercase bg-white
+                                hover:border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200
+                                transition-all duration-200 outline-none flex justify-between items-center"
                         >
-                            <h2 className="text-sm uppercase">Availability</h2>
-                            <span className="hover:bg-gray-100 rounded-full">
-                                {isAvailabilityOpen ? (
-                                    <ChevronUp size={20} />
-                                ) : (
-                                    <ChevronDown size={20} />
-                                )}
+                            <span className={availability ? "text-gray-800" : "text-gray-500"}>
+                                {availability === "inStock"
+                                    ? "In Stock"
+                                    : availability === "outOfStock"
+                                        ? "Out of Stock"
+                                        : "Select Availability"}
                             </span>
+                            <ChevronDown
+                                size={16}
+                                className={`transition-transform duration-200 ${isAvailabilityOpen ? "rotate-180" : ""}`}
+                            />
                         </button>
-                        <div
-                            className={`space-y-3 overflow-hidden transition-all duration-500 ease-in-out ${isAvailabilityOpen ? "max-h-screen" : "max-h-0"
-                                }`}
-                        >
-                            {isAvailabilityOpen && (
-                                <div className="space-y-1">
-                                    <label className="flex items-center justify-between hover:bg-gray-50 p-2 rounded cursor-pointer transition-all duration-200 ease-in-out">
-                                        <span className="text-sm uppercase">In Stock</span>
-                                        <input
-                                            type="checkbox"
-                                            checked={inStock}
-                                            onChange={() => setInStock(!inStock)}
-                                            className="w-4 h-4 accent-black"
-                                        />
-                                    </label>
-                                    <label className="flex items-center justify-between hover:bg-gray-50 p-2 rounded cursor-pointer transition-all duration-200 ease-in-out">
-                                        <span className="text-sm uppercase">Out of Stock</span>
-                                        <input
-                                            type="checkbox"
-                                            checked={outOfStock}
-                                            onChange={() => setOutOfStock(!outOfStock)}
-                                            className="w-4 h-4 accent-black"
-                                        />
-                                    </label>
+
+                        {isAvailabilityOpen && (
+                            <div className="absolute z-10 w-full mt-1 bg-white border rounded shadow-lg max-h-60 overflow-auto">
+                                <div
+                                    onClick={() => handleAvailabilitySelect("")}
+                                    className="text-[12px] uppercase px-3 py-2 cursor-pointer hover:bg-black hover:text-white
+                                        transition-colors duration-150"
+                                >
+                                    All Items
                                 </div>
+                                <div
+                                    onClick={() => handleAvailabilitySelect("inStock")}
+                                    className="text-[12px] uppercase px-3 py-2 cursor-pointer hover:bg-black hover:text-white
+                                        transition-colors duration-150"
+                                >
+                                    In Stock
+                                </div>
+                                <div
+                                    onClick={() => handleAvailabilitySelect("outOfStock")}
+                                    className="text-[12px] uppercase px-3 py-2 cursor-pointer hover:bg-black hover:text-white
+                                        transition-colors duration-150"
+                                >
+                                    Out of Stock
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Selected Filter Display */}
+                {(selectedCategory || availability) && (
+                    <div className="w-72 h-[6rem] p-4 bg-white rounded-lg shadow-sm border">
+                        <div className="flex justify-between items-center mb-2">
+                            <h3 className="text-sm font-medium">Active Filters</h3>
+                            <button
+                                onClick={handleClearFilters}
+                                className="text-sm text-red-600 hover:text-red-700 transition-colors duration-200"
+                            >
+                                Clear
+                            </button>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {selectedCategory && (
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gray-100">
+                                    {selectedCategory}
+                                    <button
+                                        onClick={() => dispatch(setSelectedCategory(""))}
+                                        className="ml-2 text-gray-500 hover:text-gray-700 transition-transform duration-200"
+                                    >
+                                        ×
+                                    </button>
+                                </span>
+                            )}
+                            {availability && (
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gray-100">
+                                    {availability === "inStock" ? "In Stock" : "Out of Stock"}
+                                    <button
+                                        onClick={() => setAvailability("")}
+                                        className="ml-2 text-gray-500 hover:text-gray-700 transition-transform duration-200"
+                                    >
+                                        ×
+                                    </button>
+                                </span>
                             )}
                         </div>
                     </div>
-
-                    {/* Selected Filter Display */}
-                    {(selectedCategory || inStock || outOfStock) && (
-                        <div className="mt-4 p-4 bg-white rounded-lg shadow-sm border">
-                            <div className="flex justify-between items-center mb-2">
-                                <h3 className="text-sm font-medium">Active Filters</h3>
-                                <button
-                                    onClick={handleClearFilters}
-                                    className="text-sm text-red-600 hover:text-red-700 transition-colors duration-200"
-                                >
-                                    Clear
-                                </button>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {selectedCategory && (
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gray-100">
-                                        {selectedCategory}
-                                        <button
-                                            onClick={() => handleCategoryChange(selectedCategory)}
-                                            className="ml-2 text-gray-500 hover:text-gray-700 transition-transform duration-200"
-                                        >
-                                            ×
-                                        </button>
-                                    </span>
-                                )}
-                                {inStock && (
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gray-100">
-                                        In Stock
-                                        <button
-                                            onClick={() => setInStock(false)}
-                                            className="ml-2 text-gray-500 hover:text-gray-700 transition-transform duration-200"
-                                        >
-                                            ×
-                                        </button>
-                                    </span>
-                                )}
-                                {outOfStock && (
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gray-100">
-                                        Out of Stock
-                                        <button
-                                            onClick={() => setOutOfStock(false)}
-                                            className="ml-2 text-gray-500 hover:text-gray-700 transition-transform duration-200"
-                                        >
-                                            ×
-                                        </button>
-                                    </span>
-                                )}
-                            </div>
-                        </div>
-                    )}
-                </div>
+                )}
             </div>
         </div>
     );

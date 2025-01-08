@@ -39,18 +39,12 @@ export default function Products() {
   return (
     <>
       <ExtraSpace />
+      <AllCollections />
       <ProductListBorder title={"Products List"} />
-      <section className="w-full min-h-screen flex flex-col md:flex-row lg:flex-row justify-center lg:justify-between items-start mt-2 mb-20">
-        {/* Collections  */}
-        <div
-          className={`w-full md:w-full lg:w-[25%] flex justify-center items-center`}
-        >
-          <AllCollections />
-        </div>
-
+      <section className="w-full min-h-screen flex flex-col justify-center items-start mt-2 mb-20">
         {/* Products Cards */}
         <div
-          className={`lg:w-[75%] flex flex-wrap justify-center items-center gap-5`}
+          className={`w-[100%%] px-5 flex flex-wrap justify-center items-center gap-5`}
         >
           {data && data.length > 0
             ? data.map((item) => (
