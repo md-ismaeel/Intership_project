@@ -11,12 +11,15 @@ export default function Search() {
     const { data } = useSelector((state) => state?.N4N);
     const [value, setValue] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [showToast, setShowToast] = useState(true); // Prevent repetitive toasts
 
     const handleChange = (e) => {
         const inputVal = e.target.value.toLowerCase();
+        setValue(inputVal);
 
         if (inputVal.trim() === "") {
             setFilteredProducts([]);
+            setShowToast(true); // Reset toast state when input is cleared
             return;
         }
 
@@ -27,8 +30,11 @@ export default function Search() {
             item.price.toString().includes(inputVal)
         );
 
-        if (filtered.length === 0) {
+        if (filtered.length === 0 && showToast) {
             toast.info(`No products found for "${inputVal}"!`);
+            setShowToast(false); // Prevent repetitive toast messages
+        } else if (filtered.length > 0) {
+            setShowToast(true); // Reset toast state if results are found
         }
 
         setFilteredProducts(filtered);
@@ -37,7 +43,7 @@ export default function Search() {
     return (
         <>
             <ExtraSpace />
-            <ProductListBorder title={`result for ${value}`} />
+            <ProductListBorder title={`Results for ${value?value:"__"}`} />
             <section className="w-full min-h-screen flex justify-start items-center flex-col py-6">
                 {/* Search Input */}
                 <div className="mb-6 w-full flex justify-center items-center">
@@ -54,8 +60,10 @@ export default function Search() {
                 {filteredProducts.length > 0 ? (
                     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         {filteredProducts.map((item) => (
-                            <NavLink to={`/product/${createUrlSlug(item.title)}`}
-                                key={item.id}>
+                            <NavLink
+                                to={`/product/${createUrlSlug(item.title)}`}
+                                key={item.id}
+                            >
                                 <ProductCard item={item} />
                             </NavLink>
                         ))}

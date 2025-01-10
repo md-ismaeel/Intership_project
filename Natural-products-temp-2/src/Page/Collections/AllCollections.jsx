@@ -71,9 +71,9 @@ export default function AllCollections() {
 
     return (
         <div className="container mt-5 z-20 flex justify-center items-center">
-            <div className="w-[95%] grid grid-cols-1 lg:grid-cols-3 justify-center items-center">
+            <div className="w-[95%] grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-4">
                 {/* Category Filter */}
-                <div className="bg-white w-72 rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow duration-200">
+                <div className="bg-white w-full l:w-72 rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow duration-200">
                     <h2 className="uppercase text-sm font-medium mb-4 text-gray-700">
                         All Collections
                     </h2>
@@ -119,7 +119,7 @@ export default function AllCollections() {
                 </div>
 
                 {/* Stock Availability */}
-                <div className="bg-white w-72 rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow duration-200">
+                <div className="bg-white w-full lg:w-72 rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow duration-200">
                     <h2 className="uppercase text-sm font-medium mb-4 text-gray-700">
                         Availability
                     </h2>
@@ -174,7 +174,7 @@ export default function AllCollections() {
 
                 {/* Selected Filter Display */}
                 {(selectedCategory || availability) && (
-                    <div className="w-72 h-[6rem] p-4 bg-white rounded-lg shadow-sm border">
+                    <div className="w-full lg:w-72 h-[6rem] p-4 bg-white rounded-lg shadow-sm border">
                         <div className="flex justify-between items-center mb-2">
                             <h3 className="text-sm font-medium">Active Filters</h3>
                             <button

@@ -45,14 +45,14 @@ export default function Hero({ deviceType }) {
                 dotListClass="absolute bottom-5 right-5 flex justify-end items-center space-x-2"
                 itemClass="carousel-item-padding-40-px"
             >
-                <div className="h-[250px] md:h-[550px]">
+                <div className="h-[300px] md:h-[550px]">
                     <img
                         src={banner1}
                         alt="Banner 2"
                         className="w-full h-full bg-center rounded-md"
                     />
                 </div>
-                <div className="h-[250px] md:h-[550px]">
+                <div className="h-[300px] md:h-[550px]">
                     <img
                         src={banner2}
                         alt="Banner 2"

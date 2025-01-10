@@ -22,7 +22,7 @@ export default function SignIn() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setUserData((prev) => ({ ...prev, [name]: value }));
+    setUserData((prev) => ({ ...prev, [name]: value }))
   }
 
   function clearForm() {

@@ -20,7 +20,7 @@ export default function SweetDeals() {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 3,
+            items: 2,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -28,12 +28,10 @@ export default function SweetDeals() {
         },
     };
     return (
-        <section className="w-full mt-10">
-            <div className={`text-lg  flex justify-center md:justify-start md:ml-3 items-center mb-2`}>
-                <div className="flex justify-center items-center gap-1">
-                    <p className="bg-gray-500 w-3 h-7"></p>
-                    <h1 className="mt-4 uppercase text-sm tracking-widest">SWEET DEALS</h1>
-                </div>
+        <section className="w-full mt-10 mb-10">
+
+            <div className="w-full flex justify-start items-center mb-2">
+                <h1 className="mt-4 uppercase text-sm tracking-widest w-[45%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5">SWEET DEALS</h1>
             </div>
 
             {/* Products Carousel Container */}
