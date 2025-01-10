@@ -53,7 +53,7 @@ const ProductCard = ({ item }) => {
     };
 
     return (
-        <div className="relative w-[18rem] h-[23rem] bg-white rounded-lg shadow-lg overflow-hidden group">
+        <div className="relative w-[21rem] md:w-[18rem] h-[23rem] bg-white rounded-lg shadow-lg overflow-hidden group">
             {/* Favorite Button */}
             <button
                 onClick={handleFavorite}

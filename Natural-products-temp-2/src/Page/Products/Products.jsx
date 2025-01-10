@@ -44,7 +44,7 @@ export default function Products() {
       <section className="w-full min-h-screen flex flex-col justify-center items-start mt-2 mb-20">
         {/* Products Cards */}
         <div
-          className={`w-[100%%] px-5 flex flex-wrap justify-center items-center gap-5`}
+          className={`w-[100%] px-5 flex flex-wrap justify-center items-center gap-5`}
         >
           {data && data.length > 0
             ? data.map((item) => (

@@ -10,13 +10,13 @@ import SweetDeals from '../../Components/Deals/SweetDeals'
 
 export default function Home() {
   return (
-    <>
+    <main className='w-full overflow-x-hidden'>
       <Hero />
       {/* <Deals/> */}
       <FanFavorites />
       <SweetDeals />
       <EcoDrive />
       <Discover />
-    </>
+    </main>
   )
 }
