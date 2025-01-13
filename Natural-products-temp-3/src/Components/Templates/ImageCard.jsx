@@ -28,7 +28,7 @@ export default function ImageCard({ image, category, title, shopNow }) {
                 className={collectionsStyle.images}
                 loading="lazy"
             />
-            <h2 className={`${collectionsStyle.categoryType} ${!category ? "top-18 left-2 md:left-[40%] md:top-[50%] lg:left-[20%] lg:top-[60%] w-[90%] lg:w-[70%] capitalize text-3xl" : ""}`}>{title}</h2>
+            <h2 className={`${collectionsStyle.categoryType} ${!category ? "top-18 left-6 md:left-[10%] md:top-[50%] lg:left-[20%] lg:top-[60%] w-[90%] lg:w-[70%] capitalize text-3xl" : ""}`}>{title}</h2>
             {shopNow && <button className={`absolute bottom-10 left-16 md:left-[40%] lg:left-[38%] w-[150px] h-[40px] border-[1.5px] border-slate-400 uppercase px-2 py-1 rounded-sm`}>{shopNow}</button>}
         </div>
     );
