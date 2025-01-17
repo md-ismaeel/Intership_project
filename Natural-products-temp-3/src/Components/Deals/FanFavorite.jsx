@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FAVORITES } from '../../data';
 import { NavLink } from 'react-router-dom'
-import ProductCard from '../ProductCard/ProductCard'
+import ProductCard from '../../Components/ProductCard/ProductCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { createUrlSlug } from "../../Constant/Constant"
@@ -31,7 +31,7 @@ export default function FanFavorites() {
         <section className="w-full mt-10">
 
             <div className="w-full flex justify-start items-center mb-2">
-                <h1 className="mt-4 uppercase text-sm tracking-widest w-[45%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5">FAN FAVORITES</h1>
+                <h1 className="mt-4 uppercase text-sm tracking-widest w-[53%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Trending Products</h1>
             </div>
 
 

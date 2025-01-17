@@ -2,6 +2,7 @@ export const navLinks = [
     { id: 1, path: "/", Label: "HOME" },
     { id: 2, path: "/products", Label: "SHOP" },
     { id: 3, path: "/about", Label: "ABOUT" },
+    { id: 5, path: "/contact", Label: "CONTACT" },
 ];
 
 export const createUrlSlug = (title) => {
@@ -13,10 +14,10 @@ export const createUrlSlug = (title) => {
 
 export const isActiveClass = ({
     isActive,
-}) => `relative text-[12px] cursor-pointer transition-all duration-300 ease-in-out text-gray-900
-  ${isActive
-        ? "text-orange-400 before:absolute before:left-[-8px] before:top-1/2 before:w-2 before:h-2 before:transform before:-translate-y-1/2 before:opacity-100 before:transition-all before:duration-300 after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out"
-        : "text-gray-600 before:absolute before:left-[-8px] before:top-1/2 before:w-2 before:h-2 before:transform before:-translate-y-1/2 before:opacity-0 before:transition-all before:duration-300 hover:before:opacity-100 after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-orange-500 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full hover:scale-105 active:scale-95"
+}) =>
+    `relative text-[14px] font-semibold transition-all duration-300 ease-in-out ${isActive
+        ? "text-green-800 underline underline-offset-4 decoration-green-600"
+        : "text-gray-800 hover:text-green-600"
     }`;
 
 export const collectionsStyle = {

@@ -20,7 +20,7 @@ export default function ScrollOnTop() {
 
     return (
         <div
-            className="z-50 fixed bottom-4 right-4 p-3 bg-gray-500 text-white rounded-full shadow-lg cursor-pointer hover:bg-gray-700 transition-all"
+            className="z-50 fixed bottom-4 right-4 p-3 bg-green-300 text-white rounded-full shadow-lg cursor-pointer hover:bg-green-700 transition-all"
             onClick={handleScrollToTop}
         >
             <FaArrowUp />

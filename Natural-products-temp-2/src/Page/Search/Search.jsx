@@ -43,7 +43,7 @@ export default function Search() {
     return (
         <>
             <ExtraSpace />
-            <ProductListBorder title={`Results for ${value?value:"__"}`} />
+            <ProductListBorder title={`Results for ${value ? value : "__"}`} />
             <section className="w-full min-h-screen flex justify-start items-center flex-col py-6">
                 {/* Search Input */}
                 <div className="mb-6 w-full flex justify-center items-center">

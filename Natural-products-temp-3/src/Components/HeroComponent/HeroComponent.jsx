@@ -2,11 +2,11 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import banner1 from "../../assets/Banners/banner-2.jpg";
-// import banner3 from "../../assets/Banners/banner-3.jpg"
-import banner2 from "../../assets/Banners/image.png";
+import banner1 from "../../assets/banner/img1.jpg";
+import banner2 from "../../assets/banner/img2.jpg";
+import banner3 from "../../assets/banner/img3.jpg";
 
-export default function Hero({ deviceType }) {
+export default function HeroComponent({ deviceType }) {
     const responsive = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
@@ -27,7 +27,7 @@ export default function Hero({ deviceType }) {
     };
 
     return (
-        <header className="w-[100%] mx-auto z-0">
+        <div className="relative w-full mt-2">
             <Carousel
                 swipeable={true}
                 draggable={true}
@@ -40,34 +40,34 @@ export default function Hero({ deviceType }) {
                 keyBoardControl={true}
                 customTransition="all .5"
                 transitionDuration={500}
-                containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-                dotListClass="absolute bottom-5 right-5 flex justify-end items-center space-x-2"
-                itemClass="carousel-item-padding-40-px"
+                containerClass="relative z-0"
+                removeArrowOnDeviceType={["mobile"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="px-0"
             >
-                <div className="h-[300px] md:h-[550px]">
-                    <img
-                        src={banner1}
-                        alt="Banner 2"
-                        className="w-full h-full bg-center rounded-md"
-                    />
-                </div>
-                <div className="h-[300px] md:h-[550px]">
+                <div className="relative h-[300px] md:h-[500px]">
                     <img
                         src={banner2}
                         alt="Banner 2"
-                        className="w-full h-full bg-center rounded-md"
+                        className="absolute inset-0 w-full h-full bg-center rounded-md"
                     />
                 </div>
-                {/* <div className="h-[250px] md:h-[550px]">
+                <div className="relative h-[300px] md:h-[500px]">
                     <img
                         src={banner3}
-                        alt="Banner 3"
-                        className="w-full h-full bg-center rounded-md"
+                        alt="Banner 2"
+                        className="absolute inset-0 w-full h-full bg-center rounded-md"
                     />
-                </div> */}
-
+                </div>
+                <div className="relative h-[300px] md:h-[500px]">
+                    <img
+                        src={banner1}
+                        alt="Banner 3"
+                        className="absolute inset-0 w-full h-full bg-center rounded-md"
+                    />
+                </div>
             </Carousel>
-        </header>
+
+        </div>
     );
 }

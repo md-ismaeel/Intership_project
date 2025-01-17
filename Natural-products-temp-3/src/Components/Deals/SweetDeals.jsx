@@ -31,7 +31,7 @@ export default function SweetDeals() {
         <section className="w-full mt-10 mb-10">
 
             <div className="w-full flex justify-start items-center mb-2">
-                <h1 className="mt-4 uppercase text-sm tracking-widest w-[45%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5">SWEET DEALS</h1>
+                <h1 className="mt-4 uppercase text-sm tracking-widest w-[37%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Best Seller</h1>
             </div>
 
             {/* Products Carousel Container */}

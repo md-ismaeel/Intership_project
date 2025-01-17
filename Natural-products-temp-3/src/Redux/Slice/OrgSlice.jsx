@@ -1,23 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { PRODUCTS } from "../../data";
+import { PRODUCTS } from "../../data";
 
 const initialState = {
-    userAuthenticated: false,
-    data: [],
-    originalData: [],
-    productDetails: null,
-    selectedCategory: null,
-    isOpenCart: false,
+    isAuthenticated: false,
+    data: PRODUCTS,
+    originalData: PRODUCTS,
     cart: [],
     wishList: [],
+    isOpenCart: false,
+    selectedCategory: [],
+    priceRange: [0, 1000], // Default price range
+    stockAvailability: "", // Can be 'inStock', 'outOfStock', or ''
+    productDetails: null,
+    filteredProd: []
 };
 
-const N4NSlice = createSlice({
-    name: "N4N",
+const OrgSlice = createSlice({
+    name: "Org",
     initialState,
     reducers: {
         setUserAuthenticated: (state, action) => {
-            state.userAuthenticated = action.payload;
+            state.isAuthenticated = action.payload;
         },
         setData: (state, action) => {
             state.data = action.payload;
@@ -25,12 +28,11 @@ const N4NSlice = createSlice({
         resetData: (state) => {
             state.data = state.originalData;
         },
-        setSelectedCategory: (state, action) => {
-            // Fixed parameter name
-            state.selectedCategory = action.payload;
-        },
         setProductDetails: (state, action) => {
             state.productDetails = action.payload;
+        },
+        setSelectedCategory: (state, action) => {
+            state.selectedCategory = action.payload
         },
         addToCart: (state, action) => {
             const product = action.payload;
@@ -58,19 +60,48 @@ const N4NSlice = createSlice({
         },
         toggleWishList: (state, action) => {
             const product = action.payload;
-            const existingWishList = state.wishList.find((item) => item.id === product.id);
+            const existingWishList = state.wishList.find(
+                (item) => item.id === product.id
+            );
             if (existingWishList) {
-                state.wishList = state.wishList.filter((item) => item.id !== product.id);
+                state.wishList = state.wishList.filter(
+                    (item) => item.id !== product.id
+                );
             } else {
                 state.wishList.push(product);
             }
         },
         setIsOpenCart: (state, action) => {
-            state.isOpenCart = action.payload
+            state.isOpenCart = action.payload;
+        },
+        setPriceRange: (state, action) => {
+            state.priceRange = action.payload;
+        },
+        setStockAvailability: (state, action) => {
+            state.stockAvailability = action.payload;
+        },
+        setFilteredProd: (state, action) => {
+            state.filteredProd = action.payload
         }
     },
 });
 
-export const { setUserAuthenticated, setData, resetData, setSelectedCategory, addToCart, removeFromCart, updateCart, clearCart, setWishList, setProductDetails, toggleWishList, setIsOpenCart } = N4NSlice.actions;
+export const {
+    setUserAuthenticated,
+    setData,
+    resetData,
+    setSelectedCategory,
+    addToCart,
+    removeFromCart,
+    updateCart,
+    clearCart,
+    setWishList,
+    setProductDetails,
+    toggleWishList,
+    setIsOpenCart,
+    setPriceRange,
+    setStockAvailability,
+    setFilteredProd
+} = OrgSlice.actions;
 
-export default N4NSlice.reducer;
+export default OrgSlice.reducer;
