@@ -26,26 +26,31 @@ export default function Category() {
     }
 
     return (
-        <div className="w-full min-h-[300px] flex flex-col md:flex-row items-center justify-between px-10 border-b-2 bg-green-50">
-            {categories.map((category, index) => {
-                // Get the icon URL for the category, or default to a placeholder image if not found
-                const iconUrl = categoryIcons[category.toLowerCase()] || "";
+        <>
+            <h1 className="mt-7 mb-2 uppercase text-sm tracking-widest w-[39%] md:w-full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Top <span className='text-yellow-500 ml-2 md:ml-0'>Category</span> </h1>
+            <section className="w-full flex justify-center items-center px-5">
+                <div className="w-full min-h-[300px] flex flex-col md:flex-row items-center justify-between px-10 border-b-2 bg-green-50 rounded-md">
+                    {categories.map((category, index) => {
+                        // Get the icon URL for the category, or default to a placeholder image if not found
+                        const iconUrl = categoryIcons[category.toLowerCase()] || "";
 
-                return (
-                    <li
-                        key={index}
-                        onClick={() => handleFilterByCategory(category)}
-                        className="list-none flex flex-col items-center gap-2 p-4 rounded-lg cursor-pointer transition-colors"
-                    >
-                        <img
-                            src={iconUrl}
-                            alt={category}
-                            className="w-32 h-32 bg-center rounded-full transition-all hover:scale-110 duration-500"
-                        />
-                        <span className="text-sm font-medium uppercase tracking-widest">{category}</span>
-                    </li>
-                );
-            })}
-        </div>
+                        return (
+                            <li
+                                key={index}
+                                onClick={() => handleFilterByCategory(category)}
+                                className="list-none flex flex-col items-center gap-2 p-4 rounded-lg cursor-pointer transition-colors"
+                            >
+                                <img
+                                    src={iconUrl}
+                                    alt={category}
+                                    className="w-32 h-32 bg-center rounded-full transition-all hover:scale-110 duration-500"
+                                />
+                                <span className="text-sm font-medium uppercase tracking-widest">{category}</span>
+                            </li>
+                        );
+                    })}
+                </div>
+            </section>
+        </>
     );
 }

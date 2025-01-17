@@ -1773,7 +1773,7 @@ export const PRODUCTS = [
     },
 ];
 
-export const FAVORITES = [
+export const HOT_SELLING = [
     {
         id: 91,
         title: "Essence Mascara Lash Princess",
@@ -2321,7 +2321,7 @@ export const FAVORITES = [
     },
 ];
 
-export const SWEETS = [
+export const TOP_DEALS = [
     {
         id: 81,
         title: "Red Nail Polish",
@@ -2688,3 +2688,352 @@ export const SWEETS = [
             "https://cdn.dummyjson.com/products/images/groceries/Ice%20Cream/thumbnail.png",
     },
 ];
+
+export const BEST_DEALS = [
+    {
+        id: 201,
+        title: "Cucumber",
+        description:
+            "Crisp and hydrating cucumbers, ideal for salads, snacks, or as a refreshing side.",
+        category: "groceries",
+        price: 1.49,
+        discountPercentage: 11.44,
+        rating: 4.71,
+        stock: 22,
+        tags: ["vegetables"],
+        sku: "6KGF2K6Z",
+        weight: 9,
+        dimensions: {
+            width: 11.04,
+            height: 20.5,
+            depth: 8.18,
+        },
+        warrantyInformation: "5 year warranty",
+        shippingInformation: "Ships overnight",
+        availabilityStatus: "In Stock",
+        reviews: [
+            {
+                rating: 4,
+                comment: "Very satisfied!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Elijah Hill",
+                reviewerEmail: "elijah.hill@x.dummyjson.com",
+            },
+            {
+                rating: 5,
+                comment: "Fast shipping!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Liam Garcia",
+                reviewerEmail: "liam.garcia@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Excellent quality!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Ella Cook",
+                reviewerEmail: "ella.cook@x.dummyjson.com",
+            },
+        ],
+        returnPolicy: "30 days return policy",
+        maximumOrderQuantity: 7,
+        meta: {
+            createdAt: "2024-05-23T08:56:21.620Z",
+            updatedAt: "2024-05-23T08:56:21.620Z",
+            barcode: "2597004869708",
+            qrCode: "https://assets.dummyjson.com/public/qr-code.png",
+        },
+        images: [
+            "https://cdn.dummyjson.com/products/images/groceries/Cucumber/1.png",
+        ],
+        thumbnail:
+            "https://cdn.dummyjson.com/products/images/groceries/Cucumber/thumbnail.png",
+    },
+    {
+        id: 202,
+        title: "Dog Food",
+        description:
+            "Specially formulated dog food designed to provide essential nutrients for your canine companion.",
+        category: "groceries",
+        price: 10.99,
+        discountPercentage: 18.15,
+        rating: 2.74,
+        stock: 40,
+        tags: ["pet supplies", "dog food"],
+        sku: "A6QRCH37",
+        weight: 2,
+        dimensions: {
+            width: 29.39,
+            height: 29.77,
+            depth: 20.54,
+        },
+        warrantyInformation: "1 year warranty",
+        shippingInformation: "Ships in 1 month",
+        availabilityStatus: "In Stock",
+        reviews: [
+            {
+                rating: 5,
+                comment: "Highly impressed!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Leo Rivera",
+                reviewerEmail: "leo.rivera@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Highly recommended!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Alexander Jones",
+                reviewerEmail: "alexander.jones@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Would buy again!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Addison Wright",
+                reviewerEmail: "addison.wright@x.dummyjson.com",
+            },
+        ],
+        returnPolicy: "90 days return policy",
+        maximumOrderQuantity: 29,
+        meta: {
+            createdAt: "2024-05-23T08:56:21.620Z",
+            updatedAt: "2024-05-23T08:56:21.620Z",
+            barcode: "7957222289508",
+            qrCode: "https://assets.dummyjson.com/public/qr-code.png",
+        },
+        images: [
+            "https://cdn.dummyjson.com/products/images/groceries/Dog%20Food/1.png",
+        ],
+        thumbnail:
+            "https://cdn.dummyjson.com/products/images/groceries/Dog%20Food/thumbnail.png",
+    },
+    {
+        id: 203,
+        title: "Eggs",
+        description:
+            "Fresh eggs, a versatile ingredient for baking, cooking, or breakfast.",
+        category: "groceries",
+        price: 2.99,
+        discountPercentage: 5.8,
+        rating: 4.46,
+        stock: 10,
+        tags: ["dairy"],
+        sku: "YA617RI7",
+        weight: 4,
+        dimensions: {
+            width: 12.3,
+            height: 10.99,
+            depth: 15.53,
+        },
+        warrantyInformation: "3 year warranty",
+        shippingInformation: "Ships overnight",
+        availabilityStatus: "In Stock",
+        reviews: [
+            {
+                rating: 2,
+                comment: "Very unhappy with my purchase!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Mateo Perez",
+                reviewerEmail: "mateo.perez@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Very happy with my purchase!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Cameron Perez",
+                reviewerEmail: "cameron.perez@x.dummyjson.com",
+            },
+            {
+                rating: 5,
+                comment: "Very happy with my purchase!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Aurora Barnes",
+                reviewerEmail: "aurora.barnes@x.dummyjson.com",
+            },
+        ],
+        returnPolicy: "30 days return policy",
+        maximumOrderQuantity: 43,
+        meta: {
+            createdAt: "2024-05-23T08:56:21.620Z",
+            updatedAt: "2024-05-23T08:56:21.620Z",
+            barcode: "7095702028776",
+            qrCode: "https://assets.dummyjson.com/public/qr-code.png",
+        },
+        images: ["https://cdn.dummyjson.com/products/images/groceries/Eggs/1.png"],
+        thumbnail:
+            "https://cdn.dummyjson.com/products/images/groceries/Eggs/thumbnail.png",
+    },
+    {
+        id: 204,
+        title: "Fish Steak",
+        description:
+            "Quality fish steak, suitable for grilling, baking, or pan-searing.",
+        category: "groceries",
+        price: 14.99,
+        discountPercentage: 7,
+        rating: 4.83,
+        stock: 99,
+        tags: ["seafood"],
+        sku: "XNIH1MTA",
+        weight: 8,
+        dimensions: {
+            width: 20.14,
+            height: 8.4,
+            depth: 10.01,
+        },
+        warrantyInformation: "1 year warranty",
+        shippingInformation: "Ships in 1 month",
+        availabilityStatus: "In Stock",
+        reviews: [
+            {
+                rating: 5,
+                comment: "Great value for money!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Michael Johnson",
+                reviewerEmail: "michael.johnson@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Would buy again!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Julian Newton",
+                reviewerEmail: "julian.newton@x.dummyjson.com",
+            },
+            {
+                rating: 5,
+                comment: "Excellent quality!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Lila Hudson",
+                reviewerEmail: "lila.hudson@x.dummyjson.com",
+            },
+        ],
+        returnPolicy: "30 days return policy",
+        maximumOrderQuantity: 49,
+        meta: {
+            createdAt: "2024-05-23T08:56:21.620Z",
+            updatedAt: "2024-05-23T08:56:21.620Z",
+            barcode: "4250692197342",
+            qrCode: "https://assets.dummyjson.com/public/qr-code.png",
+        },
+        images: [
+            "https://cdn.dummyjson.com/products/images/groceries/Fish%20Steak/1.png",
+        ],
+        thumbnail:
+            "https://cdn.dummyjson.com/products/images/groceries/Fish%20Steak/thumbnail.png",
+    },
+    {
+        id: 205,
+        title: "Green Bell Pepper",
+        description:
+            "Fresh and vibrant green bell pepper, perfect for adding color and flavor to your dishes.",
+        category: "groceries",
+        price: 1.29,
+        discountPercentage: 15.5,
+        rating: 4.28,
+        stock: 89,
+        tags: ["vegetables"],
+        sku: "HU7S7VQ0",
+        weight: 7,
+        dimensions: {
+            width: 7.32,
+            height: 14.31,
+            depth: 21.38,
+        },
+        warrantyInformation: "5 year warranty",
+        shippingInformation: "Ships overnight",
+        availabilityStatus: "In Stock",
+        reviews: [
+            {
+                rating: 4,
+                comment: "Excellent quality!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Maya Reed",
+                reviewerEmail: "maya.reed@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Would buy again!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Madison Collins",
+                reviewerEmail: "madison.collins@x.dummyjson.com",
+            },
+            {
+                rating: 5,
+                comment: "Would buy again!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Ethan Thompson",
+                reviewerEmail: "ethan.thompson@x.dummyjson.com",
+            },
+        ],
+        returnPolicy: "30 days return policy",
+        maximumOrderQuantity: 1,
+        meta: {
+            createdAt: "2024-05-23T08:56:21.620Z",
+            updatedAt: "2024-05-23T08:56:21.620Z",
+            barcode: "7583442707568",
+            qrCode: "https://assets.dummyjson.com/public/qr-code.png",
+        },
+        images: [
+            "https://cdn.dummyjson.com/products/images/groceries/Green%20Bell%20Pepper/1.png",
+        ],
+        thumbnail:
+            "https://cdn.dummyjson.com/products/images/groceries/Green%20Bell%20Pepper/thumbnail.png",
+    },
+    {
+        id: 206,
+        title: "Green Chili Pepper",
+        description:
+            "Spicy green chili pepper, ideal for adding heat to your favorite recipes.",
+        category: "groceries",
+        price: 0.99,
+        discountPercentage: 18.51,
+        rating: 4.43,
+        stock: 8,
+        tags: ["vegetables"],
+        sku: "Y4RM3JCB",
+        weight: 2,
+        dimensions: {
+            width: 18.67,
+            height: 21.17,
+            depth: 25.26,
+        },
+        warrantyInformation: "No warranty",
+        shippingInformation: "Ships in 1-2 business days",
+        availabilityStatus: "In Stock",
+        reviews: [
+            {
+                rating: 2,
+                comment: "Disappointing product!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Mateo Bennett",
+                reviewerEmail: "mateo.bennett@x.dummyjson.com",
+            },
+            {
+                rating: 5,
+                comment: "Very pleased!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Natalie Price",
+                reviewerEmail: "natalie.price@x.dummyjson.com",
+            },
+            {
+                rating: 4,
+                comment: "Very satisfied!",
+                date: "2024-05-23T08:56:21.620Z",
+                reviewerName: "Avery Barnes",
+                reviewerEmail: "avery.barnes@x.dummyjson.com",
+            },
+        ],
+        returnPolicy: "30 days return policy",
+        maximumOrderQuantity: 43,
+        meta: {
+            createdAt: "2024-05-23T08:56:21.620Z",
+            updatedAt: "2024-05-23T08:56:21.620Z",
+            barcode: "8400326844874",
+            qrCode: "https://assets.dummyjson.com/public/qr-code.png",
+        },
+        images: [
+            "https://cdn.dummyjson.com/products/images/groceries/Green%20Chili%20Pepper/1.png",
+        ],
+        thumbnail:
+            "https://cdn.dummyjson.com/products/images/groceries/Green%20Chili%20Pepper/thumbnail.png",
+    },
+]

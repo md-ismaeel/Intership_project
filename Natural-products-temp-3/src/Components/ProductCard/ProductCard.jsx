@@ -47,7 +47,7 @@ const ProductCard = ({ item }) => {
     };
 
     return (
-        <div className="relative w-[21rem] md:w-[18rem] h-[26.5rem] bg-white rounded-lg shadow-lg overflow-hidden group">
+        <div className="relative w-[21rem] md:w-[17rem] h-[21rem] bg-white rounded-md shadow-lg overflow-hidden group">
             {/* Favorite Button */}
             <button
                 onClick={handleFavorite}
@@ -57,14 +57,14 @@ const ProductCard = ({ item }) => {
             </button>
 
             {/* Product Image with Hover Overlay */}
-            <div className="relative h-52 overflow-hidden bg-gray-100">
+            <div className="relative h-[8rem] overflow-hidden bg-gray-100">
                 <img
                     src={images[0]}
                     alt={title}
                     className="w-full h-full bg-center transition-transform duration-500 group-hover:scale-110"
                 />
                 {sale && (
-                    <div className="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold uppercase px-3 py-1 rounded-br-md">
+                    <div className="absolute top-0 left-0 bg-orange-400 text-white text-xs font-bold uppercase px-3 py-1 rounded-br-md">
                         {sale}
                     </div>
                 )}
@@ -106,7 +106,7 @@ const ProductCard = ({ item }) => {
                 <button
                     onClick={handleAddToCart}
                     disabled={stock === 0}
-                    className={`w-full mt-4 py-3 rounded-lg flex items-center justify-center gap-2 font-medium text-sm transition-colors duration-300 ${stock === 0
+                    className={`w-full mt-4 py-2 rounded-lg flex items-center justify-center gap-2 font-medium text-sm transition-colors duration-300 ${stock === 0
                         ? "cursor-not-allowed bg-gray-300 text-gray-500"
                         : "bg-green-600 text-white hover:bg-green-700"
                         }`}
@@ -118,6 +118,7 @@ const ProductCard = ({ item }) => {
                     )}
                     <span className="uppercase text-sm">{isAddedToCart ? "Adding..." : "Add to Cart"}</span>
                 </button>
+
             </div>
         </div>
     );

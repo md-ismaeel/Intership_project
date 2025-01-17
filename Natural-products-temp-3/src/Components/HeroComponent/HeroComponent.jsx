@@ -27,7 +27,7 @@ export default function HeroComponent({ deviceType }) {
     };
 
     return (
-        <div className="relative w-full mt-2">
+        <div className="relative w-full mt-2 px-5">
             <Carousel
                 swipeable={true}
                 draggable={true}

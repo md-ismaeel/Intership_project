@@ -3,8 +3,11 @@ import HeroComponent from "../../Components/HeroComponent/HeroComponent";
 import ExtraSpace from "../../Components/ExtraSpace/ExtraSpace";
 import Cart from "../../Components/Cart/Cart";
 import Category from "../../Components/Category/Category";
-import FanFavorites from "../../Components/Deals/FanFavorite";
-import SweetDeals from "../../Components/Deals/SweetDeals";
+import HotSelling from "../../Components/Deals/HotSelling";
+import FocusOn from "../../Components/FocusOn/FocusOn";
+import TopSelling from "../../Components/Deals/TopDeals";
+import Shop from "../../Components/Shop/Shop";
+import BestDeals from "../../Components/Deals/BestDeals"
 
 export default function Home() {
     return (
@@ -12,8 +15,11 @@ export default function Home() {
             <ExtraSpace />
             <HeroComponent />
             <Category />
-            <FanFavorites />
-            <SweetDeals />
+            <HotSelling />
+            <FocusOn />
+            <TopSelling />
+            <Shop />
+            <BestDeals />
         </div>
     );
 }

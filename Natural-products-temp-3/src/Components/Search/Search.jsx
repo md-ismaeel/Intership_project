@@ -12,23 +12,25 @@ export default function Search() {
         <>
             <ExtraSpace />
             <section className="w-full min-h-screen flex justify-start items-center flex-col py-6">
-                {filteredProd.length > 0 && <h2 className="text-sm font-semibold uppercase tracking-wider mb-5 md:px-10">Search Result</h2>}
+                {filteredProd.length > 0 && <h1 className="mt-7 mb-2 uppercase text-lg tracking-widest w-[10%]  md:w-full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold px-3">Top <span className='text-yellow-500 ml-2 md:ml-0'>Category</span> </h1>}
 
                 {/* Search Results */}
-                {filteredProd && filteredProd.length > 0 ? (
-                    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {data.map((item) => (
+                <ul className="flex flex-wrap items-center justify-center gap-10">
+                    {filteredProd && filteredProd.length > 0 ? (
+
+                        data.map((item) => (
                             <NavLink
                                 to={`/product/${createUrlSlug(item.title)}`}
                                 key={item.id}
                             >
                                 <ProductCard item={item} />
                             </NavLink>
-                        ))}
-                    </ul>
-                ) : (
-                    <div className="text-center text-gray-500 test-green-600 font-semibold  tex-2xl">No Search products found!</div>
-                )}
+                        ))
+
+                    ) : (
+                        <div className="text-center text-gray-500 test-green-600 font-semibold  tex-2xl">No Search products found!</div>
+                    )}
+                </ul>
             </section>
         </>
     );

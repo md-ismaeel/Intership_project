@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { FAVORITES } from '../../data';
+import { HOT_SELLING } from '../../data';
 import { NavLink } from 'react-router-dom'
-import ProductCard from '../../Components/ProductCard/ProductCard'
+import ProductCard from '../ProductCard/ProductCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { createUrlSlug } from "../../Constant/Constant"
 
-export default function FanFavorites() {
-    const [bestSeller, setBestSeller] = useState(FAVORITES);
+export default function HotSelling() {
+    const [hot, setHot] = useState(HOT_SELLING);
 
     const responsive = {
         superLargeDesktop: {
@@ -28,12 +28,11 @@ export default function FanFavorites() {
         },
     };
     return (
-        <section className="w-full mt-10">
-
+        <section className="w-full mt-10 mb-10">
             <div className="w-full flex justify-start items-center mb-2">
-                <h1 className="mt-4 uppercase text-sm tracking-widest w-[53%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Trending Products</h1>
-            </div>
+                <h1 className="mt-4 uppercase text-sm tracking-widest w-[37%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Hot <span className='text-yellow-500 ml-2 md:ml-0'>Selling</span></h1>
 
+            </div>
 
             {/* Products Carousel Container */}
             <div className="relative w-full z-20">
@@ -51,12 +50,12 @@ export default function FanFavorites() {
                     transitionDuration={500}
                     containerClass="carousel-container"
                     dotListClass="custom-dot-list-style"
-                    itemClass="px-2 flex justify-center item-center"
+                    itemClass="px-2 flex justify-center"
                     className="w-full"
 
                 >
-                    {bestSeller && bestSeller.length > 0 ? (
-                        bestSeller.map((prod) => (
+                    {hot && hot.length > 0 ? (
+                        hot.map((prod) => (
                             <div key={prod.id} className="p-2">
                                 <NavLink to={`/product/${createUrlSlug(prod.title)}`}>
                                     <ProductCard item={prod} />
