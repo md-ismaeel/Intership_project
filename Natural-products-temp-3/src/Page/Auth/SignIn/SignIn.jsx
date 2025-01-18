@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
-import { Mail, Lock, Loader2, Eye, EyeOff } from 'lucide-react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { toast } from 'material-react-toastify';
-import ExtraSpace from '../../../Components/ExtraSpace/ExtraSpace';
+import React, { useState } from "react";
+import { Mail, Lock, Loader2, Eye, EyeOff } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "material-react-toastify";
+import ExtraSpace from "../../../Components/ExtraSpace/ExtraSpace";
+import { useDispatch } from "react-redux";
+import { setUserAuthenticated } from "../../../Redux/Slice/OrgSlice";
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const navigator = useNavigate()
+  const navigator = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Basic validation
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       return;
     }
 
-    if (!email.includes('@')) {
-      setError('Please enter a valid email address');
+    if (!email.includes("@")) {
+      setError("Please enter a valid email address");
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError("Password must be at least 6 characters long");
       return;
     }
 
     // Simulate API call
     setIsLoading(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-      // Here you would typically make your actual authentication API call
-      console.log('Sign in attempted with:', { email, password });
-      toast.success("Login successfully")
-      setEmail("")
-      setPassword("")
+      setTimeout(() => dispatch(setUserAuthenticated(true)), 500);
+      setEmail("");
+      setPassword("");
+      toast.success("Login Successfully!");
+      navigator("/");
     } catch (err) {
-      setError('An error occurred during sign in');
-      toast.err('An error occurred during sign in')
+      setError("An error occurred during sign in");
+      toast.error("An error occurred during sign in");
+      return;
     } finally {
       setIsLoading(false);
-      navigator("/")
     }
   };
 
@@ -74,7 +76,10 @@ export default function SignIn() {
             )}
 
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <div className="relative">
@@ -91,7 +96,10 @@ export default function SignIn() {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="relative">
@@ -128,18 +136,23 @@ export default function SignIn() {
                   Signing in...
                 </>
               ) : (
-                'Sign in'
+                "Sign in"
               )}
             </button>
           </form>
 
           <div className="mt-6 space-y-4">
             <div className="text-sm text-center text-gray-500">
-              <NavLink to="forget-password" className="hover:text-gray-900">Forgot password?</NavLink>
+              <NavLink to="forget-password" className="hover:text-gray-900">
+                Forgot password?
+              </NavLink>
             </div>
             <div className="text-sm text-center text-gray-500">
-              Don't have an account?{' '}
-              <NavLink to="/signup" className="text-green-600 hover:text-green-800">
+              Don't have an account?{" "}
+              <NavLink
+                to="/signup"
+                className="text-green-600 hover:text-green-800"
+              >
                 Sign up
               </NavLink>
             </div>

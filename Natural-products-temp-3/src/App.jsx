@@ -11,6 +11,8 @@ import SignUp from "./Page/Auth/SignUp/SignUp";
 import ProductDetails from "./Page/ProductDetails/ProductDetails";
 import About from "./Page/About/About";
 import Contact from "./Page/Contact/Contact";
+import Checkout from "./Page/CheckOut/CheckOut";
+import Profile from "./Components/Profile/Profile"
 
 function App() {
   const routes = createBrowserRouter([
@@ -24,10 +26,12 @@ function App() {
         { path: "/products", element: <Products /> },
         { path: "/product/:title", element: <ProductDetails /> },
         { path: "/about", element: <About /> },
-        { path: "/contact", element: <Contact/> },
+        { path: "/contact", element: <Contact /> },
         { path: "/search", element: <Search /> },
         { path: "/signin", element: <SignIn /> },
         { path: "/signup", element: <SignUp /> },
+        { path: "/checkout", element: <Checkout /> },
+        { path: "/profile", element: <Profile /> },
       ],
     },
   ]);

@@ -1,5 +1,5 @@
 import { FaInstagram, FaTwitter } from "react-icons/fa";
-import ExtraSpace from "../ExtraSpace";
+import ExtraSpace from "../../Components/ExtraSpace/ExtraSpace";
 
 const Profile = () => {
   const userData = {

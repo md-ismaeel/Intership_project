@@ -27,7 +27,7 @@ export default function Category() {
 
     return (
         <>
-            <h1 className="mt-7 mb-2 uppercase text-sm tracking-widest w-[39%] md:w-full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Top <span className='text-yellow-500 ml-2 md:ml-0'>Category</span> </h1>
+            <h1 className="mt-10 mb-2 uppercase text-sm tracking-widest ml-5 font-semibold">Top <span className='text-yellow-500 ml-2 md:ml-0'>Category</span> </h1>
             <section className="w-full flex justify-center items-center px-5">
                 <div className="w-full min-h-[300px] flex flex-col md:flex-row items-center justify-between px-10 border-b-2 bg-green-50 rounded-md">
                     {categories.map((category, index) => {

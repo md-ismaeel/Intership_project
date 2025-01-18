@@ -2,21 +2,39 @@ import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserAuthenticated } from "../../Redux/Slice/OrgSlice";
+import { setUserAuthenticated, setIsOpenCart } from "../../Redux/Slice/OrgSlice";
 import { isActiveClass, navLinks } from "../../Constant/Constant";
 import { IoMdCart } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
-import { AiOutlineHeart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { setIsOpenCart } from "../../Redux/Slice/OrgSlice"
+import { AiOutlineHeart } from "react-icons/ai";
 
 const MobileNav = ({ toggleMenu, isMenuOpen }) => {
   const { cart, isAuthenticated, wishList, isOpenCart } = useSelector((state) => state?.Org);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Toggle the cart open/close state
   function handleOpenCart() {
     dispatch(setIsOpenCart(!isOpenCart));
+    toggleMenu()
+  }
+
+  // General navigation handler
+  function handleNavigation(path) {
+    toggleMenu(); // Close the menu
+    navigate(path); // Navigate to the specified path
+  }
+
+  // Handle login/logout logic
+  function handleLoginLogoutNavigation(path, isLoggingOut = false) {
+    if (isLoggingOut) {
+      // Dispatch logout action and navigate to home
+      dispatch(setUserAuthenticated(false));
+      navigate(path);
+    } else {
+      handleNavigation(path); // Navigate to login or signup
+    }
   }
 
   return (
@@ -35,7 +53,7 @@ const MobileNav = ({ toggleMenu, isMenuOpen }) => {
           }`}
       >
         <div className="flex flex-col h-full">
-          {/* Header with Close, Cart, and Profile */}
+          {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <button
               onClick={toggleMenu}
@@ -45,67 +63,50 @@ const MobileNav = ({ toggleMenu, isMenuOpen }) => {
             </button>
 
             <div className="flex items-center gap-2">
-              {/* wishlist */}
-              <div
-                onClick={() => {
-                  navigator("/wishList")
-                  toggleMenu()
-                }}
-                className="relative rounded-full p-2 bg-green-200 cursor-pointer hover:bg-green-300 transition-colors group focus-within:ring-2 focus-within:ring-green-500"
-              >
-                <button
-                  aria-label="View wishlist"
-                  className="text-[20px] sm:text-[25px] w-full h-full text-green-800 flex justify-center items-center focus:outline-none"
+              {/* Wishlist */}
+              {isAuthenticated && (
+                <div
+                  onClick={() => handleNavigation("/wishList")}
+                  className="relative rounded-full p-2 bg-green-200 cursor-pointer hover:bg-green-300 transition-colors group focus-within:ring-2 focus-within:ring-green-500"
                 >
-                  <AiOutlineHeart className="" />
-                </button>
-                {Array.isArray(wishList) && wishList.length > 0 && (
-                  <span
-                    className="absolute bg-red-500 top-[-5px] right-[-6px] h-5 w-5 sm:h-6 sm:w-6 rounded-full text-xs sm:text-sm text-white flex justify-center items-center"
-                  >
-                    {wishList.length}
-                  </span>
-                )}
-              </div>
+                  <AiOutlineHeart className="text-[20px] sm:text-[25px] text-green-800" />
+                  {Array.isArray(wishList) && wishList.length > 0 && (
+                    <span
+                      className="absolute bg-red-500 top-[-5px] right-[-6px] h-5 w-5 sm:h-6 sm:w-6 rounded-full text-xs sm:text-[12px] text-white flex justify-center items-center"
+                    >
+                      {wishList.length}
+                    </span>
+                  )}
+                </div>
+              )}
 
-              {/* User Profile Dropdown */}
+              {/* User Profile */}
               <div className="relative rounded-full bg-green-200 cursor-pointer hover:bg-green-300 transition-colors group focus-within:ring-2 focus-within:ring-green-500">
-
-                <button className="p-2 rounded-full bg-green-100 hover:bg-green-200 transition-colors">
+                <button className="p-2 rounded-full">
                   {!isAuthenticated ? (
                     <FaRegUser className="text-xl text-green-800" />
                   ) : (
                     <CiLogout className="text-xl text-green-800" />
                   )}
                 </button>
-
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   {isAuthenticated ? (
                     <div className="py-1">
                       <button
-                        onClick={() => {
-                          navigate("/profile");
-                          toggleMenu();
-                        }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => handleNavigation("/profile")}
+                        className="block w-full text-left px-4 py-2 text-[12px] uppercase text-gray-700 hover:bg-gray-100"
                       >
                         Profile
                       </button>
-                      <button
-                        onClick={() => {
-                          navigate("/wishList");
-                          toggleMenu();
-                        }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      {/* <button
+                        onClick={() => handleNavigation("/wishList")}
+                        className="block w-full text-left px-4 py-2 text-[12px] uppercase text-gray-700 hover:bg-gray-100"
                       >
                         Wishlist
-                      </button>
+                      </button> */}
                       <button
-                        onClick={() => {
-                          dispatch(setUserAuthenticated(false));
-                          toggleMenu();
-                        }}
-                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                        onClick={() => handleLoginLogoutNavigation("/", true)}
+                        className="block w-full text-left px-4 py-2 text-[12px] uppercase text-red-600 hover:bg-red-50"
                       >
                         Logout
                       </button>
@@ -113,32 +114,23 @@ const MobileNav = ({ toggleMenu, isMenuOpen }) => {
                   ) : (
                     <div className="py-1">
                       <button
-                        onClick={() => {
-                          navigate("/signin");
-                          toggleMenu();
-                        }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => handleNavigation("/signin")}
+                        className="block w-full text-left px-4 py-2 text-[12px] uppercase text-gray-700 hover:bg-gray-100"
                       >
                         Login
                       </button>
                       <button
-                        onClick={() => {
-                          navigate("/signup");
-                          toggleMenu();
-                        }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => handleNavigation("/signup")}
+                        className="block w-full text-left px-4 py-2 text-[12px] uppercase text-gray-700 hover:bg-gray-100"
                       >
                         Register
                       </button>
                     </div>
                   )}
                 </div>
-
               </div>
 
-
-
-              {/* Cart Button */}
+              {/* Cart */}
               <button
                 onClick={handleOpenCart}
                 className="relative rounded-full p-2 bg-green-200 cursor-pointer hover:bg-green-300 transition-colors group focus-within:ring-2 focus-within:ring-green-500"
@@ -150,7 +142,6 @@ const MobileNav = ({ toggleMenu, isMenuOpen }) => {
                   </span>
                 )}
               </button>
-
             </div>
           </div>
 
@@ -163,7 +154,9 @@ const MobileNav = ({ toggleMenu, isMenuOpen }) => {
                     to={link.path}
                     onClick={toggleMenu}
                     className={({ isActive }) =>
-                      `block px-4 py-2 rounded-lg transition-colors ${isActive ? "bg-green-100 text-green-800" : "text-gray-600 hover:bg-gray-100"}`}
+                      `block px-4 py-2 rounded-lg transition-colors ${isActive ? "bg-green-100 text-green-800" : "text-gray-600 hover:bg-gray-100"
+                      }`
+                    }
                   >
                     {link.Label}
                   </NavLink>

@@ -27,31 +27,40 @@
     #root {
         min-height: 100vh;
         width: 100%;
+        overflow-x: hidden;
     }
 }
 
 
 /* Scrollbar Styling */
 .product-list::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px;
+    /* Width of the scrollbar */
 }
 
 .product-list::-webkit-scrollbar-track {
-    background: #f0f0f0; /* Background of the scrollbar track */
-    border-radius: 4px; /* Optional: Makes the track slightly rounded */
+    background: #f0f0f0;
+    /* Background of the scrollbar track */
+    border-radius: 4px;
+    /* Optional: Makes the track slightly rounded */
 }
 
 .product-list::-webkit-scrollbar-thumb {
-    background: #34d399; /* Tailwind's green-400 hex color */
-    border-radius: 50%; /* Fully round the scrollbar thumb */
+    background: #34d399;
+    /* Tailwind's green-400 hex color */
+    border-radius: 50%;
+    /* Fully round the scrollbar thumb */
 }
 
 .product-list::-webkit-scrollbar-thumb:hover {
-    background: #059669; /* Darker green (green-600) for hover effect */
+    background: #059669;
+    /* Darker green (green-600) for hover effect */
 }
 
 /* For Firefox */
 .product-list {
-    scrollbar-width: thin; /* Makes scrollbar thin */
-    scrollbar-color: #34d399 #f0f0f0; /* Handle (green-400) and track colors */
+    scrollbar-width: thin;
+    /* Makes scrollbar thin */
+    scrollbar-color: #34d399 #f0f0f0;
+    /* Handle (green-400) and track colors */
 }

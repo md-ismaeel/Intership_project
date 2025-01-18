@@ -23,11 +23,11 @@ const ProductDetails = () => {
 
     const navigator = useNavigate();
     const { title } = useParams();
+    const slugTitle = createUrlSlug(title);
 
     useEffect(() => {
         try {
             setIsLoading(true);
-            const slugTitle = createUrlSlug(title);
             const findProduct = data?.find((item) => createUrlSlug(item.title) === slugTitle);
 
             if (!findProduct) return setError("Product not found");
@@ -66,12 +66,17 @@ const ProductDetails = () => {
 
     const handleFavorite = (e) => {
         e.preventDefault();
-        dispatch(toggleWishList(productDetails));
 
-        if (isFavorite) {
-            toast.info(`Removed ${productDetails.title} from your wishlist`);
+        if (!isAuthenticated) {
+            navigator("/signin");
+            toast.warn("please signin first");
         } else {
-            toast.success(`Added ${productDetails.title} to your wishlist`);
+            dispatch(toggleWishList(productDetails));
+            if (isFavorite) {
+                toast.info(`Removed ${productDetails.title} from your wishlist`);
+            } else {
+                toast.success(`Added ${productDetails.title} to your wishlist`);
+            }
         }
     };
 

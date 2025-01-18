@@ -249,7 +249,7 @@ export default function About() {
                     </p>
                     <NavLink
                         to="/contact"
-                        className="group inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 hover:gap-4"
+                        className="group inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 hover:gap-4"
                     >
                         Contact Us
                         <ArrowRight className="transition-transform group-hover:translate-x-1" />

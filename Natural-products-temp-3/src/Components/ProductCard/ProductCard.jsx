@@ -5,12 +5,14 @@ import { addToCart, toggleWishList } from "../../Redux/Slice/OrgSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ShoppingCart } from "lucide-react";
 import { HeartIcon } from "../../Components/ProductRating/ProductRating";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
-    const { wishList } = useSelector((state) => state?.Org);
+    const { wishList, isAuthenticated } = useSelector((state) => state?.Org);
     const dispatch = useDispatch();
     const [isFavorite, setIsFavorite] = useState(false);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const navigator = useNavigate()
 
     const { id, title, price, discountPercentage, rating, stock, images, brand, sale } = item;
 
@@ -37,12 +39,18 @@ const ProductCard = ({ item }) => {
 
     const handleFavorite = (e) => {
         e.preventDefault();
-        dispatch(toggleWishList(item));
 
-        if (isFavorite) {
-            toast.info(`Removed ${title} from your wishlist`);
+        if (!isAuthenticated) {
+            navigator("/signin");
+            toast.warn("please signin first");
         } else {
-            toast.success(`Added ${title} to your wishlist`);
+            dispatch(toggleWishList(item));
+
+            if (isFavorite) {
+                toast.info(`Removed ${title} from your wishlist`);
+            } else {
+                toast.success(`Added ${title} to your wishlist`);
+            }
         }
     };
 
@@ -87,9 +95,13 @@ const ProductCard = ({ item }) => {
 
                 {/* Price */}
                 <div className="flex items-center gap-2 mt-2">
-                    <span className="text-lg font-bold text-gray-800">${discountedPrice.toFixed(2)}</span>
+                    <span className="text-lg font-bold text-gray-800">
+                        ${discountedPrice.toFixed(2)}
+                    </span>
                     {discountPercentage > 0 && (
-                        <span className="text-sm text-orange-500 line-through">${price}</span>
+                        <span className="text-sm text-orange-500 line-through">
+                            ${price}
+                        </span>
                     )}
                 </div>
 
@@ -116,13 +128,13 @@ const ProductCard = ({ item }) => {
                     ) : (
                         <ShoppingCart size={20} />
                     )}
-                    <span className="uppercase text-sm">{isAddedToCart ? "Adding..." : "Add to Cart"}</span>
+                    <span className="uppercase text-sm">
+                        {isAddedToCart ? "Adding..." : "Add to Cart"}
+                    </span>
                 </button>
-
             </div>
         </div>
     );
 };
 
 export default ProductCard;
-
