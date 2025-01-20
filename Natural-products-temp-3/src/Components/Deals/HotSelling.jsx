@@ -29,7 +29,7 @@ export default function HotSelling() {
     };
     return (
         <section className="w-full mt-10 mb-10">
-            <div className="w-full flex justify-start items-center mb-2">
+            <div className="w-full flex justify-start items-center">
                 <h1 className="mt-4 uppercase text-sm tracking-widest w-[37%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">Hot <span className='text-yellow-500 ml-2 md:ml-0'>Selling</span></h1>
 
             </div>

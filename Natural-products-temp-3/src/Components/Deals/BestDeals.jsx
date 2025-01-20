@@ -30,7 +30,7 @@ export default function TopDeals() {
     return (
         <section className="w-full mt-5 mb-10">
 
-            <div className="w-full flex justify-start items-center mb-2">
+            <div className="w-full flex justify-start items-center">
                 <h1 className="mt-4 uppercase text-sm tracking-widest w-[35%] md:full flex justify-end items-center md:block md:ml-14 lg:ml-5 font-semibold">best <span className='text-yellow-500 ml-2 md:ml-0'>deals</span></h1>
             </div>
 

@@ -10,7 +10,7 @@ export default function WishList() {
     return (
         <>
             <ExtraSpace />
-            {wishList.length > 0 && <h1 className=" mt-5 -mb-3 uppercase text-lg tracking-widest w-full ml-3 md:ml-5 lg:ml-5 font-semibold px-3">Listed <span className='text-yellow-500 ml-2 md:ml-0'>Product</span> </h1>}
+            {wishList.length > 0 && <h1 className=" mt-5 -mb-3 uppercase text-sm tracking-widest w-full ml-3 md:ml-5 lg:ml-5 font-semibold px-3">Listed <span className='text-yellow-500 ml-2 md:ml-0'>Product</span> </h1>}
             <section className={`w-full min-h-screen flex justify-center items-start px-5 mt-5`}>
                 <div
                     className={`w-full flex flex-wrap justify-start gap-10 items-center mb-12`}

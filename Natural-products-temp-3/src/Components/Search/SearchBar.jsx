@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilteredProd } from "../../Redux/Slice/OrgSlice";
 import { toast } from "material-react-toastify";
 
+
 export default function SearchBar() {
     const { originalData } = useSelector((state) => state?.Org);
     const dispatch = useDispatch();
@@ -54,7 +55,7 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="relative w-full max-w-md">
+        <div className="search-container relative md:w-[250px] lg:w-[400px]">
             <div className="relative">
                 <div
                     className={`flex items-center rounded-lg bg-white ${isFocused ? "shadow-lg" : ""

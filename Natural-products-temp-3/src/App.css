@@ -1,0 +1,12 @@
+@media screen and (max-width:425px) {
+    .search-container {
+        width: 95% !important;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .card,.focus {
+        width: 18rem;
+    }
+}
