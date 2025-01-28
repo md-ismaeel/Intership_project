@@ -314,7 +314,7 @@ export default function About() {
       >
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
         <p className="text-lg text-gray-600 mb-8">
-          We'd love to hear from you and discuss how we can help.
+          {"We'd love to hear from you and discuss how we can help."}
         </p>
         <Link
           href="/contact"
