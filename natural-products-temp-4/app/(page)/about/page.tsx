@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { ChevronDown, ArrowRight, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function About() {

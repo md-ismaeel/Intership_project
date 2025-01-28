@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 export async function fetchProducts(category: string) {
   const url =
     category === "All"

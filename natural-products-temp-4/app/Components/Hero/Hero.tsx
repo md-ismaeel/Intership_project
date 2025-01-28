@@ -6,10 +6,6 @@ import dynamic from "next/dynamic";
 
 const Carousel = dynamic(() => import("react-multi-carousel"), { ssr: false });
 
-import banner1 from "@/app/assets/Banners/banner1.png"
-import banner2 from "@/app/assets/Banners/banner2.png"
-
-
 const Hero: React.FC<HeroProps> = ({ deviceType }) => {
     const responsive = {
         superLargeDesktop: {

@@ -4,12 +4,10 @@ import { ShoppingBag, X, Minus, Plus, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/Store";
 import { removeFromCart, setIsOpenCart, updateCart, } from "@/app/Store/Feature/Cart/CartSlice";
-import { redirect } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 
 export default function Cart() {
     const { cart, isOpenCart } = useAppSelector((state) => state?.cart);
-    const { isAuthenticated } = useAppSelector((state) => state?.auth);
     const [quantity, setQuantity] = useState(Number(1));
     const dispatch = useAppDispatch();
     const router = useRouter();
