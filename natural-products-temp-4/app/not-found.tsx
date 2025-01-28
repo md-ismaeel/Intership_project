@@ -39,7 +39,7 @@ const NotFound: React.FC = () => {
                         Page Not Found
                     </p>
                     <p className="text-lg text-gray-600 max-w-xl mx-auto">
-                        The page you're looking for doesn't exist or may have been moved.
+                        {"The page you're looking for doesn't exist or may have been moved."}
                     </p>
                 </div>
 

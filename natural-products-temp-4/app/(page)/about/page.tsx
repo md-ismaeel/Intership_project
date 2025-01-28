@@ -120,7 +120,7 @@ export default function About() {
           animate={isRef1InView ? { opacity: 1 } : {}}
           transition={{ delay: 0.3 }}
         >
-          We're passionate about creating amazing experiences
+          {"We're passionate about creating amazing experiences"}
         </motion.p>
       </motion.div>
 
