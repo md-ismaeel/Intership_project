@@ -164,7 +164,7 @@ export default function Checkout() {
                                                 name="name"
                                                 value={formData.name}
                                                 onChange={handleInputChange}
-                                                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                 required
                                             />
                                         </div>
@@ -177,7 +177,7 @@ export default function Checkout() {
                                                 name="email"
                                                 value={formData.email}
                                                 onChange={handleInputChange}
-                                                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                 required
                                             />
                                         </div>
@@ -190,7 +190,7 @@ export default function Checkout() {
                                                 name="address"
                                                 value={formData.address}
                                                 onChange={handleInputChange}
-                                                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                 required
                                             />
                                         </div>
@@ -204,7 +204,7 @@ export default function Checkout() {
                                                     name="city"
                                                     value={formData.city}
                                                     onChange={handleInputChange}
-                                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                    className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                     required
                                                 />
                                             </div>
@@ -217,7 +217,7 @@ export default function Checkout() {
                                                     name="zipCode"
                                                     value={formData.zipCode}
                                                     onChange={handleInputChange}
-                                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                    className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                     required
                                                 />
                                             </div>
@@ -240,7 +240,7 @@ export default function Checkout() {
                                                 name="cardNumber"
                                                 value={formData.cardNumber}
                                                 onChange={handleInputChange}
-                                                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                 placeholder="0000 0000 0000 0000"
                                                 required
                                             />
@@ -256,7 +256,7 @@ export default function Checkout() {
                                                     value={formData.expiryDate}
                                                     onChange={handleInputChange}
                                                     placeholder="MM/YY"
-                                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                    className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                     required
                                                 />
                                             </div>
@@ -270,7 +270,7 @@ export default function Checkout() {
                                                     value={formData.cvv}
                                                     onChange={handleInputChange}
                                                     placeholder="123"
-                                                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                                    className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                                                     required
                                                 />
                                             </div>
@@ -280,8 +280,8 @@ export default function Checkout() {
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium 
-                                         hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                                    className="w-full bg-gray-800 text-white py-3 px-4 rounded-lg font-medium 
+                                         hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
                                          transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
                                 >
                                     Place Order (${total.toFixed(2)})

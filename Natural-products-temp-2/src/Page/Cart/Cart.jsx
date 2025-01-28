@@ -4,11 +4,18 @@ import { setIsOpenCart, updateCart, removeFromCart } from "../../Redux/Slice/N4N
 import { IoCloseOutline } from "react-icons/io5";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import {toast} from "material-react-toastify"
 
 export default function Cart() {
     const { isOpenCart, cart, userAuthenticated } = useSelector((state) => state?.N4N);
     const dispatch = useDispatch();
     const navigator = useNavigate();
+
+    // if (!userAuthenticated) {
+    //     toast.warn("please login first!")
+    //     navigator("/signin")
+    //     // return
+    // }
 
     useEffect(() => {
         document.body.style.overflow = isOpenCart ? "hidden" : "";

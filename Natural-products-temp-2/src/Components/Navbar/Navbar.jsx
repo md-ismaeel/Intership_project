@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { navLinks } from "../../Constant/Constant";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTimes } from "react-icons/fa";
-import { FaUserCheck } from "react-icons/fa6";
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
 import logo from "../../../public/N4N-logo.avif";
 import { isActiveClass, navStyles } from "../../Constant/Constant";

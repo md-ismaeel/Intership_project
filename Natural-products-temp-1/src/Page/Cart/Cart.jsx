@@ -10,10 +10,16 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 export default function Cart() {
     const cartItem = useSelector((state) => state?.Ecommers?.cartItem || []);
     const wishlist = useSelector((state) => state?.Ecommers?.wishList || []);
+    const isAuthenticated = useSelector((state) => state?.Ecommers?.isAuthenticated);
     const [expandedItemId, setExpandedItemId] = useState(null);
     const dispatch = useDispatch();
     const navigator = useNavigate();
 
+    if (!isAuthenticated) {
+        toast("please login first!")
+        navigator("/")
+        return;
+    }
     const handleIncrease = (item) => {
         dispatch(addToCart(item));
         toast.success(`Added another ${item.name} to cart`);

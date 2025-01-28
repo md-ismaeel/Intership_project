@@ -12,7 +12,9 @@ export default function ProductCard({ item }) {
     const dispatch = useDispatch();
     const wishList = useSelector((state) => state.Ecommers.wishList);
 
-    const handleWishlistToggle = () => {
+    const handleWishlistToggle = (e) => {
+        e.preventDefault()
+        
         const product = { id, name, category, price, image };
         dispatch(toggleWishlist(product));
         toast.info(
@@ -22,7 +24,9 @@ export default function ProductCard({ item }) {
         );
     };
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+
         const product = { id, name, category, price, image, quantity: 1 };
         dispatch(addToCart(product));
         toast.success(`${product.name} added to cart!`);

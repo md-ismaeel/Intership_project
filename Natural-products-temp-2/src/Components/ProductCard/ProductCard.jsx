@@ -5,12 +5,14 @@ import { addToCart, toggleWishList } from "../../Redux/Slice/N4NSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ShoppingCart } from "lucide-react";
 import { HeartIcon } from "../../Components/ProductRating/ProductRating";
+import { useNavigate } from "react-router-dom"
 
 const ProductCard = ({ item }) => {
     const { wishList, userAuthenticated } = useSelector((state) => state?.N4N);
     const dispatch = useDispatch();
     const [isFavorite, setIsFavorite] = useState(false);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const navigator = useNavigate()
 
     const { id, title, price, discountPercentage, rating, stock, images, brand, sale } = item;
 
@@ -25,7 +27,10 @@ const ProductCard = ({ item }) => {
     const handleAddToCart = (e) => {
         e.preventDefault();
 
-        if (stock === 0) {
+        if (!userAuthenticated) {
+            toast.warn("please login first!")
+            navigator("/signin")
+        } else if (stock === 0) {
             toast.error("Sorry, item is out of stock!");
         } else {
             dispatch(addToCart(item));
