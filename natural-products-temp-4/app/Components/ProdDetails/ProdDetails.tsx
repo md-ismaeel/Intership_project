@@ -13,12 +13,14 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { additionalProductInfo, mockReviews } from "@/app/Constants/Constants";
 
+type Tabs = "details" | "shipping" | "reviews"
+
 
 export default function ProdDetails({ productId }: { productId: number }) {
     const [product, setProduct] = useState<product | null>(null);
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
-    const [activeTab, setActiveTab] = useState<"details" | "shipping" | "reviews">("details");
+    const [activeTab, setActiveTab] = useState<Tabs>("details");
     const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({
         warranty: false,
         shipping: false,
@@ -185,7 +187,7 @@ export default function ProdDetails({ productId }: { productId: number }) {
                     {["details", "shipping", "reviews"].map((tab) => (
                         <button
                             key={tab}
-                            onClick={() => setActiveTab(tab as any)}
+                            onClick={() => setActiveTab(tab as Tabs)}
                             className={`pb-2 hover:bg-gray-100 px-2 py-1 transition-all duration-500 ease-in-out active:bg-gray-200
                                     ${activeTab === tab
                                     ? "border-b-2 border-blue-600 text-blue-600"

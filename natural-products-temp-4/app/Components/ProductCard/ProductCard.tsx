@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 
 export default function ProductCard({ item }: { item: product }) {
     const { category, description, image, price, rating } = item;
-    const cart = useAppSelector((state) => state.cart.cart);
     const { wishList } = useAppSelector((state) => state.wish);
     const dispatch = useAppDispatch();
     const { isSignedIn } = useUser();
