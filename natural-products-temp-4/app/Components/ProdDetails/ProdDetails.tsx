@@ -28,7 +28,7 @@ export default function ProdDetails({ data }: { data: Product }) {
     const dispatch = useAppDispatch()
     const { wishList } = useAppSelector((state) => state?.wish)
     const { isSignedIn } = useUser();
-    const router = useRouter()
+    const router = useRouter();
 
 
     useEffect(() => {
@@ -49,7 +49,6 @@ export default function ProdDetails({ data }: { data: Product }) {
         }
         setQuantity(newQuantity);
         dispatch(updateCart({ ...product, quantity: newQuantity }));
-
     };
 
 

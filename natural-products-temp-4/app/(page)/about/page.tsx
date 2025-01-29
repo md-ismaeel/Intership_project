@@ -3,7 +3,6 @@ import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ChevronDown, ArrowRight, Mail, Phone } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function About() {
   const [expandedValue, setExpandedValue] = useState<null | number>(null);
@@ -173,7 +172,7 @@ export default function About() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Image
+            <img
               src="https://hasilbumindo.com/wp-content/uploads/2023/04/dl.beatsnoop.com-3000-LOzBPyrdI8-scaled.jpg"
               alt="Mission"
               className="w-full h-full object-cover transition-transform hover:scale-110 duration-500"
@@ -262,7 +261,7 @@ export default function About() {
                 setActiveTeamMember(activeTeamMember === index ? null : index)
               }
             >
-              <Image
+              <img
                 src={member.image}
                 className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 
                   transition-transform group-hover:scale-110 duration-300"

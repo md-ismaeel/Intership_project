@@ -129,6 +129,8 @@ export default function Cart() {
                                                             <Image
                                                                 src={item?.image}
                                                                 alt={item.category}
+                                                                width={100}
+                                                                height={100}
                                                                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                                             />
                                                         </div>

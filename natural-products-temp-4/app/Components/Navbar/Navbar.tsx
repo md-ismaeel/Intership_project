@@ -71,23 +71,26 @@ export default function Navbar() {
 
         {/* mobile view */}
         <div
-          className={`h-screen fixed inset-0 bg-black/50 z-[100] transition-opacity duration-500 md:hidden ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
+          className={`h-screen fixed inset-0 bg-black/50 z-[100] transition-opacity duration-500 md:hidden ${
+            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
           onClick={handleOpen}
         />
         <div
-          className={`fixed top-0 left-0 z-[1000] w-2/3 h-screen bg-white shadow-lg transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+          className={`fixed top-0 left-0 z-[1000] w-2/3 h-screen bg-white shadow-lg transform transition-transform duration-500 ease-in-out ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
           <div className="md:hidden flex flex-col justify-center items-start px-5 gap-3 mt-14">
             {navLinks.map((link) => (
               <div key={link.id} onClick={handleOpen} className="w-full">
                 <Link
                   href={link.path}
-                  className={`block py-2 px-4 rounded-lg transition-all duration-300 text-sm tracking-wider uppercase relative hover:bg-gray-100 ${pathname === link.path
+                  className={`block py-2 px-4 rounded-lg transition-all duration-300 text-sm tracking-wider uppercase relative hover:bg-gray-100 ${
+                    pathname === link.path
                       ? "text-gray-900 font-semibold"
                       : "text-gray-900"
-                    }`}
+                  }`}
                 >
                   {link.label}
                   {pathname === link.path && (

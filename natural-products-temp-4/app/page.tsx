@@ -1,3 +1,4 @@
+import Category from "@/app/Components/CategoryComponents/Category";
 import Hero from "./Components/Hero/Hero";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <div className="w-full min-h-screen">
         <Hero deviceType={deviceType} />
+        <Category />
       </div>
     </>
   );

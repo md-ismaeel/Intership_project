@@ -32,7 +32,6 @@ export default function Page() {
     }
 
 
-
     return (
         <section className="w-full min-h-screen pt-4 md:0 px-0">
             {/* Category buttons */}
@@ -54,7 +53,7 @@ export default function Page() {
                     <Loading title={"Loading Products..."} />
                 ) : products.length > 0 ? (
                     products.map((prod: Product) => (
-                        <Link key={prod.id} href={`products/${prod.id}`}>
+                        <Link key={prod.id} href={`/products/${prod.id}`}>
                             <ProductCard item={prod} />
                         </Link>
                     ))

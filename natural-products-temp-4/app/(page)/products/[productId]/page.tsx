@@ -4,6 +4,7 @@ import ProdDetails from "@/app/Components/ProdDetails/ProdDetails";
 import { fetchProductDetails } from "@/app/Utils/utils";
 import { Product } from "@/app/Type/Type";
 import { useParams } from "next/navigation";
+import Loading from "@/app/Components/Loading/Loading";
 
 export default function ProductPage() {
   const params = useParams();
@@ -30,7 +31,7 @@ export default function ProductPage() {
   }, [productId]);
 
   if (isNaN(productId)) return <p>Invalid product ID.</p>;
-  if (!product) return <p>Loading product details...</p>;
+  if (!product) return <Loading title="Loading product details..."/>;
 
   return (
     <>

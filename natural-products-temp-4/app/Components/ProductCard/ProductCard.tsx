@@ -50,6 +50,8 @@ export default function ProductCard({ item }: { item: Product }) {
             <Image
                 src={image}
                 alt={`Image of ${category}`}
+                width={100}
+                height={100}
                 className="w-full h-40 bg-center rounded-md transition-all duration-500 ease-in-out hover:bg-gray-500 hover:scale-105"
             />
             <h3 className="text-lg font-bold mt-2">{category}</h3>
