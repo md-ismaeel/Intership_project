@@ -2,21 +2,20 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ProductCard from "@/app/Components/ProductCard/ProductCard";
-import { product } from "@/app/Type/Type";
+import { Product } from "@/app/Type/Type";
 import { fetchProducts } from "@/app/Utils/utils";
 import Loading from "@/app/Components/Loading/Loading";
 
 export default function Page() {
     const categories = ["All", "electronics", "jewelery", "men's clothing", "women's clothing"];
 
-    const [products, setProducts] = useState<product[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Initial load of products when component mounts
         handleCategory(selectedCategory);
-    }, []);
+    }, [selectedCategory]);
 
     async function handleCategory(category: string) {
         setIsLoading(true);
@@ -31,6 +30,8 @@ export default function Page() {
             setIsLoading(false);
         }
     }
+
+
 
     return (
         <section className="w-full min-h-screen pt-4 md:0 px-0">
@@ -52,7 +53,7 @@ export default function Page() {
                 {isLoading ? (
                     <Loading title={"Loading Products..."} />
                 ) : products.length > 0 ? (
-                    products.map((prod: product) => (
+                    products.map((prod: Product) => (
                         <Link key={prod.id} href={`products/${prod.id}`}>
                             <ProductCard item={prod} />
                         </Link>

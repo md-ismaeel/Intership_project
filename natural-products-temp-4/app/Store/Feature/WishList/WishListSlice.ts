@@ -1,8 +1,8 @@
-import { product } from "@/app/Type/Type";
+import { Product } from "@/app/Type/Type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface WishListState {
-  wishList: product[];
+  wishList: Product[];
 }
 const initialState: WishListState = {
   wishList: [],

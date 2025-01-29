@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "material-react-toastify";
-import { product } from "@/app/Type/Type";
+import { Product } from "@/app/Type/Type";
 import Image from "next/image";
 import { Heart, ShoppingCart, Star, Truck, Shield, RefreshCw, Plus, Minus, ChevronDown } from "lucide-react";
 import { addToCart, updateCart } from "@/app/Store/Feature/Cart/CartSlice";
@@ -14,8 +14,9 @@ import { additionalProductInfo, mockReviews } from "@/app/Constants/Constants";
 type Tabs = "details" | "shipping" | "reviews"
 
 
-export default function ProdDetails({ data }: { data: product }) {
-    const [product] = useState<product | null>(data);
+export default function ProdDetails({ data }: { data: Product }) {
+    const { cart } = useAppSelector((state) => state?.cart)
+    const [product] = useState<Product | null>(data);
     const [quantity, setQuantity] = useState(1);
     const [activeTab, setActiveTab] = useState<Tabs>("details");
     const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({
@@ -30,14 +31,27 @@ export default function ProdDetails({ data }: { data: product }) {
     const router = useRouter()
 
 
-    const handleQuantityChange = (type: "increase" | "decrease") => {
-        if (type === "increase") {
-            setQuantity((prev) => prev + 1);
-        } else if (type === "decrease" && quantity > 1) {
-            setQuantity((prev) => prev - 1);
+    useEffect(() => {
+        const cartItem = cart.find(item => item.id === product?.id);
+        if (cartItem) {
+            setQuantity(cartItem.quantity);
         }
-        dispatch(updateCart({ ...product, quantity: quantity }))
+    }, [cart, product?.id]);
+
+    const handleQuantityChange = (type: "increase" | "decrease") => {
+        if (!product) return;
+
+        let newQuantity = quantity;
+        if (type === "increase" && quantity < 20) {
+            newQuantity = quantity + 1;
+        } else if (type === "decrease" && quantity > 1) {
+            newQuantity = quantity - 1;
+        }
+        setQuantity(newQuantity);
+        dispatch(updateCart({ ...product, quantity: newQuantity }));
+
     };
+
 
     const handleAddToCart = () => {
         if (!isSignedIn) {
@@ -51,7 +65,7 @@ export default function ProdDetails({ data }: { data: product }) {
         }
     };
 
-    const handleLike = (item: product) => {
+    const handleLike = (item: Product) => {
         if (!isSignedIn) {
             toast.error("please login first!")
             router.push("/sign-in")
@@ -62,15 +76,7 @@ export default function ProdDetails({ data }: { data: product }) {
 
     const toggleSection = (section: string) => {
         setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
-    };
-
-    // if (loading) {
-    //     return (
-    //         <div className="w-full h-screen pt-20">
-    //             <Loading title={"Loading product details..."} />
-    //         </div>
-    //     );
-    // }
+    }
 
     if (!product) {
         return (

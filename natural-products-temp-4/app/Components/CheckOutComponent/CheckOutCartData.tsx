@@ -1,5 +1,6 @@
 "use client";
 import { useAppSelector } from "@/app/Store";
+import Image from "next/image";
 import React from "react";
 
 export default function CheckOutCartData() {
@@ -23,7 +24,7 @@ export default function CheckOutCartData() {
                                 {/* Product Image */}
                                 <div className="flex items-center gap-4">
                                     <div className="w-20 h-20 overflow-hidden rounded-lg">
-                                        <img
+                                        <Image
                                             src={item.image}
                                             alt={item.category}
                                             className="w-full h-full bg-center"

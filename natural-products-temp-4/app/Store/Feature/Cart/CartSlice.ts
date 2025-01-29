@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { product } from "@/app/Type/Type";
+import { Product } from "@/app/Type/Type";
 
 interface CartState {
-  cart: product[];
+  cart: Product[];
   isOpenCart: boolean;
 }
 

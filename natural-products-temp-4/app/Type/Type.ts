@@ -1,4 +1,4 @@
-export interface product {
+export interface Product {
   id: number;
   category: string;
   description: string;
@@ -8,7 +8,7 @@ export interface product {
     rate: number;
     count: number;
   };
-  quantity:number
+  quantity: number;
 }
 
 export interface HeroProps {

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { product } from "@/app/Type/Type";
+import { Product } from "@/app/Type/Type";
 import { useAppDispatch, useAppSelector } from "@/app/Store";
 import { addToCart } from "@/app/Store/Feature/Cart/CartSlice";
 import { toast } from "material-react-toastify";
@@ -8,8 +8,9 @@ import { Heart } from "lucide-react";
 import { toggleWishList } from "@/app/Store/Feature/WishList/WishListSlice";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-export default function ProductCard({ item }: { item: product }) {
+export default function ProductCard({ item }: { item: Product }) {
     const { category, description, image, price, rating } = item;
     const [loading, setLoading] = useState(false);
     const { wishList } = useAppSelector((state) => state.wish);
@@ -30,7 +31,7 @@ export default function ProductCard({ item }: { item: product }) {
         toast.success(`Added ${category} to cart`);
     };
 
-    const handleLike = (e: React.FormEvent, item: product) => {
+    const handleLike = (e: React.FormEvent, item: Product) => {
         e.preventDefault();
         if (!isSignedIn) {
             toast.error("please login first!");
@@ -46,7 +47,7 @@ export default function ProductCard({ item }: { item: product }) {
 
     return (
         <div className="relative w-full md:w-72 p-4 bg-white shadow-2xl border rounded-md">
-            <img
+            <Image
                 src={image}
                 alt={`Image of ${category}`}
                 className="w-full h-40 bg-center rounded-md transition-all duration-500 ease-in-out hover:bg-gray-500 hover:scale-105"

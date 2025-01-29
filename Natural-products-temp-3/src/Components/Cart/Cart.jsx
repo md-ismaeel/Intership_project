@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsOpenCart, updateCart, removeFromCart } from "../../Redux/Slice/OrgSlice";
 import { ShoppingBag, X, Minus, Plus, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Image from "next/image"
 
 
 export default function Cart() {
@@ -94,7 +95,7 @@ export default function Cart() {
                                                 <div className="flex gap-4">
                                                     <div className="relative group">
                                                         <div className="w-24 h-24 rounded-xl overflow-hidden">
-                                                            <img
+                                                            <Image
                                                                 src={item?.images[0]}
                                                                 alt={item.title}
                                                                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"

@@ -3,12 +3,16 @@ import React, { useEffect, useState } from "react";
 import { ShoppingBag, X, Minus, Plus, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/Store";
-import { removeFromCart, setIsOpenCart, updateCart, } from "@/app/Store/Feature/Cart/CartSlice";
+import {
+    removeFromCart,
+    setIsOpenCart,
+    updateCart,
+} from "@/app/Store/Feature/Cart/CartSlice";
 import { useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
 export default function Cart() {
     const { cart, isOpenCart } = useAppSelector((state) => state?.cart);
-    const [quantity, setQuantity] = useState(Number(1));
     const dispatch = useAppDispatch();
     const router = useRouter();
     const [animatingItemId, setAnimatingItemId] = useState<number | null>(null);
@@ -22,16 +26,22 @@ export default function Cart() {
     }, [isOpenCart]);
 
     const updateQuantity = (type: "increase" | "decrease", itemId: number) => {
-        console.log("counting");
+        const cartItem = cart.find((item) => item.id === itemId);
+        if (!cartItem) return;
 
-        const item = cart.find((item) => item.id === itemId);
-        if (!item) return;
-        if (type === "increase") {
-            setQuantity((prev) => prev + 1);
-        } else if (type === "decrease" && quantity > 1) {
-            setQuantity((prev) => prev - 1);
+        const currentQuantity = cartItem.quantity || 1;
+        let newQuantity = currentQuantity;
+
+        if (type === "increase" && currentQuantity < 20) {
+            newQuantity = currentQuantity + 1;
+        } else if (type === "decrease" && currentQuantity > 1) {
+            newQuantity = currentQuantity - 1;
         }
-        dispatch(updateCart({ ...item, quantity: quantity }));
+
+        if (newQuantity !== currentQuantity) {
+            const updatedItem = { ...cartItem, quantity: newQuantity };
+            dispatch(updateCart(updatedItem));
+        }
     };
 
     const handleRemoveItem = (itemId: number) => {
@@ -44,7 +54,10 @@ export default function Cart() {
 
     const calculateTotal = () => {
         return (
-            cart?.reduce((total, item) => total + item.price * item.quantity, 0) || 0
+            cart?.reduce(
+                (total, item) => total + item.price * (item.quantity || 1),
+                0
+            ) || 0
         );
     };
 
@@ -113,7 +126,7 @@ export default function Cart() {
                                                 <div className="flex gap-4">
                                                     <div className="relative group">
                                                         <div className="w-24 h-24 rounded-xl overflow-hidden">
-                                                            <img
+                                                            <Image
                                                                 src={item?.image}
                                                                 alt={item.category}
                                                                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -137,19 +150,19 @@ export default function Cart() {
                                                                     onClick={() =>
                                                                         updateQuantity("decrease", item.id)
                                                                     }
-                                                                    disabled={quantity === 1}
+                                                                    disabled={item.quantity <= 1}
                                                                     className="p-2 hover:bg-gray-100 disabled:opacity-50 transition-colors duration-200 disabled:cursor-not-allowed"
                                                                 >
                                                                     <Minus className="w-4 h-4" />
                                                                 </button>
                                                                 <span className="w-12 text-center select-none">
-                                                                    {quantity}
+                                                                    {item.quantity || 1}
                                                                 </span>
                                                                 <button
                                                                     onClick={() =>
                                                                         updateQuantity("increase", item.id)
                                                                     }
-                                                                    disabled={quantity === 20}
+                                                                    disabled={item.quantity >= 20}
                                                                     className="p-2 hover:bg-gray-100 disabled:opacity-50 transition-colors duration-200 disabled:cursor-not-allowed"
                                                                 >
                                                                     <Plus className="w-4 h-4" />

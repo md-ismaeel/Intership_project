@@ -1,10 +1,10 @@
-"use client"
-import ProductCard from '@/app/Components/ProductCard/ProductCard';
-import { useAppSelector } from '@/app/Store/index';
-import { product } from '@/app/Type/Type';
-import Link from 'next/link';
-import { Heart, ShoppingBag } from 'lucide-react';
-import React from 'react';
+"use client";
+import ProductCard from "@/app/Components/ProductCard/ProductCard";
+import { useAppSelector } from "@/app/Store/index";
+import { Product } from "@/app/Type/Type";
+import Link from "next/link";
+import { Heart, ShoppingBag } from "lucide-react";
+import React from "react";
 
 export default function WishList() {
   const wishList = useAppSelector((state) => state.wish?.wishList ?? []);
@@ -18,7 +18,7 @@ export default function WishList() {
           <h1 className="text-2xl font-bold">My Wishlist</h1>
         </div>
         <p className="text-gray-600">
-          {wishList.length} {wishList.length === 1 ? 'item' : 'items'} saved
+          {wishList.length} {wishList.length === 1 ? "item" : "items"} saved
         </p>
       </div>
 
@@ -27,9 +27,9 @@ export default function WishList() {
         <div className="space-y-8">
           {/* Grid of Products */}
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {wishList.map((prod: product) => (
+            {wishList.map((prod: Product) => (
               <li key={prod.id} className="">
-                <Link href={`/products/${prod.id}`}>
+                <Link href={`/Ps/${prod.id}`}>
                   <ProductCard item={prod} />
                 </Link>
               </li>

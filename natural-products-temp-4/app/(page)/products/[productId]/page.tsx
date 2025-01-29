@@ -1,22 +1,40 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ProdDetails from "@/app/Components/ProdDetails/ProdDetails";
 import { fetchProductDetails } from "@/app/Utils/utils";
-import { product } from "@/app/Type/Type";
+import { Product } from "@/app/Type/Type";
+import { useParams } from "next/navigation";
 
-interface ProductDetailsProps {
-  params: { productId: string };
-}
+export default function ProductPage() {
+  const params = useParams();
+  const productId = Number(params?.productId);
 
-export default async function ProductDetails({ params }: ProductDetailsProps) {
-  const { productId } = params;
+  const [product, setProduct] = useState<Product | null>(null);
 
-  try {
-    const res: product = await fetchProductDetails(productId);
-    console.log("Fetched Product:", res);
+  // Ensure useEffect is not inside any condition
+  useEffect(() => {
+    async function fetchData() {
+      if (isNaN(productId)) {
+        setProduct(null); // If productId is invalid, set product to null
+        return;
+      }
+      try {
+        const res: Product = await fetchProductDetails(productId);
+        setProduct(res);
+      } catch (error) {
+        console.error("Error fetching product details:", error);
+        setProduct(null);
+      }
+    }
+    fetchData();
+  }, [productId]);
 
-    return <ProdDetails data={res} />;
-  } catch (error) {
-    console.error("Error fetching product details:", error);
-    return <p>Failed to load product details.</p>;
-  }
+  if (isNaN(productId)) return <p>Invalid product ID.</p>;
+  if (!product) return <p>Loading product details...</p>;
+
+  return (
+    <>
+      <ProdDetails data={product} />
+    </>
+  );
 }
