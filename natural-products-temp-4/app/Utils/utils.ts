@@ -13,7 +13,7 @@ export async function fetchProducts(category: string) {
   return response.json();
 }
 
-export async function fetchProductDetails(id: string): Promise<product> {
+export async function fetchProductDetails(id: string): Promise<any> {
   const url = `https://fakestoreapi.com/products/${id}`;
   const response = await fetch(url);
   if (!response.ok) throw new Error("Failed to fetch products");
