@@ -1,5 +1,3 @@
-import { product } from "../Type/Type";
-
 export async function fetchProducts(category: string) {
   const url =
     category === "All"
