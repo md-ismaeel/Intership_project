@@ -114,7 +114,7 @@ export default function ModernContactPage() {
                                             <select
                                                 value={formData[field]}
                                                 onChange={(e) => handleInputChange(e, field)}
-                                                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                                             >
                                                 <option value="">Select Time</option>
                                                 {options?.map((option) => (
@@ -130,7 +130,7 @@ export default function ModernContactPage() {
                                                 onChange={(e) => handleInputChange(e, field)}
                                                 required
                                                 placeholder={label}
-                                                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                                             />
                                         )}
                                     </motion.div>
@@ -148,7 +148,7 @@ export default function ModernContactPage() {
                                     required
                                     placeholder="Your Message"
                                     rows={4}
-                                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                                 />
                             </motion.div>
 

@@ -1,11 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "material-react-toastify";
 import { product } from "@/app/Type/Type";
-import { fetchProductDetails } from "@/app/Utils/utils";
 import Image from "next/image";
 import { Heart, ShoppingCart, Star, Truck, Shield, RefreshCw, Plus, Minus, ChevronDown } from "lucide-react";
-import Loading from "@/app/Components/Loading/Loading";
 import { addToCart, updateCart } from "@/app/Store/Feature/Cart/CartSlice";
 import { useAppDispatch, useAppSelector } from "@/app/Store";
 import { toggleWishList } from "@/app/Store/Feature/WishList/WishListSlice";
@@ -16,9 +14,8 @@ import { additionalProductInfo, mockReviews } from "@/app/Constants/Constants";
 type Tabs = "details" | "shipping" | "reviews"
 
 
-export default function ProdDetails({ productId }: { productId: number }) {
-    const [product, setProduct] = useState<product | null>(null);
-    const [loading, setLoading] = useState(true);
+export default function ProdDetails({ data }: { data: product }) {
+    const [product] = useState<product | null>(data);
     const [quantity, setQuantity] = useState(1);
     const [activeTab, setActiveTab] = useState<Tabs>("details");
     const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({
@@ -32,22 +29,6 @@ export default function ProdDetails({ productId }: { productId: number }) {
     const { isSignedIn } = useUser();
     const router = useRouter()
 
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
-            try {
-                const details = await fetchProductDetails(await productId);
-                setProduct(details);
-            } catch (error) {
-                console.error("Failed to fetch product details:", error);
-                toast.error("Failed to load product details");
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchData();
-    }, [productId]);
 
     const handleQuantityChange = (type: "increase" | "decrease") => {
         if (type === "increase") {
@@ -83,13 +64,13 @@ export default function ProdDetails({ productId }: { productId: number }) {
         setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
     };
 
-    if (loading) {
-        return (
-            <div className="w-full h-screen pt-20">
-                <Loading title={"Loading product details..."} />
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="w-full h-screen pt-20">
+    //             <Loading title={"Loading product details..."} />
+    //         </div>
+    //     );
+    // }
 
     if (!product) {
         return (

@@ -54,7 +54,14 @@ const Hero: React.FC<HeroProps> = ({ deviceType }) => {
                 </div>
                 <div className="relative h-[300px] md:h-[500px]">
                     <img
-                        src={"https://img.freepik.com/free-vector/shopping-time-banner-with-realistic-map-cart-gift-bags-vector-illustration_548887-120.jpg"}
+                        src={"https://www.shutterstock.com/image-vector/ecommerce-website-banner-template-presents-260nw-2252124451.jpg"}
+                        alt="Banner 2"
+                        className="absolute inset-0 w-full h-full bg-center rounded-md"
+                    />
+                </div>
+                <div className="relative h-[300px] md:h-[500px]">
+                    <img
+                        src={"https://aryas.fashion/resource/public/website_files/img/b46eb746f7664083877a42aa05062dfe.jpg"}
                         alt="Banner 2"
                         className="absolute inset-0 w-full h-full bg-center rounded-md"
                     />

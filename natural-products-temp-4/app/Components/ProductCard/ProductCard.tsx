@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { product } from "@/app/Type/Type";
 import { useAppDispatch, useAppSelector } from "@/app/Store";
 import { addToCart } from "@/app/Store/Feature/Cart/CartSlice";
@@ -11,28 +11,31 @@ import { useRouter } from "next/navigation";
 
 export default function ProductCard({ item }: { item: product }) {
     const { category, description, image, price, rating } = item;
+    const [loading, setLoading] = useState(false);
     const { wishList } = useAppSelector((state) => state.wish);
     const dispatch = useAppDispatch();
     const { isSignedIn } = useUser();
-    const router = useRouter()
+    const router = useRouter();
 
     const handleAddToCart = (e: React.MouseEvent) => {
         e.preventDefault();
+        setLoading(true)
+        setTimeout(() => setLoading(false), 500);
         if (!isSignedIn) {
-            toast.error("please login first!")
-            router.push("/sign-in")
-            return
+            toast.error("please login first!");
+            router.push("/sign-in");
+            return;
         }
         dispatch(addToCart(item));
         toast.success(`Added ${category} to cart`);
     };
 
     const handleLike = (e: React.FormEvent, item: product) => {
-        e.preventDefault()
+        e.preventDefault();
         if (!isSignedIn) {
-            toast.error("please login first!")
-            router.push("/sign-in")
-            return
+            toast.error("please login first!");
+            router.push("/sign-in");
+            return;
         }
         if (item && item.id) {
             dispatch(toggleWishList(item));
@@ -50,7 +53,9 @@ export default function ProductCard({ item }: { item: product }) {
             />
             <h3 className="text-lg font-bold mt-2">{category}</h3>
             <p className="text-sm text-gray-600">
-                {description.length > 100 ? `${description.slice(0, 100)}...` : description}
+                {description.length > 100
+                    ? `${description.slice(0, 100)}...`
+                    : description}
             </p>
             <div className="flex justify-between items-center mt-2">
                 <span className="text-green-500 font-bold">${price}</span>
@@ -58,12 +63,24 @@ export default function ProductCard({ item }: { item: product }) {
                     ⭐ {rating.rate} ({rating.count})
                 </span>
             </div>
+
+            {/* add to cart button */}
             <button
                 onClick={handleAddToCart}
-                className="w-full h-12 border uppercase text-sm font-medium mt-2"
+                className={`w-full h-12 border uppercase text-sm font-medium mt-2 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                disabled={loading} // Disable the button while loading
             >
-                Add to cart
+                {loading ? (
+                    <span className="flex items-center justify-center">
+                        <span className="h-4 w-4 rounded-full border-t-2 border-black animate-spin mr-2"></span>
+                        Adding to cart...
+                    </span>
+                ) : (
+                    "Add to cart"
+                )}
             </button>
+
 
             {/* wishList btn */}
             <button
