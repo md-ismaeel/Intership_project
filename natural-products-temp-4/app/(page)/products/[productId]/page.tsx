@@ -3,7 +3,11 @@ import ProdDetails from "@/app/Components/ProdDetails/ProdDetails";
 import { fetchProductDetails } from "@/app/Utils/utils";
 import { product } from "@/app/Type/Type";
 
-export default async function ProductDetails({ params }: { params: { productId: string } }) {
+interface ProductDetailsProps {
+  params: { productId: string };
+}
+
+export default async function ProductDetails({ params }: ProductDetailsProps) {
   const { productId } = params;
 
   try {
