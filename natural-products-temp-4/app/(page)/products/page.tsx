@@ -39,10 +39,7 @@ export default function Page() {
                     <button
                         key={btn}
                         onClick={() => handleCategory(btn)}
-                        className={`px-4 py-2 rounded capitalize ${selectedCategory === btn
-                            ? "bg-black text-white"
-                            : "bg-gray-200 text-black hover:scale-105 transition-all duration-500 ease-in-out"
-                            }`}
+                        className={`px-4 py-2 rounded capitalize ${selectedCategory === btn ? "bg-black text-white" : "bg-gray-200 text-black hover:scale-105 transition-all duration-500 ease-in-out"}`}
                     >
                         {btn}
                     </button>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchProductDetails } from "@/app/Utils/utils";
 import { Product } from "@/app/Type/Type";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import Loading from "@/app/Components/Loading/Loading";
 import { toast } from "material-react-toastify";
 import Image from "next/image";
@@ -18,7 +18,8 @@ type Tabs = "details" | "shipping" | "reviews";
 
 export default function ProductPage() {
   const params = useParams();
-  const productId = Number(params?.productId);
+  const pathname = usePathname();
+  const productId = Number(params?.productId)
 
   const [product, setProduct] = useState<Product | null>(null);
   const { cart } = useAppSelector((state) => state?.cart);
@@ -45,7 +46,7 @@ export default function ProductPage() {
       }
     }
     fetchData();
-  }, [productId]);
+  }, [productId, pathname]);
 
   const dispatch = useAppDispatch();
   const { wishList } = useAppSelector((state) => state?.wish);
@@ -103,6 +104,7 @@ export default function ProductPage() {
   return (
     <>
       <section className="w-full min-h-screen bg-gray-50 flex flex-col justify-center items-center">
+
         <div className="w-full max-w-6xl min-h-[30rem] flex flex-col md:flex-row justify-center items-center gap-16 p-6 bg-white shadow-md rounded-md">
           {/* product image */}
           <div className="relative group flex justify-center items-center w-full md:w-1/3 overflow-hidden rounded-xl border">
@@ -137,7 +139,7 @@ export default function ProductPage() {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    fill={i < Math.floor(product.rating.rate || 0) ? "currentColor": "none"}
+                    fill={i < Math.floor(product.rating.rate || 0) ? "currentColor" : "none"}
                     className="w-5 h-5"
                   />
                 ))}
@@ -180,7 +182,7 @@ export default function ProductPage() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as Tabs)}
-                className={`pb-2 hover:bg-gray-100 px-2 py-1 transition-all duration-500 ease-in-out active:bg-gray-200 ${activeTab === tab ? "border-b-2 border-blue-600 text-blue-600" : "text-gray-800" }`}
+                className={`pb-2 hover:bg-gray-100 px-2 py-1 transition-all duration-500 ease-in-out active:bg-gray-200 ${activeTab === tab ? "border-b-2 border-blue-600 text-blue-600" : "text-gray-800"}`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
@@ -278,7 +280,7 @@ export default function ProductPage() {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      fill={i < Math.floor(product.rating.rate || 0)? "currentColor" : "none"}
+                      fill={i < Math.floor(product.rating.rate || 0) ? "currentColor" : "none"}
                       className="w-5 h-5"
                     />
                   ))}
